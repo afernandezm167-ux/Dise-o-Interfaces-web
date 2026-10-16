@@ -1,0 +1,1085 @@
+/* =========================================================
+   TISION - styles.css
+   ========================================================= */
+
+/* =========================================
+   1. VARIABLES (colores y medidas del diseño)
+   ========================================= */
+:root {
+  --verde: #1F4D36;        /* verde oscuro principal */
+  --verde-hover: #163A28;  /* verde más oscuro para :hover */
+  --verde-claro: #DDE5C4;  /* fondo verdoso del hero */
+  --amarillo: #F6DC5C;     /* amarillo de ofertas y botones */
+  --crema: #F5F3EA;        /* fondo general de la página */
+  --blanco: #FFFFFF;
+  --texto: #1E2A22;        /* color del texto normal */
+  --gris: #6B6B6B;         /* textos secundarios */
+  --hueco: #E6E3D6;        /* color del hueco donde irá cada foto */
+
+  --radio: 12px;                             /* esquinas redondeadas */
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.06);  /* sombra suave */
+}
+
+/* =========================================
+   2. RESET
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+/* Todas las fotos rellenan su hueco sin deformarse */
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* =========================================
+   3. BOTONES
+   ========================================= */
+.boton {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+}
+
+.boton-amarillo {
+  background: var(--amarillo);
+  color: var(--verde);
+}
+
+.boton-verde {
+  background: var(--verde);
+  color: var(--blanco);
+}
+
+.boton-verde:hover {
+  background: var(--verde-hover);
+}
+
+.boton-bloque {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.boton-pequeno {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* Oculta un texto a la vista pero lo deja para lectores de pantalla */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* =========================================
+   4. CABECERA Y MENÚ
+   ========================================= */
+.header {
+  background: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--sombra);
+}
+
+.header-contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--verde);
+}
+
+.logo sup {
+  font-size: 12px;
+}
+
+.nav-lista {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 6px 0;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.activo {
+  border-bottom-color: var(--verde);
+  font-weight: 600;
+}
+
+/* Submenú desplegable */
+.desplegable {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: var(--blanco);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+}
+
+.desplegable:hover .submenu {
+  display: block;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+.submenu a:hover {
+  background: var(--crema);
+  color: var(--verde);
+}
+
+/* Botón hamburguesa (oculto en ordenador) */
+.menu-toggle {
+  display: none;
+}
+
+.menu-icono {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--verde);
+}
+
+/* Iconos */
+.header-iconos {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.carrito {
+  position: relative;
+}
+
+.carrito-contador {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   5. DISEÑO GENERAL: DOS BLOQUES APILADOS
+   (bloque derecho arriba, bloque izquierdo debajo)
+   ========================================= */
+.layout {
+  max-width: 1400px;
+  margin: 24px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.col-izquierda,
+.col-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cabecera de sección: "Título ......... Ver todo →" */
+.seccion-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.seccion-titulo {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+.ver-todo {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ver-todo:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   6. CATEGORÍAS
+   ========================================= */
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.categoria-card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s;
+}
+
+.categoria-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 📷 Hueco de las fotos de categoría */
+.categoria-imagen {
+  height: 180px;
+  background: var(--hueco);
+}
+
+.categoria-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.categoria-info h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.categoria-info p {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.flecha-circulo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   7. OFERTA + CONTADOR
+   ========================================= */
+.oferta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.oferta-izq {
+  background: var(--verde);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* 📷 Hueco de la zapatilla */
+.oferta-imagen {
+  width: 180px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.oferta-imagen img {
+  object-fit: contain; /* no recorta: ideal para PNG sin fondo */
+}
+
+.oferta-izq h2 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.oferta-precio {
+  display: inline-block;
+  border: 2px solid var(--blanco);
+  border-radius: 30px;
+  padding: 6px 16px;
+  font-weight: 600;
+}
+
+.oferta-der {
+  background: var(--amarillo);
+  color: var(--verde);
+  padding: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.oferta-aviso {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.contador {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contador-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contador-numero {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.contador-texto {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================
+   8. MÁS VENDIDOS
+   ========================================= */
+.vendidos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.vendido {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+/* 📷 Hueco de las fotos de "Más vendidos" */
+.vendido-imagen {
+  position: relative;
+  height: 320px;
+  background: var(--hueco);
+}
+
+.vendido-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.vendido-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.vendido-info p {
+  font-size: 13px;
+  color: var(--gris);
+  margin-bottom: 8px;
+}
+
+/* =========================================
+   9. NEWSLETTER
+   ========================================= */
+.newsletter {
+  background: var(--amarillo);
+  border-radius: var(--radio);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.newsletter-icono {
+  font-size: 32px;
+}
+
+.newsletter-texto {
+  flex: 1;
+  min-width: 180px;
+  color: var(--verde);
+  font-size: 15px;
+}
+
+.newsletter-form {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  gap: 8px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.newsletter-form input:focus {
+  outline: 2px solid var(--verde);
+}
+
+.newsletter-form .boton {
+  border-radius: 30px;
+}
+
+/* =========================================
+   10. BANNER DE MARCA
+   ========================================= */
+.banner-marca {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
+  align-items: center;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.banner-logo {
+  text-align: center;
+  padding: 24px;
+}
+
+.banner-est {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--verde);
+}
+
+.banner-lema {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--verde);
+  border-left: 1px solid var(--verde);
+  padding-left: 20px;
+  transform: rotate(-6deg);
+}
+
+/* 📷 Hueco de la foto del banner */
+.banner-imagen {
+  height: 180px;
+  background: var(--hueco);
+}
+
+/* =========================================
+   11. HERO
+   ========================================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.hero-contenido {
+  padding: 56px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-subtitulo {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--verde);
+}
+
+.hero-titulo {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--verde);
+}
+
+.hero-titulo sup {
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.hero-titulo span {
+  font-size: 54px;
+  font-weight: 700;
+}
+
+.hero-texto {
+  font-size: 18px;
+}
+
+.hero-contenido .boton {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* 📷 Hueco de la foto grande del hero */
+.hero-imagen {
+  position: relative;
+  min-height: 420px;
+  background: var(--hueco);
+}
+
+.hero-descuento {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--amarillo);
+  color: var(--verde);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-marcas {
+  grid-column: 1 / -1;
+  background: var(--verde);
+  color: var(--blanco);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* =========================================
+   12. TARJETAS DE PRODUCTO (Nueva llegada)
+   ========================================= */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.producto {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 📷 Hueco de las fotos de producto */
+.producto-imagen {
+  position: relative;
+  height: 260px;
+  background: var(--hueco);
+}
+
+.etiqueta {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: var(--amarillo);
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--blanco);
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: background 0.2s;
+}
+
+.favorito:hover {
+  background: var(--amarillo);
+}
+
+.producto-info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.producto-nombre {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.producto-precio {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.producto-info .boton {
+  margin-top: auto;
+  font-size: 13px;
+}
+
+/* Circulitos de colores */
+.colores {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.color-verde    { background: #1F4D36; }
+.color-beige    { background: #E6DCC8; }
+.color-negro    { background: #222222; }
+.color-blanco   { background: #FFFFFF; }
+.color-amarillo { background: #F6DC5C; }
+.color-caqui    { background: #C8A87A; }
+.color-oliva    { background: #6B8E5A; }
+
+/* =========================================
+   13. BENEFICIOS
+   ========================================= */
+.beneficios {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.beneficio {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.beneficio:not(:last-child) {
+  border-right: 1px solid #E5E2D6;
+  padding-right: 12px;
+}
+
+.beneficio-icono {
+  font-size: 26px;
+}
+
+.beneficio h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.beneficio p {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+/* =========================================
+   14. FORMULARIO DE CONTACTO
+   ========================================= */
+.contacto {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 24px;
+}
+
+.contacto-contenedor {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+}
+
+.contacto-texto p {
+  margin-top: 12px;
+  color: var(--gris);
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.campo-completo {
+  grid-column: 1 / -1;
+}
+
+.campo label,
+.campo legend {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 12px 14px;
+  border: 1px solid #D6D3C4;
+  border-radius: 8px;
+  background: var(--crema);
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(31, 77, 54, 0.15);
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+/* Radios */
+.opciones {
+  display: flex;
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.opciones label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.opciones input,
+.check input {
+  accent-color: var(--verde);
+  width: 16px;
+  height: 16px;
+}
+
+/* Checkbox */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.formulario .boton {
+  justify-self: start;
+}
+
+/* =========================================
+   15. FOOTER
+   ========================================= */
+.footer {
+  background: var(--verde);
+  color: var(--blanco);
+}
+
+.footer-contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.footer-enlaces a:hover {
+  text-decoration: underline;
+}
+
+.footer-redes {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-redes a {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--blanco);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s;
+}
+
+.footer-redes a:hover {
+  background: var(--blanco);
+  color: var(--verde);
+}
+
+.footer-copy {
+  font-size: 12px;
+}
+
+/* =========================================
+   16. RESPONSIVE (móvil y tablet)
+   ========================================= */
+
+/* --- Tablets: aparece el menú hamburguesa --- */
+@media (max-width: 900px) {
+  .menu-icono {
+    display: block;
+    order: 3;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blanco);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Si el checkbox está marcado, se muestra el menú */
+  .menu-toggle:checked ~ .nav {
+    display: block;
+  }
+
+  .nav-lista {
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 24px 20px;
+  }
+
+  .nav-link {
+    padding: 12px 0;
+  }
+
+  .submenu {
+    display: block;
+    position: static;
+    box-shadow: none;
+    padding: 0 0 0 16px;
+  }
+
+  .contacto-contenedor {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Móviles --- */
+@media (max-width: 700px) {
+  .header-iconos {
+    gap: 12px;
+    font-size: 18px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-contenido {
+    padding: 32px 24px;
+  }
+
+  .hero-titulo {
+    font-size: 44px;
+  }
+
+  .hero-titulo span {
+    font-size: 38px;
+  }
+
+  .hero-imagen {
+    min-height: 260px;
+  }
+
+  .hero-marcas {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .categorias,
+  .productos,
+  .beneficios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .beneficio:not(:last-child) {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .oferta {
+    grid-template-columns: 1fr;
+  }
+
+  .vendido-imagen {
+    height: 240px;
+  }
+
+  .banner-marca {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .banner-lema {
+    border-left: none;
+    padding: 0 0 16px;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-contenedor {
+    padding: 24px;
+  }
+
+  .footer-contenedor {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-enlaces {
+    justify-content: center;
+  }
+
+  .seccion-titulo {
+    font-size: 26px;
+  }
+}
+
+/* --- Móviles pequeños --- */
+@media (max-width: 480px) {
+  .productos,
+  .vendidos {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+}
