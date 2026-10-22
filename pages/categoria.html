@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categoría | TISION</title>
+  <meta name="description" content="Compra por categoría en TISION: sudaderas, camisetas, pantalones, gorros y accesorios de todas las colecciones.">
+  <meta name="author" content="TISION">
+  <meta name="copyright" content="&copy; 2022-2026 TISION">
+  <meta name="theme-color" content="#1F4D36">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TISION">
+  <meta property="og:title" content="Categoría | TISION">
+  <meta property="og:description" content="Compra por categoría en TISION: sudaderas, camisetas, pantalones, gorros y accesorios de todas las colecciones.">
+  <meta property="og:image" content="../assets/img/index/hero.svg">
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+
+  <!-- Fuentes de Google: Montserrat (todo el texto) y Caveat (letra a mano) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Nuestro CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================
+       CABECERA Y MENÚ DE OPCIONES
+       ===================================================== -->
+  <header class="header">
+    <div class="header-contenedor">
+
+      <!-- Logo -->
+      <a href="../index.html" class="logo">TISION<sup>®</sup></a>
+
+      <!-- Truco del menú móvil: checkbox invisible + icono ☰ -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icono" aria-label="Abrir menú"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></label>
+
+      <!-- Menú de navegación -->
+      <nav class="nav">
+        <ul class="nav-lista">
+          <li><a href="../index.html" class="nav-link">Inicio</a></li>
+          <li><a href="#" class="nav-link">Tienda</a></li>
+
+          <!-- Opción con submenú desplegable -->
+          <li class="desplegable">
+            <a href="#" class="nav-link">Colecciones ▾</a>
+            <ul class="submenu">
+              <li><a href="moss-season.html">Moss Season</a></li>
+              <li><a href="static-garden.html">Static Garden</a></li>
+              <li><a href="field-theory.html">Field Theory</a></li>
+            </ul>
+          </li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link">Categorías ▾</a>
+            <ul class="submenu">
+              <li><a href="categoria.html?c=sudaderas">Sudaderas</a></li>
+              <li><a href="categoria.html?c=camisetas">Camisetas</a></li>
+              <li><a href="categoria.html?c=pantalones">Pantalones</a></li>
+              <li><a href="categoria.html?c=abrigos">Abrigos</a></li>
+              <li><a href="categoria.html?c=gorros">Gorros</a></li>
+              <li><a href="categoria.html?c=accesorios">Accesorios</a></li>
+              <li class="submenu-todo"><a href="categoria.html">Ver toda la tienda →</a></li>
+            </ul>
+          </li>
+
+          <li><a href="sobre.html" class="nav-link">Sobre Tision</a></li>
+        </ul>
+      </nav>
+
+      <!-- Iconos de la derecha -->
+      <div class="header-iconos">
+        <a href="#" aria-label="Buscar"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
+        <a href="#" aria-label="Favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></a>
+        <a href="#" aria-label="Mi cuenta"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <a href="#" class="carrito" aria-label="Carrito">
+          <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="carrito-contador">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main class="categoria-pagina">
+
+    <!-- ---------- CABECERA DE CATEGORÍA ---------- -->
+    <section class="info-hero">
+      <div class="info-hero-contenido">
+        <p class="hero-subtitulo">TODAS LAS COLECCIONES</p>
+        <h1 class="info-titulo" id="categoria-titulo">Toda la tienda</h1>
+        <p class="info-texto">Prendas de Essentials, Moss Season, Static Garden y Field Theory reunidas por tipo.</p>
+      </div>
+    </section>
+
+    <!-- ---------- FILTROS Y PRODUCTOS (los pinta script.js según ?c=) ---------- -->
+    <section class="contenedor">
+      <div class="cx-herramientas">
+        <ul class="cx-chips categoria-chips">
+          <li><a href="categoria.html" class="cx-chip" data-c="">Todo</a></li>
+          <li><a href="categoria.html?c=sudaderas" class="cx-chip" data-c="sudaderas">Sudaderas</a></li>
+          <li><a href="categoria.html?c=camisetas" class="cx-chip" data-c="camisetas">Camisetas</a></li>
+          <li><a href="categoria.html?c=pantalones" class="cx-chip" data-c="pantalones">Pantalones</a></li>
+          <li><a href="categoria.html?c=abrigos" class="cx-chip" data-c="abrigos">Abrigos</a></li>
+          <li><a href="categoria.html?c=gorros" class="cx-chip" data-c="gorros">Gorros</a></li>
+          <li><a href="categoria.html?c=accesorios" class="cx-chip" data-c="accesorios">Accesorios</a></li>
+        </ul>
+        <span class="ver-todo" id="categoria-total"></span>
+      </div>
+
+      <div class="productos cx-productos" id="categoria-lista"></div>
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer-contenedor">
+
+      <ul class="footer-enlaces">
+        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="../index.html#cookies">Cookies</a></li>
+      </ul>
+
+      <div class="footer-redes">
+        <a href="#" aria-label="Instagram"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3c.4 2.6 2 4.3 5 4.6v3.2c-1.9 0-3.6-.6-5-1.6v6.1A5.3 5.3 0 1 1 9.7 10v3.3a2.1 2.1 0 1 0 2.1 2.1V3Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10.2 13.6c.9.8 2 1.1 3.1.8 2.1-.6 3.2-2.8 2.6-4.8-.7-2.3-3.3-3.4-5.6-2.7-2.6.8-3.7 3.6-2.6 5.6"/><path d="M11.6 9.6 9 21"/></svg></a>
+      </div>
+
+      <p class="footer-copy"><small>&copy; 2022&ndash;2026 TISION<sup>&reg;</sup>. Todos los derechos reservados.</small></p>
+
+    </div>
+  </footer>
+
+  <script src="../assets/js/productos.js"></script>
+  <script src="../assets/js/script.js"></script>
+
+</body>
+</html>

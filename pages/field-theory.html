@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Theory | TISION</title>
+  <meta name="description" content="Field Theory, la colección de verano de TISION: prados abiertos, flores silvestres y algodón lavado en tonos de campo.">
+  <meta name="author" content="TISION">
+  <meta name="copyright" content="&copy; 2022-2026 TISION">
+  <meta name="theme-color" content="#1F4D36">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TISION">
+  <meta property="og:title" content="Field Theory | TISION">
+  <meta property="og:description" content="Field Theory, la colección de verano de TISION: prados abiertos, flores silvestres y algodón lavado en tonos de campo.">
+  <meta property="og:image" content="../assets/img/index/hero.svg">
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+
+  <!-- Fuentes: Montserrat (texto) y Fraunces (títulos serif de este tema) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<!-- tema-field cambia los colores de toda la página (ver sección 17.10 del CSS) -->
+<body class="tema-field">
+
+  <!-- =====================================================
+       DIBUJOS BOTÁNICOS (se definen una vez y se reutilizan con <use>)
+       ===================================================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+
+      <!-- Amapola -->
+      <symbol id="dib-amapola" viewBox="0 0 100 200">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 200 C47 160 55 130 50 78"/>
+          <path d="M50 150 C38 142 30 132 26 118 C38 122 47 132 50 142"/>
+          <path d="M51 122 C60 114 66 104 68 92"/>
+          <path d="M68 92 C62 86 64 76 70 73 C76 76 76 86 68 92 Z"/>
+          <g style="stroke: var(--petalo, currentColor)">
+            <path d="M50 78 C32 78 20 64 24 48 C28 34 40 32 47 42"/>
+            <path d="M50 78 C68 78 80 64 76 48 C72 34 60 32 53 42"/>
+            <path d="M47 42 C44 30 50 22 50 22 C50 22 56 30 53 42"/>
+          </g>
+          <circle cx="50" cy="54" r="5"/>
+          <path d="M45 50 L40 45 M55 50 L60 45 M50 49 L50 42"/>
+        </g>
+      </symbol>
+
+      <!-- Aciano -->
+      <symbol id="dib-aciano" viewBox="0 0 100 200">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 200 C50 160 46 120 50 82"/>
+          <path d="M49 162 C40 148 36 134 36 118"/>
+          <path d="M50 132 C58 120 62 108 62 94"/>
+          <path d="M43 82 C42 72 58 72 57 82 C56 88 44 88 43 82 Z"/>
+          <path d="M46 80 L50 76 L54 80"/>
+          <g style="stroke: var(--petalo, currentColor)">
+            <path d="M50 72 L50 46 M50 72 L36 50 M50 72 L64 50 M50 72 L28 62 M50 72 L72 62 M50 72 L42 46 M50 72 L58 46"/>
+            <path d="M47 44 L50 46 L53 44 M33 48 L36 50 L37 46 M67 48 L64 50 L63 46 M25 60 L28 62 L26 65 M75 60 L72 62 L74 65"/>
+          </g>
+        </g>
+      </symbol>
+
+      <!-- Manzanilla -->
+      <symbol id="dib-manzanilla" viewBox="0 0 100 200">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 200 C50 150 46 112 40 76"/>
+          <path d="M48 142 C56 122 64 104 66 90"/>
+          <path d="M49 172 C42 168 38 162 36 154 M47 162 C40 160 36 154 34 148 M50 178 C58 172 62 166 64 158 M49 150 C56 146 60 140 61 134"/>
+          <g>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(36 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(72 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(108 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(144 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(180 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(216 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(252 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(288 40 61)"/>
+            <ellipse cx="40" cy="47" rx="3.5" ry="8" transform="rotate(324 40 61)"/>
+            <circle cx="40" cy="61" r="6" style="stroke: var(--centro, currentColor)"/>
+          </g>
+          <g>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(45 66 86)"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(90 66 86)"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(135 66 86)"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(180 66 86)"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(225 66 86)"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(270 66 86)"/>
+            <ellipse cx="66" cy="76" rx="2.5" ry="6" transform="rotate(315 66 86)"/>
+            <circle cx="66" cy="86" r="4" style="stroke: var(--centro, currentColor)"/>
+          </g>
+        </g>
+      </symbol>
+
+      <!-- Espiga -->
+      <symbol id="dib-espiga" viewBox="0 0 100 200">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M50 200 C50 150 52 100 54 34"/>
+          <path d="M50 172 C40 152 34 132 32 112"/>
+          <path d="M54 36 Q51 26 54 16 Q57 26 54 36"/>
+          <path d="M54 52 q-10 -4 -7 -16 q8 5 7 16 M54 52 q10 -4 7 -16 q-8 5 -7 16"/>
+          <path d="M54 66 q-10 -4 -7 -16 q8 5 7 16 M54 66 q10 -4 7 -16 q-8 5 -7 16"/>
+          <path d="M54 80 q-10 -4 -7 -16 q8 5 7 16 M54 80 q10 -4 7 -16 q-8 5 -7 16"/>
+          <path d="M53 94 q-10 -4 -7 -16 q8 5 7 16 M53 94 q10 -4 7 -16 q-8 5 -7 16"/>
+          <path d="M47 36 L44 22 M61 36 L64 22 M47 50 L43 38 M61 50 L65 38"/>
+        </g>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <!-- =====================================================
+       CABECERA Y MENÚ
+       ===================================================== -->
+  <header class="header">
+    <div class="header-contenedor">
+
+      <a href="../index.html" class="logo">TISION<sup>®</sup></a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icono" aria-label="Abrir menú"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></label>
+
+      <nav class="nav">
+        <ul class="nav-lista">
+          <li><a href="../index.html" class="nav-link">Inicio</a></li>
+          <li><a href="#" class="nav-link">Tienda</a></li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link activo">Colecciones ▾</a>
+            <ul class="submenu">
+              <li><a href="moss-season.html">Moss Season</a></li>
+              <li><a href="static-garden.html">Static Garden</a></li>
+              <li><a href="field-theory.html">Field Theory</a></li>
+            </ul>
+          </li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link">Categorías ▾</a>
+            <ul class="submenu">
+              <li><a href="categoria.html?c=sudaderas">Sudaderas</a></li>
+              <li><a href="categoria.html?c=camisetas">Camisetas</a></li>
+              <li><a href="categoria.html?c=pantalones">Pantalones</a></li>
+              <li><a href="categoria.html?c=abrigos">Abrigos</a></li>
+              <li><a href="categoria.html?c=gorros">Gorros</a></li>
+              <li><a href="categoria.html?c=accesorios">Accesorios</a></li>
+              <li class="submenu-todo"><a href="categoria.html">Ver toda la tienda →</a></li>
+            </ul>
+          </li>
+
+          <li><a href="sobre.html" class="nav-link">Sobre Tision</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-iconos">
+        <a href="#" aria-label="Buscar"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
+        <a href="#" aria-label="Favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></a>
+        <a href="#" aria-label="Mi cuenta"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <a href="#" class="carrito" aria-label="Carrito">
+          <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="carrito-contador">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         HERO: PRADO Y FLORES SILVESTRES
+         ===================================================== -->
+    <div class="contenedor">
+      <section class="cx-hero field-hero">
+
+        <!-- Dibujos botánicos de fondo (decoración) -->
+        <div class="field-dibujo fd-1" aria-hidden="true"><svg><use href="#dib-espiga"/></svg></div>
+        <div class="field-dibujo fd-2" aria-hidden="true"><svg><use href="#dib-amapola"/></svg></div>
+        <div class="field-dibujo fd-3" aria-hidden="true"><svg><use href="#dib-aciano"/></svg></div>
+        <div class="field-hierba" aria-hidden="true"></div>
+
+        <div class="cx-hero-grid">
+
+          <div class="cx-hero-texto">
+            <span class="cx-etiqueta">COLECCIÓN 03 · VERANO</span>
+            <h1 class="cx-titulo">Field<br><em>Theory</em></h1>
+            <p class="cx-lema">Prados abiertos, hierba alta y flores que nadie plantó. Algodón lavado en los tonos de un campo a final de verano.</p>
+            <div class="cx-botones">
+              <a href="#coleccion" class="boton boton-verde">Ver la colección →</a>
+              <a href="#cuaderno" class="boton cx-boton-borde">Cuaderno de campo</a>
+            </div>
+          </div>
+
+          <div class="field-marco">
+            <span class="field-ficha">
+              Espécimen Nº 03
+              <strong>Papaver rhoeas</strong>
+            </span>
+            <div class="cx-hero-imagen">
+              <!-- 📷 FOTO 1: modelo caminando por un prado con flores silvestres, luz de tarde. VERTICAL o cuadrada -->
+              <img src="../assets/img/colecciones/field-hero.svg" alt="Modelo caminando por un prado con flores silvestres">
+            </div>
+            <div class="field-marco-pie">
+              <span>Recogido en julio</span>
+              <em>hierba alta, 19:40 h</em>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <div class="contenedor">
+      <div class="cx-banda">
+        <span>Hierba alta</span>
+        <span class="sep">✻</span>
+        <span>Amapola</span>
+        <span class="sep">✻</span>
+        <span>Aciano</span>
+        <span class="sep">✻</span>
+        <span>Manzanilla</span>
+        <span class="sep">✻</span>
+        <span>Espiga</span>
+      </div>
+    </div>
+
+
+    <!-- =====================================================
+         CUADERNO DE CAMPO (láminas de herbario)
+         ===================================================== -->
+    <section class="cx-seccion contenedor" id="cuaderno">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Cuaderno de <em>campo</em></h2>
+      </div>
+      <p class="cx-subtitulo">Cuatro plantas silvestres recogidas en un mismo prado. De cada una sale un color de la colección.</p>
+
+      <div class="herbario">
+
+        <article class="lamina flor-amapola">
+          <div class="lamina-dibujo"><svg aria-hidden="true"><use href="#dib-amapola"/></svg></div>
+          <span class="lamina-num">LÁMINA 01</span>
+          <h3>Amapola</h3>
+          <p class="lamina-latin">Papaver rhoeas</p>
+          <p>Aparece en los bordes del trigo y dura poco. Su rojo, apagado por el sol, tiñe shorts y bandanas.</p>
+          <span class="lamina-color"><span class="color color-adormidera"></span> Adormidera</span>
+        </article>
+
+        <article class="lamina flor-aciano">
+          <div class="lamina-dibujo"><svg aria-hidden="true"><use href="#dib-aciano"/></svg></div>
+          <span class="lamina-num">LÁMINA 02</span>
+          <h3>Aciano</h3>
+          <p class="lamina-latin">Centaurea cyanus</p>
+          <p>El único azul del prado. Lo llevamos a una sudadera sin capucha de punto grueso.</p>
+          <span class="lamina-color"><span class="color color-aciano"></span> Aciano</span>
+        </article>
+
+        <article class="lamina flor-manzanilla">
+          <div class="lamina-dibujo"><svg aria-hidden="true"><use href="#dib-manzanilla"/></svg></div>
+          <span class="lamina-num">LÁMINA 03</span>
+          <h3>Manzanilla</h3>
+          <p class="lamina-latin">Matricaria chamomilla</p>
+          <p>Blanco roto con el centro dorado. La base de camisetas y camisas de la colección.</p>
+          <span class="lamina-color"><span class="color color-manzanilla"></span> Manzanilla</span>
+        </article>
+
+        <article class="lamina">
+          <div class="lamina-dibujo"><svg aria-hidden="true"><use href="#dib-espiga"/></svg></div>
+          <span class="lamina-num">LÁMINA 04</span>
+          <h3>Espiga</h3>
+          <p class="lamina-latin">Avena sativa</p>
+          <p>El color de la hierba seca en agosto. Pantalones cargo y gorras en tonos heno y rastrojo.</p>
+          <span class="lamina-color"><span class="color color-heno"></span> Heno</span>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         PRODUCTOS
+         ===================================================== -->
+    <section class="cx-seccion contenedor" id="coleccion">
+
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">La <em>colección</em></h2>
+        <span class="ver-todo">8 prendas</span>
+      </div>
+
+      <div class="cx-herramientas">
+        <ul class="cx-chips">
+          <li><a href="#" class="cx-chip activo">Todo</a></li>
+          <li><a href="#" class="cx-chip">Camisetas</a></li>
+          <li><a href="#" class="cx-chip">Sudaderas</a></li>
+          <li><a href="#" class="cx-chip">Pantalones</a></li>
+          <li><a href="#" class="cx-chip">Accesorios</a></li>
+        </ul>
+      </div>
+
+      <div class="productos cx-productos">
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 2: sudadera oversize verde oliva -->
+            <img loading="lazy" src="../assets/img/colecciones/field-01.svg" alt="Hoodie Meadow Oversize">
+            <span class="etiqueta">Nuevo</span>
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Hoodie Meadow</h3>
+            <p class="cx-latin">hierba alta</p>
+            <p class="producto-precio">52,00 €</p>
+            <div class="colores">
+              <span class="color color-campo" title="Campo"></span>
+              <span class="color color-avena" title="Avena"></span>
+              <span class="color color-aciano" title="Aciano"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 3: camiseta blanco roto con pequeño bordado de manzanilla -->
+            <img loading="lazy" src="../assets/img/colecciones/field-02.svg" alt="Camiseta Chamomile">
+            <span class="etiqueta">Nuevo</span>
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Camiseta Chamomile</h3>
+            <p class="cx-latin">matricaria</p>
+            <p class="producto-precio">27,00 €</p>
+            <div class="colores">
+              <span class="color color-manzanilla" title="Manzanilla"></span>
+              <span class="color color-heno" title="Heno"></span>
+              <span class="color color-campo" title="Campo"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 4: pantalón cargo color rastrojo -->
+            <img loading="lazy" src="../assets/img/colecciones/field-03.svg" alt="Pantalón Cargo Stubble">
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Cargo Stubble</h3>
+            <p class="cx-latin">rastrojo</p>
+            <p class="producto-precio">54,00 €</p>
+            <div class="colores">
+              <span class="color color-rastrojo" title="Rastrojo"></span>
+              <span class="color color-campo" title="Campo"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 5: gorra color heno -->
+            <img loading="lazy" src="../assets/img/colecciones/field-04.svg" alt="Gorra Hay">
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Gorra Hay</h3>
+            <p class="cx-latin">avena sativa</p>
+            <p class="producto-precio">21,00 €</p>
+            <div class="colores">
+              <span class="color color-heno" title="Heno"></span>
+              <span class="color color-avena" title="Avena"></span>
+              <span class="color color-campo" title="Campo"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 6: camisa de manga corta con estampado discreto de flores silvestres -->
+            <img loading="lazy" src="../assets/img/colecciones/field-05.svg" alt="Camisa Wildflower">
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Camisa Wildflower</h3>
+            <p class="cx-latin">flora silvestre</p>
+            <p class="producto-precio">46,00 €</p>
+            <div class="colores">
+              <span class="color color-manzanilla" title="Manzanilla"></span>
+              <span class="color color-brezo" title="Brezo"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 7: short ligero rojo amapola apagado -->
+            <img loading="lazy" src="../assets/img/colecciones/field-06.svg" alt="Short Poppy">
+            <span class="etiqueta">Nuevo</span>
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Short Poppy</h3>
+            <p class="cx-latin">papaver rhoeas</p>
+            <p class="producto-precio">34,00 €</p>
+            <div class="colores">
+              <span class="color color-adormidera" title="Adormidera"></span>
+              <span class="color color-campo" title="Campo"></span>
+              <span class="color color-avena" title="Avena"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 8: sudadera sin capucha azul aciano -->
+            <img loading="lazy" src="../assets/img/colecciones/field-07.svg" alt="Crewneck Cornflower">
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Crewneck Cornflower</h3>
+            <p class="cx-latin">centaurea cyanus</p>
+            <p class="producto-precio">49,00 €</p>
+            <div class="colores">
+              <span class="color color-aciano" title="Aciano"></span>
+              <span class="color color-brezo" title="Brezo"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 9: bandana de algodón con estampado botánico -->
+            <img loading="lazy" src="../assets/img/colecciones/field-08.svg" alt="Bandana Herbario">
+            <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+          </div>
+          <div class="producto-info">
+            <h3 class="producto-nombre">Bandana Herbario</h3>
+            <p class="cx-latin">lámina 01–04</p>
+            <p class="producto-precio">14,00 €</p>
+            <div class="colores">
+              <span class="color color-adormidera" title="Adormidera"></span>
+              <span class="color color-heno" title="Heno"></span>
+              <span class="color color-campo" title="Campo"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- Separador: hierba alta con flores -->
+    <div class="contenedor">
+      <div class="field-separador" aria-hidden="true"></div>
+    </div>
+
+
+    <!-- =====================================================
+         LOOKBOOK
+         ===================================================== -->
+    <section class="cx-seccion contenedor" id="lookbook">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Hierba <em>alta</em></h2>
+        <a href="#coleccion" class="ver-todo">Ver prendas →</a>
+      </div>
+
+      <div class="cx-lookbook">
+        <figure class="cx-foto f-5 alta">
+          <div class="cx-foto-img">
+            <!-- 📷 FOTO 10: persona caminando entre hierba alta, de espaldas -->
+            <img loading="lazy" src="../assets/img/colecciones/field-look-1.svg" alt="Persona caminando entre hierba alta">
+          </div>
+          <figcaption>Camino de tierra <span>01</span></figcaption>
+        </figure>
+
+        <figure class="cx-foto f-4 alta">
+          <div class="cx-foto-img">
+            <!-- 📷 FOTO 11: plano medio entre amapolas -->
+            <img loading="lazy" src="../assets/img/colecciones/field-look-2.svg" alt="Modelo entre amapolas">
+          </div>
+          <figcaption>Entre amapolas <span>02</span></figcaption>
+        </figure>
+
+        <figure class="cx-foto f-3 alta">
+          <div class="cx-foto-img">
+            <!-- 📷 FOTO 12: detalle de manos con un ramo de flores silvestres -->
+            <img loading="lazy" src="../assets/img/colecciones/field-look-3.svg" alt="Manos con un ramo de flores silvestres">
+          </div>
+          <figcaption>Lo que se recoge <span>03</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         PALETA
+         ===================================================== -->
+    <section class="cx-seccion contenedor">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Los colores del <em>prado</em></h2>
+      </div>
+
+      <div class="cx-paleta">
+        <div class="cx-muestra">
+          <span class="bola color-campo"></span>
+          <strong>Campo</strong>
+          <small>#4F5B3A</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-rastrojo"></span>
+          <strong>Rastrojo</strong>
+          <small>#A39A74</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-heno"></span>
+          <strong>Heno</strong>
+          <small>#C9A24B</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-manzanilla"></span>
+          <strong>Manzanilla</strong>
+          <small>#F1EBD6</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-adormidera"></span>
+          <strong>Adormidera</strong>
+          <small>#B4574A</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-aciano"></span>
+          <strong>Aciano</strong>
+          <small>#5E7393</small>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         OTRAS COLECCIONES
+         ===================================================== -->
+    <section class="cx-seccion contenedor">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Más <em>colecciones</em></h2>
+      </div>
+
+      <div class="cx-otras">
+        <a href="moss-season.html" class="cx-otra otra-moss">
+          <span>COLECCIÓN 01</span>
+          <h3>Moss Season</h3>
+          <p>Lluvia, bosque y musgo.</p>
+        </a>
+        <a href="static-garden.html" class="cx-otra otra-static">
+          <span>COLECCIÓN 02</span>
+          <h3>Static Garden</h3>
+          <p>Un jardín botánico que nunca se marchita.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer-contenedor">
+
+      <ul class="footer-enlaces">
+        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="../index.html#cookies">Cookies</a></li>
+      </ul>
+
+      <div class="footer-redes">
+        <a href="#" aria-label="Instagram"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3c.4 2.6 2 4.3 5 4.6v3.2c-1.9 0-3.6-.6-5-1.6v6.1A5.3 5.3 0 1 1 9.7 10v3.3a2.1 2.1 0 1 0 2.1 2.1V3Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10.2 13.6c.9.8 2 1.1 3.1.8 2.1-.6 3.2-2.8 2.6-4.8-.7-2.3-3.3-3.4-5.6-2.7-2.6.8-3.7 3.6-2.6 5.6"/><path d="M11.6 9.6 9 21"/></svg></a>
+      </div>
+
+      <p class="footer-copy"><small>&copy; 2022&ndash;2026 TISION<sup>&reg;</sup>. Todos los derechos reservados.</small></p>
+
+    </div>
+  </footer>
+
+  <script src="../assets/js/productos.js"></script>
+  <script src="../assets/js/script.js"></script>
+
+</body>
+</html>
