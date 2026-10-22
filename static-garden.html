@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Static Garden | TISION</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Cormorant Garamond: la letra serif de esta colección -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- tema-static cambia los colores y la tipografía (ver sección 17.9 del CSS) -->
+<body class="tema-static">
+
+  <!-- =====================================================
+       CABECERA Y MENÚ
+       ===================================================== -->
+  <header class="header">
+    <div class="header-contenedor">
+
+      <a href="index.html" class="logo">TISION<sup>®</sup></a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icono" aria-label="Abrir menú">☰</label>
+
+      <nav class="nav">
+        <ul class="nav-lista">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+          <li><a href="index.html#nueva-llegada" class="nav-link">Tienda</a></li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link activo">Colecciones ▾</a>
+            <ul class="submenu">
+              <li><a href="moss-season.html">Moss Season</a></li>
+              <li><a href="static-garden.html">Static Garden</a></li>
+              <li><a href="field-theory.html">Field Theory</a></li>
+            </ul>
+          </li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link">Categorías ▾</a>
+            <ul class="submenu">
+              <li><a href="index.html">Sudaderas</a></li>
+              <li><a href="index.html">Camisetas</a></li>
+              <li><a href="index.html">Pantalones</a></li>
+              <li><a href="index.html">Gorros</a></li>
+            </ul>
+          </li>
+
+          <li><a href="index.html#contacto" class="nav-link">Sobre Tision</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-iconos">
+        <a href="#" aria-label="Buscar">🔍</a>
+        <a href="#" aria-label="Favoritos">♡</a>
+        <a href="#" aria-label="Mi cuenta">👤</a>
+        <a href="#" class="carrito" aria-label="Carrito">
+          🛍️
+          <span class="carrito-contador">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <!-- =====================================================
+         HERO CON ARCOS DE INVERNADERO
+         ===================================================== -->
+    <div class="contenedor">
+      <section class="cx-hero garden-hero">
+        <div class="cx-hero-grid">
+
+          <div class="cx-hero-texto">
+            <span class="cx-etiqueta">COLECCIÓN 02 · PRIMAVERA</span>
+            <h1 class="cx-titulo">Static<br>Garden</h1>
+            <p class="cx-lema">Un jardín botánico que nunca se marchita. Estampados de hojas, tonos tierra y la calma de un invernadero, para llevar puestos.</p>
+            <div class="cx-botones">
+              <a href="#coleccion" class="boton boton-verde">Pasear por el jardín →</a>
+              <a href="#cuidados" class="boton cx-boton-borde">Cuidados</a>
+            </div>
+          </div>
+
+          <!-- Tres arcos, cada uno con una foto -->
+          <div class="arcos">
+            <div class="arco a1">
+              <!-- 📷 FOTO 1: detalle de hojas (monstera, helecho...) o prenda con estampado botánico. VERTICAL -->
+              <img src="img/garden-arco-1.jpg" alt="Hojas de monstera">
+            </div>
+            <div class="arco a2">
+              <!-- 📷 FOTO 2: modelo con camisa de lino verde en un invernadero. VERTICAL, la más importante -->
+              <img src="img/garden-arco-2.jpg" alt="Modelo en un invernadero">
+            </div>
+            <div class="arco a3">
+              <!-- 📷 FOTO 3: macetas de terracota con plantas. VERTICAL -->
+              <img src="img/garden-arco-3.jpg" alt="Macetas de terracota">
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <div class="contenedor">
+      <div class="cx-banda">
+        <span>Hojas</span>
+        <span>✿</span>
+        <span>Tierra</span>
+        <span>✿</span>
+        <span>Calma</span>
+        <span>✿</span>
+        <span>Invernadero</span>
+      </div>
+    </div>
+
+
+    <!-- =====================================================
+         EL INVERNADERO (intro)
+         ===================================================== -->
+    <section class="cx-seccion contenedor">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">El invernadero</h2>
+      </div>
+      <p class="cx-subtitulo">Dos jardines, una misma idea: que lo bonito crece despacio.</p>
+
+      <div class="cx-tarjetas">
+        <article class="cx-tarjeta">
+          <span class="cx-num">Nº 01</span>
+          <span class="cx-tarjeta-icono">🌿</span>
+          <h3>Jardín botánico</h3>
+          <p>Estampados inspirados en láminas antiguas de herbario: hojas, frutos y flores dibujadas a mano.</p>
+        </article>
+        <article class="cx-tarjeta">
+          <span class="cx-num">Nº 02</span>
+          <span class="cx-tarjeta-icono">🪴</span>
+          <h3>Jardín de casa</h3>
+          <p>Colores de maceta de barro, lino lavado y detalles de jardinero: delantales, tote y gorras.</p>
+        </article>
+        <article class="cx-tarjeta">
+          <span class="cx-num">Nº 03</span>
+          <span class="cx-tarjeta-icono">🌱</span>
+          <h3>Siempre en flor</h3>
+          <p>Algodón orgánico y lino que mejoran con cada lavado. Prendas para años, no para una temporada.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         PRODUCTOS (fotos en forma de arco)
+         ===================================================== -->
+    <section class="cx-seccion contenedor" id="coleccion">
+
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Las plantas de la colección</h2>
+        <span class="ver-todo">8 prendas</span>
+      </div>
+
+      <div class="cx-herramientas">
+        <ul class="cx-chips">
+          <li><a href="#" class="cx-chip activo">Todo</a></li>
+          <li><a href="#" class="cx-chip">Camisas</a></li>
+          <li><a href="#" class="cx-chip">Sudaderas</a></li>
+          <li><a href="#" class="cx-chip">Pantalones</a></li>
+          <li><a href="#" class="cx-chip">Jardinería</a></li>
+        </ul>
+
+        <form class="cx-orden" action="#" method="get">
+          <label for="orden">Ordenar por</label>
+          <select id="orden" name="orden">
+            <option value="novedades">Novedades</option>
+            <option value="precio-asc">Precio: de menor a mayor</option>
+            <option value="precio-desc">Precio: de mayor a menor</option>
+            <option value="vendidos">Más vendidos</option>
+          </select>
+        </form>
+      </div>
+
+      <div class="productos cx-productos">
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 4: camisa de lino verde o con estampado de monstera -->
+            <img src="img/garden-01.jpg" alt="Camisa Monstera Linen">
+            <span class="etiqueta">Nuevo</span>
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Monstera deliciosa</p>
+            <h3 class="producto-nombre">Camisa Monstera Linen</h3>
+            <p class="producto-precio">49,00 €</p>
+            <div class="colores">
+              <span class="color color-salvia" title="Salvia"></span>
+              <span class="color color-crema" title="Crema"></span>
+              <span class="color color-hoja" title="Hoja"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 5: sudadera color terracota -->
+            <img src="img/garden-02.jpg" alt="Hoodie Terracota Pot">
+            <span class="etiqueta">Nuevo</span>
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Terra cotta</p>
+            <h3 class="producto-nombre">Hoodie Terracota Pot</h3>
+            <p class="producto-precio">55,00 €</p>
+            <div class="colores">
+              <span class="color color-terracota" title="Terracota"></span>
+              <span class="color color-arcilla" title="Arcilla"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 6: camiseta crema con estampado botánico -->
+            <img src="img/garden-03.jpg" alt="T-Shirt Botanical Print">
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Herbarium print</p>
+            <h3 class="producto-nombre">T-Shirt Botanical Print</h3>
+            <p class="producto-precio">29,00 €</p>
+            <div class="colores">
+              <span class="color color-crema" title="Crema"></span>
+              <span class="color color-salvia" title="Salvia"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 7: pantalón de lino color salvia o crema -->
+            <img src="img/garden-04.jpg" alt="Pantalón Sage Linen">
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Salvia officinalis</p>
+            <h3 class="producto-nombre">Pantalón Sage Linen</h3>
+            <p class="producto-precio">52,00 €</p>
+            <div class="colores">
+              <span class="color color-salvia" title="Salvia"></span>
+              <span class="color color-crema" title="Crema"></span>
+              <span class="color color-corteza" title="Tierra"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 8: delantal de jardinero de lona -->
+            <img src="img/garden-05.jpg" alt="Delantal Jardinero">
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Hortus domesticus</p>
+            <h3 class="producto-nombre">Delantal Jardinero</h3>
+            <p class="producto-precio">32,00 €</p>
+            <div class="colores">
+              <span class="color color-hoja" title="Hoja"></span>
+              <span class="color color-arcilla" title="Arcilla"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 9: gorra de algodón verde -->
+            <img src="img/garden-06.jpg" alt="Gorra Greenhouse">
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Sub vitro</p>
+            <h3 class="producto-nombre">Gorra Greenhouse</h3>
+            <p class="producto-precio">22,00 €</p>
+            <div class="colores">
+              <span class="color color-hoja" title="Hoja"></span>
+              <span class="color color-crema" title="Crema"></span>
+              <span class="color color-terracota" title="Terracota"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 10: bolsa de tela con estampado de hojas -->
+            <img src="img/garden-07.jpg" alt="Tote Herbario">
+            <span class="etiqueta">Últimas</span>
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Herbarium</p>
+            <h3 class="producto-nombre">Tote Herbario</h3>
+            <p class="producto-precio">18,00 €</p>
+            <div class="colores">
+              <span class="color color-crema" title="Crema"></span>
+              <span class="color color-hoja" title="Hoja"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">
+            <!-- 📷 FOTO 11: calcetines con motivo de helecho -->
+            <img src="img/garden-08.jpg" alt="Calcetines Fern">
+            <button class="favorito" aria-label="Añadir a favoritos">♡</button>
+          </div>
+          <div class="producto-info">
+            <p class="cx-latin">Pteridophyta</p>
+            <h3 class="producto-nombre">Calcetines Fern</h3>
+            <p class="producto-precio">12,00 €</p>
+            <div class="colores">
+              <span class="color color-salvia" title="Salvia"></span>
+              <span class="color color-crema" title="Crema"></span>
+            </div>
+            <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         DOS JARDINES (fotos grandes)
+         ===================================================== -->
+    <section class="cx-seccion contenedor">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Del jardín a tu casa</h2>
+      </div>
+
+      <div class="cx-lookbook">
+        <figure class="cx-foto f-6 alta">
+          <div class="cx-foto-img">
+            <!-- 📷 FOTO 12: jardín botánico / invernadero con cristal y plantas. HORIZONTAL o cuadrada -->
+            <img src="img/garden-look-1.jpg" alt="Jardín botánico">
+          </div>
+          <figcaption>El jardín botánico</figcaption>
+        </figure>
+
+        <figure class="cx-foto f-6 alta">
+          <div class="cx-foto-img">
+            <!-- 📷 FOTO 13: terraza, balcón o jardín de casa con macetas y una persona regando -->
+            <img src="img/garden-look-2.jpg" alt="Jardín de casa con macetas">
+          </div>
+          <figcaption>El jardín de casa</figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         CUIDADOS (como la etiqueta de una planta)
+         ===================================================== -->
+    <section class="cx-seccion contenedor" id="cuidados">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Cuida tus prendas como a tus plantas</h2>
+      </div>
+
+      <div class="cx-tarjetas cuatro">
+        <article class="cx-tarjeta">
+          <span class="cx-tarjeta-icono">💧</span>
+          <h3>Riego</h3>
+          <p>Lava a 30 °C con detergente suave y del revés para cuidar el color.</p>
+        </article>
+        <article class="cx-tarjeta">
+          <span class="cx-tarjeta-icono">☀️</span>
+          <h3>Luz</h3>
+          <p>Sécalas a la sombra, mejor tendidas. El sol directo las apaga.</p>
+        </article>
+        <article class="cx-tarjeta">
+          <span class="cx-tarjeta-icono">✂️</span>
+          <h3>Poda</h3>
+          <p>Plancha el lino aún húmedo y a temperatura media. Sin prisas.</p>
+        </article>
+        <article class="cx-tarjeta">
+          <span class="cx-tarjeta-icono">♻️</span>
+          <h3>Replantar</h3>
+          <p>¿Ya no la usas? Tráela a tienda y le damos una segunda vida.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         PALETA
+         ===================================================== -->
+    <section class="cx-seccion contenedor">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">La paleta</h2>
+      </div>
+
+      <div class="cx-paleta">
+        <div class="cx-muestra">
+          <span class="bola color-salvia"></span>
+          <strong>Salvia</strong>
+          <small>#B9C7A6</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-hoja"></span>
+          <strong>Hoja</strong>
+          <small>#2F5D44</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-terracota"></span>
+          <strong>Terracota</strong>
+          <small>#C8734B</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-arcilla"></span>
+          <strong>Arcilla</strong>
+          <small>#E3C9B0</small>
+        </div>
+        <div class="cx-muestra">
+          <span class="bola color-crema"></span>
+          <strong>Crema</strong>
+          <small>#F4EFE3</small>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         FORMULARIO: RECIBE EL HERBARIO
+         ===================================================== -->
+    <section class="contacto cx-seccion" id="contacto">
+      <div class="contacto-contenedor">
+
+        <div class="contacto-texto">
+          <h2 class="seccion-titulo">Recibe el herbario</h2>
+          <p>Cada mes enviamos una lámina botánica, consejos de cuidado y avisos de nuevas prendas. Cuéntanos qué tipo de jardín tienes.</p>
+        </div>
+
+        <form class="formulario" action="#" method="post">
+
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="campo">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+
+          <!-- Menú de opciones -->
+          <div class="campo">
+            <label for="jardin">¿Qué jardín tienes?</label>
+            <select id="jardin" name="jardin" required>
+              <option value="">-- Elige una opción --</option>
+              <option value="botanico">Un jardín botánico (¡quién pudiera!)</option>
+              <option value="casa">Jardín en casa</option>
+              <option value="balcon">Un balcón con macetas</option>
+              <option value="interior">Plantas de interior</option>
+              <option value="ninguno">Aún ninguno</option>
+            </select>
+          </div>
+
+          <!-- Botones de radio -->
+          <fieldset class="campo">
+            <legend>¿Cada cuánto?</legend>
+            <div class="opciones">
+              <label><input type="radio" name="frecuencia" value="mensual" checked> Cada mes</label>
+              <label><input type="radio" name="frecuencia" value="quincenal"> Cada 15 días</label>
+            </div>
+          </fieldset>
+
+          <div class="campo campo-completo">
+            <label for="mensaje">¿Qué planta te representa? (opcional)</label>
+            <textarea id="mensaje" name="mensaje" rows="3" placeholder="Un cactus, una monstera, una albahaca..."></textarea>
+          </div>
+
+          <label class="check campo-completo">
+            <input type="checkbox" name="privacidad" required>
+            Acepto la política de privacidad
+          </label>
+
+          <button type="submit" class="boton boton-verde">Quiero el herbario</button>
+
+        </form>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         OTRAS COLECCIONES
+         ===================================================== -->
+    <section class="cx-seccion contenedor">
+      <div class="seccion-cabecera">
+        <h2 class="seccion-titulo">Más colecciones</h2>
+      </div>
+
+      <div class="cx-otras">
+        <a href="moss-season.html" class="cx-otra otra-moss">
+          <span>COLECCIÓN 01</span>
+          <h3>Moss Season</h3>
+          <p>Lluvia, bosque y musgo.</p>
+        </a>
+        <a href="field-theory.html" class="cx-otra otra-field">
+          <span>COLECCIÓN 03</span>
+          <h3>Field Theory</h3>
+          <p>Campo abierto, hierba alta y luz de verano.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer-contenedor">
+
+      <ul class="footer-enlaces">
+        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+        <li><a href="#">Privacidad</a></li>
+      </ul>
+
+      <div class="footer-redes">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="TikTok">TT</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="Pinterest">PI</a>
+      </div>
+
+      <p class="footer-copy">TISION © 2022</p>
+
+    </div>
+  </footer>
+
+</body>
+</html>
