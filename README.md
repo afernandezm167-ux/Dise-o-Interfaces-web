@@ -18,7 +18,8 @@ No necesita instalación ni servidor: abre `index.html` en el navegador.
 
 | Página | Archivo | Qué tiene |
 |---|---|---|
-| Inicio | `index.html` | Categorías, oferta con cuenta atrás, más vendidos, hero, novedades, beneficios y pop-up de cookies |
+| Inicio (landing) | `index.html` | Portada de la marca: hero, valores, las tres colecciones, manifiesto y acceso a la tienda |
+| Tienda | `tienda.html` | Categorías, oferta con cuenta atrás, más vendidos, hero, novedades, beneficios y pop-up de cookies |
 | Moss Season | `pages/moss-season.html` | Colección 01 · otoño. Bosque, lluvia animada y tonos musgo |
 | Static Garden | `pages/static-garden.html` | Colección 02 · jardín botánico. Arcos de invernadero, serif y terracota |
 | Field Theory | `pages/field-theory.html` | Colección 03 · verano. Cuaderno de campo con flores silvestres dibujadas |
@@ -33,7 +34,8 @@ No necesita instalación ni servidor: abre `index.html` en el navegador.
 ## Estructura
 
 ```
-├── index.html
+├── index.html             Landing (lo primero que se abre)
+├── tienda.html
 ├── README.md
 ├── pages/
 │   ├── moss-season.html
