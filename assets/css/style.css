@@ -122,6 +122,15 @@ textarea {
   flex-shrink: 0;
 }
 
+/* Iconos del sprite (<use>): el trazo se define aquí en vez de en cada SVG */
+.icono use {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* =========================================
    4. CABECERA Y MENÚ
    ========================================= */
@@ -257,8 +266,8 @@ textarea {
 }
 
 /* =========================================
-   5. DISEÑO GENERAL: DOS BLOQUES APILADOS
-   (bloque derecho arriba, bloque izquierdo debajo)
+   5. DISEÑO GENERAL: SECCIONES APILADAS
+   (hero arriba y el resto debajo, en el mismo orden que el HTML)
    ========================================= */
 .layout {
   max-width: 1400px;
@@ -266,14 +275,7 @@ textarea {
   padding: 0 24px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-.col-izquierda,
-.col-derecha {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 /* Cabecera de sección: "Título ......... Ver todo →" */
@@ -720,7 +722,8 @@ textarea {
   background: var(--amarillo);
 }
 
-.favorito:hover .icono {
+.favorito:hover .icono,
+.favorito:hover .icono use {
   fill: currentColor;
 }
 
@@ -1065,6 +1068,40 @@ textarea {
 
   .oferta {
     grid-template-columns: 1fr;
+  }
+
+  /* Zapatilla encima y texto debajo, centrados */
+  .oferta-izq {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .oferta-imagen {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .oferta-izq h2 {
+    font-size: 30px;
+  }
+
+  /* El precio no se parte en dos líneas */
+  .oferta-precio {
+    white-space: nowrap;
+  }
+
+  .oferta-der {
+    padding: 24px;
+    text-align: center;
+  }
+
+  .oferta-aviso {
+    font-size: 17px;
+  }
+
+  .contador-numero {
+    font-size: 26px;
   }
 
   .vendido-imagen {
@@ -2665,7 +2702,8 @@ body.tema-field {
   background: var(--amarillo);
 }
 
-.favorito.activo .icono {
+.favorito.activo .icono,
+.favorito.activo .icono use {
   fill: currentColor;
 }
 
