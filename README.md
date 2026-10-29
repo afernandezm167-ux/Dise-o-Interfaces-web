@@ -8,7 +8,7 @@ Proyecto de la asignatura **Diseño de Interfaces Web**, hecho con HTML, CSS y J
 
 ## Cómo verla
 
-No necesita instalación ni servidor: abre `index.html` en el navegador.
+No necesita instalación ni servidor: abre `index.html` en el navegador (es la landing; desde ella se entra a la tienda).
 
 > El carrito, los favoritos y la elección de cookies se guardan en el navegador (`localStorage`). Para empezar de cero, borra los datos del sitio desde las herramientas del navegador.
 
@@ -18,7 +18,8 @@ No necesita instalación ni servidor: abre `index.html` en el navegador.
 
 | Página | Archivo | Qué tiene |
 |---|---|---|
-| Inicio | `index.html` | Categorías, oferta con cuenta atrás, más vendidos, hero, novedades, beneficios y pop-up de cookies |
+| Landing | `index.html` | Página de entrada: acceso anticipado con formulario de correo, colecciones, ventajas, opiniones y preguntas frecuentes |
+| Tienda | `tienda.html` | Categorías, oferta con cuenta atrás, más vendidos, hero, novedades, beneficios y pop-up de cookies |
 | Moss Season | `pages/moss-season.html` | Colección 01 · otoño. Bosque, lluvia animada y tonos musgo |
 | Static Garden | `pages/static-garden.html` | Colección 02 · jardín botánico. Arcos de invernadero, serif y terracota |
 | Field Theory | `pages/field-theory.html` | Colección 03 · verano. Cuaderno de campo con flores silvestres dibujadas |
@@ -33,7 +34,8 @@ No necesita instalación ni servidor: abre `index.html` en el navegador.
 ## Estructura
 
 ```
-├── index.html
+├── index.html               Landing (lo primero que se abre)
+├── tienda.html
 ├── README.md
 ├── pages/
 │   ├── moss-season.html
@@ -44,10 +46,12 @@ No necesita instalación ni servidor: abre `index.html` en el navegador.
 │   └── contacto.html
 └── assets/
     ├── css/
-    │   └── style.css            Todos los estilos
+    │   ├── style.css            Estilos de toda la web
+    │   └── landing.css          Estilos propios de la landing
     ├── js/
     │   ├── productos.js         Catálogo de los 28 productos
-    │   └── script.js            Interacción de todas las páginas
+    │   ├── script.js            Interacción de la tienda y sus páginas
+    │   └── landing.js           Formularios y animaciones de la landing
     ├── img/
     │   ├── index/               Ilustraciones SVG de la página de inicio
     │   ├── colecciones/         Ilustraciones SVG de las tres colecciones
@@ -101,7 +105,7 @@ No necesita instalación ni servidor: abre `index.html` en el navegador.
 
 Con eso ya aparece en el buscador y en su categoría, y se puede añadir al carrito.
 
-> Las rutas de `productos.js` son relativas a la raíz del proyecto; `script.js` las ajusta para que funcionen igual desde `index.html` que desde `pages/`.
+> Las rutas de `productos.js` son relativas a la raíz del proyecto; `script.js` las ajusta para que funcionen igual desde `tienda.html` que desde `pages/`.
 
 ---
 

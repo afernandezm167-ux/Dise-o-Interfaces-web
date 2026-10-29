@@ -5,7 +5,7 @@
 // =========================================================
 
 // Raíz del proyecto: script.js está en assets/js/, así las rutas
-// funcionan igual desde index.html que desde pages/
+// funcionan igual desde tienda.html que desde pages/
 const RAIZ = new URL('../../', document.currentScript.src);
 
 function ruta(relativa) {

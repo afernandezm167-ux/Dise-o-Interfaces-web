@@ -1,0 +1,574 @@
+/* =========================================================
+   TISION - landing.css
+   Estilos propios de la landing (index.html).
+   Usa las variables y botones de style.css.
+   ========================================================= */
+
+/* =========================================
+   1. BASE
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+.lp-contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.lp-contenedor-estrecho {
+  max-width: 760px;
+}
+
+.lp-etiqueta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 12px;
+}
+
+.lp-subtitulo {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--verde);
+  margin-bottom: 12px;
+}
+
+.lp-seccion {
+  padding: 88px 0;
+}
+
+.lp-seccion-cabecera {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 48px;
+}
+
+.lp-seccion-cabecera p:last-child {
+  color: var(--gris);
+}
+
+/* Foco visible al navegar con el tabulador */
+.landing a:focus-visible,
+.landing button:focus-visible,
+.landing summary:focus-visible,
+.landing input:focus-visible {
+  outline: 3px solid var(--amarillo);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   2. CABECERA MÍNIMA
+   ========================================= */
+.lp-header {
+  background: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--sombra);
+}
+
+.lp-header-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.lp-header-acciones {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lp-header-enlace {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.lp-header-enlace:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   3. HERO
+   ========================================= */
+.lp-hero {
+  background: var(--verde-claro);
+  padding: 72px 0 88px;
+}
+
+.lp-hero-contenedor {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.lp-titulo {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+  color: var(--verde);
+  margin-bottom: 20px;
+}
+
+/* La palabra destacada lleva un subrayado amarillo */
+.lp-titulo span {
+  background: linear-gradient(transparent 62%, var(--amarillo) 62%);
+}
+
+.lp-entradilla {
+  font-size: 18px;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+.lp-hero-imagen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--hueco);
+  box-shadow: 0 20px 40px rgba(31, 77, 54, 0.18);
+}
+
+/* Notita escrita a mano encima de la foto */
+.lp-nota {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  background: var(--amarillo);
+  color: var(--verde);
+  font-family: 'Caveat', cursive;
+  font-size: 24px;
+  padding: 4px 14px;
+  border-radius: 8px;
+  transform: rotate(-4deg);
+}
+
+.lp-prueba {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--verde);
+}
+
+.lp-prueba strong {
+  font-size: 18px;
+}
+
+/* =========================================
+   4. FORMULARIO DE CORREO
+   ========================================= */
+.lp-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 520px;
+}
+
+.lp-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 15px 22px;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  font-size: 15px;
+  background: var(--blanco);
+  color: var(--texto);
+}
+
+.lp-form input.lp-error {
+  border-color: #B3261E;
+}
+
+.lp-form .boton {
+  border-radius: 40px;
+  padding: 15px 26px;
+}
+
+.lp-form-mensaje {
+  flex-basis: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 1.5em;
+  padding-left: 22px;
+}
+
+.lp-form-mensaje.lp-mal {
+  color: #B3261E;
+}
+
+.lp-form-mensaje.lp-bien {
+  color: var(--verde);
+}
+
+/* =========================================
+   5. BANDA DE PALABRAS
+   ========================================= */
+.lp-banda {
+  background: var(--verde);
+  color: var(--amarillo);
+  overflow: hidden;
+  padding: 16px 0;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* El texto está repetido dos veces: al moverse la mitad, empieza de nuevo sin saltos */
+.lp-banda-pista {
+  display: inline-flex;
+  gap: 32px;
+  padding-right: 32px;
+  animation: lp-desplazar 28s linear infinite;
+}
+
+/* Al pasar el ratón se para, para poder leerla */
+.lp-banda:hover .lp-banda-pista {
+  animation-play-state: paused;
+}
+
+/* De derecha a izquierda: va de 0 a -50% (la mitad repetida) */
+@keyframes lp-desplazar {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =========================================
+   6. COLECCIONES
+   ========================================= */
+.lp-colecciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.lp-coleccion {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.lp-coleccion:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
+}
+
+.lp-coleccion-imagen {
+  position: relative;
+  height: 280px;
+  background: var(--hueco);
+}
+
+.lp-coleccion-num {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--blanco);
+  color: var(--verde);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.lp-coleccion-info {
+  padding: 22px 24px 26px;
+}
+
+.lp-coleccion-info h3 {
+  font-size: 22px;
+  color: var(--verde);
+  margin-bottom: 6px;
+}
+
+.lp-coleccion-info p {
+  color: var(--gris);
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.lp-coleccion-enlace {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--verde);
+}
+
+/* =========================================
+   7. VENTAJAS (fondo verde)
+   ========================================= */
+.lp-seccion-verde {
+  background: var(--verde);
+  color: var(--blanco);
+}
+
+.lp-seccion-verde .lp-etiqueta {
+  color: var(--amarillo);
+}
+
+.lp-seccion-verde .lp-subtitulo {
+  color: var(--blanco);
+}
+
+.lp-ventajas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.lp-ventaja-icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--amarillo);
+  color: var(--verde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.lp-ventaja h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.lp-ventaja p {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* =========================================
+   8. OPINIONES
+   ========================================= */
+.lp-opiniones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.lp-opinion {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 28px;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lp-estrellas {
+  color: #D4A915;
+  letter-spacing: 2px;
+}
+
+.lp-opinion blockquote {
+  font-size: 16px;
+  flex: 1;
+}
+
+.lp-opinion figcaption {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.lp-opinion figcaption strong {
+  color: var(--verde);
+}
+
+/* =========================================
+   9. PREGUNTAS FRECUENTES
+   ========================================= */
+.lp-seccion-clara {
+  background: var(--blanco);
+}
+
+.lp-faq details {
+  border-bottom: 1px solid var(--hueco);
+}
+
+.lp-faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--verde);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.lp-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Signo + que gira a × al abrir */
+.lp-faq summary::after {
+  content: '+';
+  font-size: 26px;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.lp-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.lp-faq details p {
+  padding: 0 0 22px;
+  color: var(--gris);
+}
+
+/* =========================================
+   10. LLAMADA FINAL
+   ========================================= */
+.lp-final {
+  background: var(--amarillo);
+  padding: 88px 0;
+  text-align: center;
+}
+
+.lp-final-contenedor > p {
+  color: var(--verde);
+  font-size: 18px;
+  margin-bottom: 28px;
+}
+
+.lp-final .lp-form {
+  margin: 0 auto;
+}
+
+.lp-final p.lp-legal {
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.lp-legal a {
+  text-decoration: underline;
+}
+
+/* =========================================
+   11. ANIMACIÓN AL HACER SCROLL
+   ========================================= */
+.lp-revelar {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.lp-revelar.lp-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Quien prefiere menos movimiento ve todo quieto */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* La banda sigue moviéndose, pero más despacio */
+  .lp-banda-pista {
+    animation-duration: 45s;
+  }
+
+  .lp-revelar {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================
+   12. RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+  .lp-hero-contenedor {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .lp-titulo {
+    font-size: 48px;
+  }
+
+  .lp-colecciones,
+  .lp-opiniones {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .lp-ventajas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .lp-seccion,
+  .lp-final {
+    padding: 64px 0;
+  }
+
+  .lp-hero {
+    padding: 48px 0 64px;
+  }
+
+  .lp-titulo {
+    font-size: 38px;
+    letter-spacing: -0.5px;
+  }
+
+  .lp-subtitulo {
+    font-size: 30px;
+  }
+
+  .lp-header-enlace {
+    display: none;
+  }
+
+  .lp-ventajas {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-contenedor {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-enlaces {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .lp-contenedor {
+    padding: 0 16px;
+  }
+
+  .lp-form {
+    flex-direction: column;
+  }
+
+  .lp-form input {
+    min-width: 0;
+  }
+}

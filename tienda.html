@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TISION | Ropa urbana esencial</title>
+  <meta name="description" content="TISION: ropa urbana esencial. Sudaderas, camisetas, pantalones y gorras de algodón orgánico con diseño minimalista.">
+  <meta name="author" content="TISION">
+  <meta name="copyright" content="&copy; 2022-2026 TISION">
+  <meta name="theme-color" content="#1F4D36">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TISION">
+  <meta property="og:title" content="TISION | Ropa urbana esencial">
+  <meta property="og:description" content="TISION: ropa urbana esencial. Sudaderas, camisetas, pantalones y gorras de algodón orgánico con diseño minimalista.">
+  <meta property="og:image" content="assets/img/index/hero.svg">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+
+  <!-- Fuentes de Google: Montserrat (todo el texto) y Caveat (letra a mano) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Nuestro CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- =====================================================
+       CABECERA Y MENÚ DE OPCIONES
+       ===================================================== -->
+  <header class="header">
+    <div class="header-contenedor">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo">TISION<sup>®</sup></a>
+
+      <!-- Truco del menú móvil: checkbox invisible + icono ☰ -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icono" aria-label="Abrir menú"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></label>
+
+      <!-- Menú de navegación -->
+      <nav class="nav">
+        <ul class="nav-lista">
+          <li><a href="#" class="nav-link activo">Inicio</a></li>
+          <li><a href="#" class="nav-link">Tienda</a></li>
+
+          <!-- Opción con submenú desplegable -->
+          <li class="desplegable">
+            <a href="#" class="nav-link">Colecciones ▾</a>
+            <ul class="submenu">
+              <li><a href="pages/moss-season.html">Moss Season</a></li>
+              <li><a href="pages/static-garden.html">Static Garden</a></li>
+              <li><a href="pages/field-theory.html">Field Theory</a></li>
+            </ul>
+          </li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link">Categorías ▾</a>
+            <ul class="submenu">
+              <li><a href="pages/categoria.html?c=sudaderas">Sudaderas</a></li>
+              <li><a href="pages/categoria.html?c=camisetas">Camisetas</a></li>
+              <li><a href="pages/categoria.html?c=pantalones">Pantalones</a></li>
+              <li><a href="pages/categoria.html?c=abrigos">Abrigos</a></li>
+              <li><a href="pages/categoria.html?c=gorros">Gorros</a></li>
+              <li><a href="pages/categoria.html?c=accesorios">Accesorios</a></li>
+              <li class="submenu-todo"><a href="pages/categoria.html">Ver toda la tienda →</a></li>
+            </ul>
+          </li>
+
+          <li><a href="pages/sobre.html" class="nav-link">Sobre Tision</a></li>
+        </ul>
+      </nav>
+
+      <!-- Iconos de la derecha -->
+      <div class="header-iconos">
+        <a href="#" aria-label="Buscar"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
+        <a href="#" aria-label="Favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></a>
+        <a href="#" aria-label="Mi cuenta"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <a href="#" class="carrito" aria-label="Carrito">
+          <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="carrito-contador">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main class="layout">
+
+    <!-- =====================================================
+         BLOQUE 1 (ARRIBA): lo que en el diseño era la columna DERECHA
+         ===================================================== -->
+    <div class="col-derecha">
+
+      <!-- ---------- CATEGORÍAS ---------- -->
+      <section class="categorias">
+
+        <a href="pages/categoria.html?c=sudaderas" class="categoria-card">
+          <div class="categoria-imagen">
+            <!-- 📷 FOTO 2: sudadera verde sola, fondo claro (cuadrada) -->
+            <img src="assets/img/index/cat-hoodies.svg" alt="Hoodies">
+          </div>
+          <div class="categoria-info">
+            <div>
+              <h3>Sudaderas</h3>
+              <p>desde 45 €</p>
+            </div>
+            <span class="flecha-circulo">→</span>
+          </div>
+        </a>
+
+        <a href="pages/categoria.html?c=camisetas" class="categoria-card">
+          <div class="categoria-imagen">
+            <!-- 📷 FOTO 3: camiseta blanca sola, fondo claro (cuadrada) -->
+            <img src="assets/img/index/cat-t-shirt.svg" alt="T-Shirts">
+          </div>
+          <div class="categoria-info">
+            <div>
+              <h3>Camisetas</h3>
+              <p>desde 25 €</p>
+            </div>
+            <span class="flecha-circulo">→</span>
+          </div>
+        </a>
+
+        <a href="pages/categoria.html?c=pantalones" class="categoria-card">
+          <div class="categoria-imagen">
+            <!-- 📷 FOTO 4: pantalón cargo beige, fondo claro (cuadrada) -->
+            <img src="assets/img/index/cat-pantalones.svg" alt="Pantalones">
+          </div>
+          <div class="categoria-info">
+            <div>
+              <h3>Pantalones</h3>
+              <p>desde 50 €</p>
+            </div>
+            <span class="flecha-circulo">→</span>
+          </div>
+        </a>
+
+        <a href="pages/categoria.html?c=gorros" class="categoria-card">
+          <div class="categoria-imagen">
+            <!-- 📷 FOTO 5: gorra verde, fondo claro (cuadrada) -->
+            <img src="assets/img/index/cat-gorros.svg" alt="Gorros">
+          </div>
+          <div class="categoria-info">
+            <div>
+              <h3>Gorros</h3>
+              <p>desde 15 €</p>
+            </div>
+            <span class="flecha-circulo">→</span>
+          </div>
+        </a>
+
+      </section>
+
+
+      <!-- ---------- OFERTA + CONTADOR ---------- -->
+      <section class="oferta">
+
+        <div class="oferta-izq">
+          <div class="oferta-imagen">
+            <!-- 📷 FOTO 6: zapatilla blanca con verde y amarillo, PNG SIN FONDO -->
+            <img src="assets/img/index/zapatilla.svg" alt="Zapatilla Tision en oferta">
+          </div>
+          <div>
+            <h2>-40% OFF</h2>
+            <span class="oferta-precio">80 € → 48 €</span>
+          </div>
+        </div>
+
+        <div class="oferta-der">
+          <p class="oferta-aviso">☼ Oferta tiempo limitado ☼</p>
+          <div class="contador">
+            <div class="contador-item">
+              <span class="contador-numero">03</span>
+              <span class="contador-texto">Dias</span>
+            </div>
+            <div class="contador-item">
+              <span class="contador-numero">00</span>
+              <span class="contador-texto">Horas</span>
+            </div>
+            <div class="contador-item">
+              <span class="contador-numero">40</span>
+              <span class="contador-texto">Minutos</span>
+            </div>
+            <div class="contador-item">
+              <span class="contador-numero">12</span>
+              <span class="contador-texto">Segundos</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- ---------- MÁS VENDIDOS ---------- -->
+      <section>
+
+        <div class="seccion-cabecera">
+          <h2 class="seccion-titulo">Más vendidos</h2>
+          <a href="pages/categoria.html" class="ver-todo">Ver todo →</a>
+        </div>
+
+        <div class="vendidos">
+
+          <article class="vendido">
+            <div class="vendido-imagen">
+              <!-- 📷 FOTO 11: chico con sudadera AMARILLA, fondo claro -->
+              <img loading="lazy" src="assets/img/index/vendido-hoodie.svg" alt="Hoodie amarilla Tision">
+              <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+            </div>
+            <div class="vendido-info">
+              <h3>Sudaderas</h3>
+              <p>Comodidad que conoce el estilo.</p>
+              <a href="pages/categoria.html?c=sudaderas" class="boton boton-verde boton-pequeno">Comprar →</a>
+            </div>
+          </article>
+
+          <article class="vendido">
+            <div class="vendido-imagen">
+              <!-- 📷 FOTO 12: chica con camiseta VERDE, fondo amarillo -->
+              <img loading="lazy" src="assets/img/index/vendido-tshirt.svg" alt="T-Shirt verde Tision">
+              <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+            </div>
+            <div class="vendido-info">
+              <h3>Camisetas</h3>
+              <p>Diseño minimalista. Impacto maximo.</p>
+              <a href="pages/categoria.html?c=camisetas" class="boton boton-verde boton-pequeno">Comprar →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- ---------- BANNER DE MARCA ---------- -->
+      <section class="banner-marca">
+
+        <div class="banner-logo">
+          <p class="logo">TISION<sup>®</sup></p>
+          <p class="banner-est">EST. 2022</p>
+        </div>
+
+        <p class="banner-lema">Wear<br>your<br>story</p>
+
+        <div class="banner-imagen">
+          <!-- 📷 FOTO 13: chico DE ESPALDAS con sudadera verde y gorra beige, ambiente urbano (horizontal) -->
+          <img src="assets/img/index/banner-espalda.svg" alt="Chico de espaldas con sudadera Tision">
+        </div>
+
+      </section>
+
+    </div>
+    <!-- FIN BLOQUE 1 -->
+
+
+    <!-- =====================================================
+         BLOQUE 2 (DEBAJO): lo que en el diseño era la columna IZQUIERDA
+         ===================================================== -->
+    <div class="col-izquierda">
+
+      <!-- ---------- HERO ---------- -->
+      <section class="hero">
+
+        <div class="hero-contenido">
+          <p class="hero-subtitulo">NUEVA COLECCIÓN</p>
+          <h1 class="hero-titulo">
+            TISION<sup>®</sup><br>
+            <span>Essentials</span>
+          </h1>
+          <p class="hero-texto">Lo esencial también<br>puede ser extraordinario.</p>
+          <a href="#nueva-llegada" class="boton boton-amarillo">Ver colección →</a>
+        </div>
+
+        <div class="hero-imagen">
+          <!-- 📷 FOTO 1: chico y chica con sudadera verde (ella con gorra), fondo amarillo/urbano. HORIZONTAL, grande -->
+          <img src="assets/img/index/hero.svg" alt="Modelos con sudaderas verdes de la colección Tision Essentials">
+
+          <div class="hero-descuento">-40%<br>OFF</div>
+        </div>
+
+        <div class="hero-marcas">
+          <span>TISION</span>
+          <span><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+          <span>✦</span>
+          <span>URBAN WEAR</span>
+          <span><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
+        </div>
+
+      </section>
+
+
+      <!-- ---------- NUEVA LLEGADA ---------- -->
+      <section id="nueva-llegada">
+
+        <div class="seccion-cabecera">
+          <h2 class="seccion-titulo">Nueva llegada</h2>
+          <a href="pages/categoria.html" class="ver-todo">Ver todo →</a>
+        </div>
+
+        <div class="productos">
+
+          <!-- Producto 1 -->
+          <article class="producto">
+            <div class="producto-imagen">
+              <!-- 📷 FOTO 7: chico con sudadera verde, fondo claro -->
+              <img loading="lazy" src="assets/img/index/pro-sudadera.svg" alt="Hoodie Oversize Tision">
+              <span class="etiqueta">Nuevo</span>
+              <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Sudadera Oversize</h3>
+              <p class="producto-precio">45,00 €</p>
+              <div class="colores">
+                <span class="color color-verde" title="Verde"></span>
+                <span class="color color-beige" title="Beige"></span>
+                <span class="color color-negro" title="Negro"></span>
+              </div>
+              <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <!-- Producto 2 -->
+          <article class="producto">
+            <div class="producto-imagen">
+              <!-- 📷 FOTO 8: chica con camiseta crema y gorra beige -->
+              <img loading="lazy" src="assets/img/index/prod-tshirt.svg" alt="T-Shirt Classic Logo">
+              <span class="etiqueta">Nuevo</span>
+              <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Camiseta Logo</h3>
+              <p class="producto-precio">25,00 €</p>
+              <div class="colores">
+                <span class="color color-blanco" title="Blanco"></span>
+                <span class="color color-verde" title="Verde"></span>
+                <span class="color color-amarillo" title="Amarillo"></span>
+              </div>
+              <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <!-- Producto 3 -->
+          <article class="producto">
+            <div class="producto-imagen">
+              <!-- 📷 FOTO 9: pantalón cargo beige, fondo claro -->
+              <img loading="lazy" src="assets/img/index/prop-pants.svg" alt="Pantalón Cargo Urban">
+              <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Pantalón Cargo Urban</h3>
+              <p class="producto-precio">50,00 €</p>
+              <div class="colores">
+                <span class="color color-caqui" title="Caqui"></span>
+                <span class="color color-oliva" title="Oliva"></span>
+                <span class="color color-negro" title="Negro"></span>
+              </div>
+              <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+            </div>
+          </article>
+
+          <!-- Producto 4 -->
+          <article class="producto">
+            <div class="producto-imagen">
+              <!-- 📷 FOTO 10: gorra verde, fondo claro -->
+              <img loading="lazy" src="assets/img/index/prop-cup.svg" alt="Gorra Classic Tision">
+              <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
+            </div>
+            <div class="producto-info">
+              <h3 class="producto-nombre">Gorra Clásica</h3>
+              <p class="producto-precio">22,00 €</p>
+              <div class="colores">
+                <span class="color color-verde" title="Verde"></span>
+                <span class="color color-beige" title="Beige"></span>
+                <span class="color color-negro" title="Negro"></span>
+              </div>
+              <button class="boton boton-verde boton-bloque">Añadir al carrito</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- ---------- BENEFICIOS ---------- -->
+      <section class="beneficios">
+
+        <div class="beneficio">
+          <span class="beneficio-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+          <div>
+            <h3>Envíos a todo el país</h3>
+            <p>Rápidos y seguros</p>
+          </div>
+        </div>
+
+        <div class="beneficio">
+          <span class="beneficio-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div>
+            <h3>Compra segura</h3>
+            <p>Tus datos protegidos</p>
+          </div>
+        </div>
+
+        <div class="beneficio">
+          <span class="beneficio-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></span>
+          <div>
+            <h3>Devoluciones fáciles</h3>
+            <p>Hasta 30 días</p>
+          </div>
+        </div>
+
+        <div class="beneficio">
+          <span class="beneficio-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+          <div>
+            <h3>Moda sostenible</h3>
+            <p>Un mejor futuro</p>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+    <!-- FIN BLOQUE 2 -->
+
+  </main>
+
+
+  <!-- =====================================================
+       MÁS INFORMACIÓN (botón al formulario de contacto)
+       ===================================================== -->
+  <section class="mas-info">
+    <div class="mas-info-contenedor">
+
+      <div class="mas-info-texto">
+        <h2>¿Tienes alguna duda?</h2>
+        <p>Pedidos, tallas, devoluciones o colaboraciones. Te respondemos en menos de 24 horas.</p>
+      </div>
+
+      <a href="pages/contacto.html" class="boton boton-amarillo">Más información →</a>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer-contenedor">
+
+      <ul class="footer-enlaces">
+        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Envíos</a></li>
+        <li><a href="#">Devoluciones</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#cookies" data-abrir-cookies>Cookies</a></li>
+      </ul>
+
+      <div class="footer-redes">
+        <a href="#" aria-label="Instagram"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3c.4 2.6 2 4.3 5 4.6v3.2c-1.9 0-3.6-.6-5-1.6v6.1A5.3 5.3 0 1 1 9.7 10v3.3a2.1 2.1 0 1 0 2.1 2.1V3Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M10.2 13.6c.9.8 2 1.1 3.1.8 2.1-.6 3.2-2.8 2.6-4.8-.7-2.3-3.3-3.4-5.6-2.7-2.6.8-3.7 3.6-2.6 5.6"/><path d="M11.6 9.6 9 21"/></svg></a>
+      </div>
+
+      <p class="footer-copy"><small>&copy; 2022&ndash;2026 TISION<sup>&reg;</sup>. Todos los derechos reservados.</small></p>
+
+    </div>
+  </footer>
+
+
+  <!-- =====================================================
+       POP-UP DE COOKIES
+       ===================================================== -->
+  <div class="cookies" id="cookies" role="dialog" aria-modal="true" aria-labelledby="cookies-titulo" hidden>
+    <div class="cookies-caja">
+
+      <span class="cookies-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01M16 15.5v.01M12 12v.01M11 17v.01M7 14v.01"/></svg></span>
+
+      <h2 id="cookies-titulo" class="cookies-titulo">Usamos cookies</h2>
+      <p class="cookies-texto">
+        En TISION usamos cookies propias y de terceros para que la web funcione,
+        analizar las visitas y enseñarte prendas que encajan con tu estilo.
+        Puedes aceptarlas todas, rechazarlas o elegir cuáles quieres.
+      </p>
+
+      <!-- Panel de configuración (oculto hasta pulsar "Configurar") -->
+      <div class="cookies-config" id="cookies-config" hidden>
+
+        <label class="cookies-opcion">
+          <span>
+            <strong>Necesarias</strong>
+            <small>Imprescindibles para el carrito y la navegación.</small>
+          </span>
+          <input type="checkbox" checked disabled>
+        </label>
+
+        <label class="cookies-opcion">
+          <span>
+            <strong>Analíticas</strong>
+            <small>Nos ayudan a saber qué secciones gustan más.</small>
+          </span>
+          <input type="checkbox" id="cookie-analiticas">
+        </label>
+
+        <label class="cookies-opcion">
+          <span>
+            <strong>Marketing</strong>
+            <small>Ofertas y anuncios personalizados.</small>
+          </span>
+          <input type="checkbox" id="cookie-marketing">
+        </label>
+
+      </div>
+
+      <div class="cookies-botones">
+        <button type="button" class="boton cookies-boton-borde" id="cookies-configurar">Configurar</button>
+        <button type="button" class="boton cookies-boton-borde" id="cookies-rechazar">Rechazar</button>
+        <button type="button" class="boton boton-verde" id="cookies-aceptar">Aceptar todas</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/js/productos.js"></script>
+
+  <script src="assets/js/script.js"></script>
+
+</body>
+</html>
