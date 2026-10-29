@@ -1,6 +1,6 @@
 // =========================================================
 // TISION - landing.js
-// Formularios de correo y animación al hacer scroll de la landing.
+// Formularios de correo de la landing.
 // =========================================================
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -39,29 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
       campo.removeAttribute('aria-invalid');
       mensaje.textContent = '';
     });
-  });
-
-  // ---------- Aparecer al hacer scroll ----------
-  const elementos = document.querySelectorAll('.lp-revelar');
-
-  if (!('IntersectionObserver' in window)) {
-    elementos.forEach(function (el) { el.classList.add('lp-visible'); });
-    return;
-  }
-
-  const observador = new IntersectionObserver(function (entradas) {
-    entradas.forEach(function (entrada) {
-      if (entrada.isIntersecting) {
-        entrada.target.classList.add('lp-visible');
-        observador.unobserve(entrada.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  elementos.forEach(function (el, i) {
-    // Pequeño retraso escalonado entre tarjetas de la misma fila
-    el.style.transitionDelay = (i % 4) * 0.08 + 's';
-    observador.observe(el);
   });
 
 });

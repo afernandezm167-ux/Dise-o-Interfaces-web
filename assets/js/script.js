@@ -493,27 +493,6 @@ document.addEventListener('DOMContentLoaded', function () {
     arriba.classList.toggle('visible', window.scrollY > 600);
   }, { passive: true });
 
-  // ---------- Aparecer al hacer scroll ----------
-  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if ('IntersectionObserver' in window && !sinMovimiento) {
-    const observador = new IntersectionObserver(function (entradas) {
-      entradas.forEach(function (entrada) {
-        if (entrada.isIntersecting) {
-          entrada.target.classList.add('visible');
-          observador.unobserve(entrada.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.seccion-cabecera, .producto, .vendido, .categoria-card, .beneficio, .cx-tarjeta, .lamina, .cx-foto, .cx-muestra, .cx-otra, .valor, .equipo-persona, .linea-hito')
-      .forEach(function (el, i) {
-        if (el.getBoundingClientRect().top < window.innerHeight) return;
-        el.classList.add('revelar');
-        el.style.transitionDelay = (i % 4) * 70 + 'ms';
-        observador.observe(el);
-      });
-  }
-
   // ---------- Formulario de contacto ----------
   const formulario = document.querySelector('.contacto-pagina .formulario');
   if (formulario) {

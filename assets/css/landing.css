@@ -62,41 +62,6 @@ html {
 }
 
 /* =========================================
-   2. CABECERA MÍNIMA
-   ========================================= */
-.lp-header {
-  background: var(--blanco);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--sombra);
-}
-
-.lp-header-contenedor {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
-
-.lp-header-acciones {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.lp-header-enlace {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--verde);
-}
-
-.lp-header-enlace:hover {
-  text-decoration: underline;
-}
-
-/* =========================================
    3. HERO
    ========================================= */
 .lp-hero {
@@ -466,20 +431,9 @@ html {
 }
 
 /* =========================================
-   11. ANIMACIÓN AL HACER SCROLL
+   11. MENOS MOVIMIENTO
    ========================================= */
-.lp-revelar {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.lp-revelar.lp-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Quien prefiere menos movimiento ve todo quieto */
+/* Quien prefiere menos movimiento: scroll sin animar */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -488,12 +442,6 @@ html {
   /* La banda sigue moviéndose, pero más despacio */
   .lp-banda-pista {
     animation-duration: 45s;
-  }
-
-  .lp-revelar {
-    opacity: 1;
-    transform: none;
-    transition: none;
   }
 }
 
@@ -539,10 +487,6 @@ html {
 
   .lp-subtitulo {
     font-size: 30px;
-  }
-
-  .lp-header-enlace {
-    display: none;
   }
 
   .lp-ventajas {
