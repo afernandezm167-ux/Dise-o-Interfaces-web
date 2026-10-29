@@ -486,53 +486,6 @@ textarea {
 }
 
 /* =========================================
-   9. NEWSLETTER
-   ========================================= */
-.newsletter {
-  background: var(--amarillo);
-  border-radius: var(--radio);
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.newsletter-icono {
-  font-size: 32px;
-}
-
-.newsletter-texto {
-  flex: 1;
-  min-width: 180px;
-  color: var(--verde);
-  font-size: 15px;
-}
-
-.newsletter-form {
-  flex: 1;
-  min-width: 260px;
-  display: flex;
-  gap: 8px;
-}
-
-.newsletter-form input {
-  flex: 1;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 30px;
-  font-size: 14px;
-}
-
-.newsletter-form input:focus {
-  outline: 2px solid var(--verde);
-}
-
-.newsletter-form .boton {
-  border-radius: 30px;
-}
-
-/* =========================================
    10. BANNER DE MARCA
    ========================================= */
 .banner-marca {
@@ -1146,10 +1099,6 @@ textarea {
   .vendidos {
     grid-template-columns: 1fr;
   }
-
-  .newsletter-form {
-    flex-direction: column;
-  }
 }
 
 /* =========================================================
@@ -1197,13 +1146,6 @@ textarea {
 .color-crema    { background: #F4EFE3; }
 .color-arcilla  { background: #E3C9B0; }
 .color-hoja     { background: #2F5D44; }
-.color-hierba   { background: #5DAE5A; }
-.color-trebol   { background: #3F8F4B; }
-.color-margarita{ background: #FFF4C2; }
-.color-amapola  { background: #E2574C; }
-.color-lavanda  { background: #B79AE0; }
-.color-rosa     { background: #E98BA8; }
-.color-cielo    { background: #BFE3F3; }
 
 /* ---------- 17.2 Hero de colección ---------- */
 .cx-hero {
@@ -1386,25 +1328,6 @@ textarea {
   color: var(--blanco);
 }
 
-.cx-orden {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--verde);
-}
-
-.cx-orden select {
-  padding: 10px 14px;
-  border: 1.5px solid var(--verde);
-  border-radius: 30px;
-  background: var(--blanco);
-  color: var(--texto);
-  font-size: 14px;
-  cursor: pointer;
-}
-
 /* La rejilla de productos de la colección: 4 columnas, 2 filas */
 .cx-productos {
   grid-template-columns: repeat(4, 1fr);
@@ -1459,7 +1382,6 @@ textarea {
 .f-5 { grid-column: span 5; }
 .f-6 { grid-column: span 6; }
 .f-7 { grid-column: span 7; }
-.f-8 { grid-column: span 8; }
 
 /* Altura de cada foto */
 .baja  { height: 240px; }
@@ -1654,14 +1576,6 @@ body.tema-moss {
   background: var(--amarillo);
   border-color: var(--amarillo);
   color: var(--verde);
-}
-
-.cx-oscura .cx-orden {
-  color: #fff;
-}
-
-.cx-oscura .cx-orden select {
-  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .tema-moss .cx-tarjeta {
@@ -2190,8 +2104,7 @@ body.tema-field {
   letter-spacing: 0.04em;
 }
 
-.tema-field .cx-chip,
-.tema-field .cx-orden select {
+.tema-field .cx-chip {
   border-radius: 2px;
 }
 
@@ -2366,7 +2279,7 @@ body.tema-field {
     grid-template-columns: 1fr;
   }
 
-  .f-3, .f-4, .f-5, .f-6, .f-7, .f-8 {
+  .f-3, .f-4, .f-5, .f-6, .f-7 {
     grid-column: auto;
   }
 
@@ -2999,7 +2912,7 @@ body.tema-field {
 }
 
 /* =========================================
-   26. VOLVER ARRIBA Y ANIMACIONES DE SCROLL
+   26. VOLVER ARRIBA
    ========================================= */
 .volver-arriba {
   position: fixed;
@@ -3034,24 +2947,7 @@ body.tema-field {
   background: var(--verde-hover);
 }
 
-.revelar {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.revelar.visible {
-  opacity: 1;
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .revelar {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .producto-imagen img,
   .volver-arriba,
   .aviso {

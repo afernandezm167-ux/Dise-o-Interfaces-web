@@ -1,126 +1,365 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <!-- Landing: la primera página que se abre. Presenta la marca y lleva a la tienda -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TISION | Wear your story</title>
-  <meta name="description" content="TISION: ropa urbana esencial de algodón orgánico. Descubre Moss Season, Static Garden y Field Theory.">
+  <title>Acceso anticipado | TISION</title>
+  <meta name="description" content="Apúntate al acceso anticipado de TISION: entra antes que nadie a las nuevas colecciones y llévate un 15% en tu primer pedido.">
   <meta name="author" content="TISION">
+  <meta name="copyright" content="&copy; 2022-2026 TISION">
   <meta name="theme-color" content="#1F4D36">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="TISION">
-  <meta property="og:title" content="TISION | Wear your story">
-  <meta property="og:description" content="Ropa urbana esencial de algodón orgánico. Tres colecciones, una forma de vestir.">
-  <meta property="og:image" content="assets/img/index/hero.svg">
+  <meta property="og:title" content="Acceso anticipado | TISION">
+  <meta property="og:description" content="Entra antes que nadie a las nuevas colecciones de TISION y llévate un 15% en tu primer pedido.">
+  <meta property="og:image" content="assets/img-index/hero.png">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 
+  <!-- Fuentes: Montserrat (texto) y Caveat (detalles a mano) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
+  <!-- Estilos base de la web + estilos propios de la landing -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/landing.css">
+  <link rel="stylesheet" href="assets/css/minimal.css">
 </head>
 <body class="landing">
 
-  <!-- ---------- CABECERA: solo logo y acceso a la tienda ---------- -->
-  <header class="landing-header">
-    <a href="index.html" class="logo">TISION<sup>®</sup></a>
-    <nav class="landing-nav" aria-label="Principal">
-      <a href="#colecciones">Colecciones</a>
-      <a href="pages/sobre.html">Sobre Tision</a>
-      <a href="tienda.html" class="boton boton-amarillo boton-pequeno">Entrar a la tienda →</a>
-    </nav>
+  <!-- =====================================================
+       CABECERA MÍNIMA (en una landing no distraemos con el menú)
+       ===================================================== -->
+  <header class="header">
+    <div class="header-contenedor">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo">TISION<sup>®</sup></a>
+
+      <!-- Truco del menú móvil: checkbox invisible + icono ☰ -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="menu-icono" aria-label="Abrir menú"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></label>
+
+      <!-- Menú de navegación -->
+      <nav class="nav">
+        <ul class="nav-lista">
+          <li><a href="index.html" class="nav-link activo">Inicio</a></li>
+          <li><a href="tienda.html" class="nav-link">Tienda</a></li>
+
+          <!-- Opción con submenú desplegable -->
+          <li class="desplegable">
+            <a href="#" class="nav-link">Colecciones ▾</a>
+            <ul class="submenu">
+              <li><a href="pages/moss-season.html">Moss Season</a></li>
+              <li><a href="pages/static-garden.html">Static Garden</a></li>
+              <li><a href="pages/field-theory.html">Field Theory</a></li>
+            </ul>
+          </li>
+
+          <li class="desplegable">
+            <a href="#" class="nav-link">Categorías ▾</a>
+            <ul class="submenu">
+              <li><a href="pages/categoria.html?c=sudaderas">Sudaderas</a></li>
+              <li><a href="pages/categoria.html?c=camisetas">Camisetas</a></li>
+              <li><a href="pages/categoria.html?c=pantalones">Pantalones</a></li>
+              <li><a href="pages/categoria.html?c=abrigos">Abrigos</a></li>
+              <li><a href="pages/categoria.html?c=gorros">Gorros</a></li>
+              <li><a href="pages/categoria.html?c=accesorios">Accesorios</a></li>
+              <li class="submenu-todo"><a href="pages/categoria.html">Ver toda la tienda →</a></li>
+            </ul>
+          </li>
+
+          <li><a href="pages/sobre.html" class="nav-link">Sobre Tision</a></li>
+        </ul>
+      </nav>
+
+      <!-- Iconos de la derecha -->
+      <div class="header-iconos">
+        <a href="tienda.html" aria-label="Buscar"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></a>
+        <a href="tienda.html" aria-label="Favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></a>
+        <a href="tienda.html" aria-label="Mi cuenta"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <a href="tienda.html" class="carrito" aria-label="Carrito">
+          <svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="carrito-contador">0</span>
+        </a>
+      </div>
+
+    </div>
   </header>
+
 
   <main>
 
-    <!-- ---------- HERO: ocupa la pantalla entera ---------- -->
-    <section class="landing-hero">
-      <div class="landing-hero-texto">
-        <p class="landing-eyebrow">Ropa urbana esencial · Est. 2022</p>
-        <h1>Lo esencial<br>también puede ser <span>extraordinario.</span></h1>
-        <p class="landing-intro">Sudaderas, camisetas y pantalones de algodón orgánico, pensados para durar y para combinarlo todo.</p>
-        <div class="landing-botones">
-          <a href="tienda.html" class="boton boton-amarillo">Ver la tienda →</a>
-          <a href="#colecciones" class="boton landing-boton-borde">Descubrir colecciones</a>
+    <!-- =====================================================
+         HERO CON FORMULARIO
+         ===================================================== -->
+    <section class="lp-hero">
+      <div class="lp-contenedor lp-hero-contenedor">
+
+        <div class="lp-hero-texto">
+          <p class="lp-etiqueta">Acceso anticipado · Invierno 2026</p>
+          <h1 class="lp-titulo">Ropa que dura más que la&nbsp;<span>temporada</span>.</h1>
+          <p class="lp-entradilla">
+            Apúntate y entra 48 horas antes que nadie a las nuevas prendas de TISION.
+            Además, te regalamos un <strong>15% en tu primer pedido</strong>.
+          </p>
+
+          <form class="lp-form" novalidate>
+            <label for="email-hero" class="solo-lectores">Tu correo electrónico</label>
+            <input type="email" id="email-hero" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+            <button type="submit" class="boton boton-amarillo">Quiero mi 15% →</button>
+            <p class="lp-form-mensaje" role="status" aria-live="polite"></p>
+          </form>
+
+          <a href="tienda.html" class="boton boton-amarillo lp-ir-tienda"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l-1 14H6Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span>Ir a la tienda</span></a>
+
+          <ul class="lp-prueba">
+            <li><strong>+12.000</strong> personas ya en la lista</li>
+            <li><strong>4,8/5</strong> en opiniones de clientes</li>
+          </ul>
+        </div>
+
+        <div class="lp-hero-imagen">
+          <img src="assets/img-index/hero.png" alt="Modelos con sudaderas verdes de TISION">
+          <p class="lp-nota">¡sin spam, prometido!</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Banda de palabras en movimiento -->
+    <div class="lp-banda" aria-hidden="true">
+      <div class="lp-banda-pista">
+        <span>Algodón orgánico</span><span>✦</span>
+        <span>Hecho para durar</span><span>✦</span>
+        <span>Envío gratis desde 60 €</span><span>✦</span>
+        <span>Devoluciones 30 días</span><span>✦</span>
+        <span>Algodón orgánico</span><span>✦</span>
+        <span>Hecho para durar</span><span>✦</span>
+        <span>Envío gratis desde 60 €</span><span>✦</span>
+        <span>Devoluciones 30 días</span><span>✦</span>
+      </div>
+    </div>
+
+
+    <!-- =====================================================
+         COLECCIONES
+         ===================================================== -->
+    <section class="lp-seccion">
+      <div class="lp-contenedor">
+
+        <div class="lp-seccion-cabecera">
+          <p class="lp-etiqueta">Lo que vas a ver primero</p>
+          <h2 class="lp-subtitulo">Tres colecciones, una misma idea</h2>
+          <p>Prendas sencillas, buenos tejidos y colores sacados del campo.</p>
+        </div>
+
+        <div class="lp-colecciones">
+
+          <a href="pages/moss-season.html" class="lp-coleccion">
+            <div class="lp-coleccion-imagen">
+              <img loading="lazy" src="assets/img-moss/moss-hero.png" alt="Bosque oscuro de la colección Moss Season">
+              <span class="lp-coleccion-num">01</span>
+            </div>
+            <div class="lp-coleccion-info">
+              <h3>Moss Season</h3>
+              <p>Otoño de bosque y lluvia. Tonos musgo y punto grueso.</p>
+              <span class="lp-coleccion-enlace">Ver colección →</span>
+            </div>
+          </a>
+
+          <a href="pages/static-garden.html" class="lp-coleccion">
+            <div class="lp-coleccion-imagen">
+              <img loading="lazy" src="assets/img-garden/garden-arco-1.png" alt="Arco de invernadero de la colección Static Garden">
+              <span class="lp-coleccion-num">02</span>
+            </div>
+            <div class="lp-coleccion-info">
+              <h3>Static Garden</h3>
+              <p>Jardín botánico e invernaderos. Terracota y líneas limpias.</p>
+              <span class="lp-coleccion-enlace">Ver colección →</span>
+            </div>
+          </a>
+
+          <a href="pages/field-theory.html" class="lp-coleccion">
+            <div class="lp-coleccion-imagen">
+              <img loading="lazy" src="assets/img-field/field-hero.jpg" alt="Prado con flores silvestres de la colección Field Theory">
+              <span class="lp-coleccion-num">03</span>
+            </div>
+            <div class="lp-coleccion-info">
+              <h3>Field Theory</h3>
+              <p>Verano en el prado. Algodón lavado y flores silvestres.</p>
+              <span class="lp-coleccion-enlace">Ver colección →</span>
+            </div>
+          </a>
+
         </div>
       </div>
-      <div class="landing-hero-imagen">
-        <img src="assets/img/index/hero.svg" alt="Dos modelos con sudaderas verdes de Tision en la ciudad">
-        <p class="landing-nota">Wear your story</p>
+    </section>
+
+
+    <!-- =====================================================
+         POR QUÉ TISION
+         ===================================================== -->
+    <section class="lp-seccion lp-seccion-verde">
+      <div class="lp-contenedor">
+
+        <div class="lp-seccion-cabecera">
+          <p class="lp-etiqueta">Por qué apuntarte</p>
+          <h2 class="lp-subtitulo">Ventajas de estar en la lista</h2>
+        </div>
+
+        <div class="lp-ventajas">
+
+          <div class="lp-ventaja">
+            <span class="lp-ventaja-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <h3>48 h antes que nadie</h3>
+            <p>Cada lanzamiento te llega a ti primero, con todas las tallas disponibles.</p>
+          </div>
+
+          <div class="lp-ventaja">
+            <span class="lp-ventaja-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+            <h3>15% en tu primer pedido</h3>
+            <p>Te enviamos el código al momento. Sin mínimo de compra.</p>
+          </div>
+
+          <div class="lp-ventaja">
+            <span class="lp-ventaja-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+            <h3>Moda que no se tira</h3>
+            <p>Algodón orgánico, producción cercana y prendas pensadas para años.</p>
+          </div>
+
+          <div class="lp-ventaja">
+            <span class="lp-ventaja-icono"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.2L4 17.2Z"/><path d="M8 9h8M8 12h5"/></svg></span>
+            <h3>Un correo al mes</h3>
+            <p>Solo novedades que importan. Te das de baja con un clic.</p>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- ---------- FRANJA DE VALORES ---------- -->
-    <ul class="landing-valores">
-      <li><strong>100%</strong> algodón orgánico</li>
-      <li><strong>Envío</strong> a todo el país</li>
-      <li><strong>30 días</strong> para devolver</li>
-      <li><strong>Hecho</strong> para durar</li>
-    </ul>
 
-    <!-- ---------- COLECCIONES: cada tarjeta lleva a su página ---------- -->
-    <section class="landing-seccion" id="colecciones">
-      <div class="landing-cabecera">
-        <p class="landing-eyebrow">Tres colecciones</p>
-        <h2>Una forma de vestir para cada estación</h2>
-      </div>
+    <!-- =====================================================
+         OPINIONES
+         ===================================================== -->
+    <section class="lp-seccion">
+      <div class="lp-contenedor">
 
-      <div class="landing-colecciones">
-        <a href="pages/moss-season.html" class="landing-coleccion">
-          <img loading="lazy" src="assets/img/colecciones/moss-hero.svg" alt="">
-          <div>
-            <span>Colección 01 · Otoño</span>
-            <h3>Moss Season</h3>
-            <p>Bosque, lluvia y tonos musgo.</p>
-          </div>
-        </a>
-        <a href="pages/static-garden.html" class="landing-coleccion">
-          <img loading="lazy" src="assets/img/colecciones/garden-arco-1.svg" alt="">
-          <div>
-            <span>Colección 02 · Primavera</span>
-            <h3>Static Garden</h3>
-            <p>Invernaderos, terracota y calma.</p>
-          </div>
-        </a>
-        <a href="pages/field-theory.html" class="landing-coleccion">
-          <img loading="lazy" src="assets/img/colecciones/field-hero.svg" alt="">
-          <div>
-            <span>Colección 03 · Verano</span>
-            <h3>Field Theory</h3>
-            <p>Flores silvestres y luz de campo.</p>
-          </div>
-        </a>
+        <div class="lp-seccion-cabecera">
+          <p class="lp-etiqueta">Quien ya lo lleva</p>
+          <h2 class="lp-subtitulo">Lo que dicen de TISION</h2>
+        </div>
+
+        <div class="lp-opiniones">
+
+          <figure class="lp-opinion">
+            <p class="lp-estrellas" aria-label="5 de 5 estrellas">★★★★★</p>
+            <blockquote>«La sudadera oversize es la que más uso. Después de un año sigue como el primer día.»</blockquote>
+            <figcaption><strong>Lucía M.</strong> · Valencia</figcaption>
+          </figure>
+
+          <figure class="lp-opinion">
+            <p class="lp-estrellas" aria-label="5 de 5 estrellas">★★★★★</p>
+            <blockquote>«Gracias al acceso anticipado pillé mi talla del cargo antes de que se agotara.»</blockquote>
+            <figcaption><strong>Diego R.</strong> · Madrid</figcaption>
+          </figure>
+
+          <figure class="lp-opinion">
+            <p class="lp-estrellas" aria-label="4 de 5 estrellas">★★★★☆</p>
+            <blockquote>«Colores preciosos y el envío llegó en dos días. Repetiré con Field Theory.»</blockquote>
+            <figcaption><strong>Marta G.</strong> · Sevilla</figcaption>
+          </figure>
+
+        </div>
       </div>
     </section>
 
-    <!-- ---------- MANIFIESTO ---------- -->
-    <section class="landing-manifiesto">
-      <div class="landing-manifiesto-imagen">
-        <img loading="lazy" src="assets/img/index/banner-espalda.svg" alt="Chico de espaldas con sudadera Tision">
-      </div>
-      <div class="landing-manifiesto-texto">
-        <p class="landing-eyebrow">Nuestra idea</p>
-        <h2>Menos prendas, mejor hechas.</h2>
-        <p>En TISION diseñamos básicos que no pasan de moda: cortes cómodos, colores que combinan entre sí y tejidos que aguantan lavado tras lavado. Ropa para tu día a día, no para una temporada.</p>
-        <a href="pages/sobre.html" class="ver-todo">Conoce la marca →</a>
+
+    <!-- =====================================================
+         PREGUNTAS FRECUENTES
+         ===================================================== -->
+    <section class="lp-seccion lp-seccion-clara">
+      <div class="lp-contenedor lp-contenedor-estrecho">
+
+        <div class="lp-seccion-cabecera">
+          <p class="lp-etiqueta">Dudas rápidas</p>
+          <h2 class="lp-subtitulo">Preguntas frecuentes</h2>
+        </div>
+
+        <div class="lp-faq">
+          <details>
+            <summary>¿Cuánto cuesta apuntarse?</summary>
+            <p>Nada. El acceso anticipado es gratis y puedes darte de baja cuando quieras.</p>
+          </details>
+          <details>
+            <summary>¿Cuándo recibo el código del 15%?</summary>
+            <p>Justo después de apuntarte, en el correo de bienvenida. Es válido durante 30 días.</p>
+          </details>
+          <details>
+            <summary>¿Cuánto tarda el envío?</summary>
+            <p>Entre 24 y 72 horas en península. El envío es gratis en pedidos desde 60 €.</p>
+          </details>
+          <details>
+            <summary>¿Y si la talla no me queda bien?</summary>
+            <p>Tienes 30 días para cambiarla o devolverla sin coste.</p>
+          </details>
+        </div>
+
       </div>
     </section>
 
-    <!-- ---------- LLAMADA FINAL ---------- -->
-    <section class="landing-cta">
-      <h2>Empieza por lo esencial.</h2>
-      <p>Hasta un <strong>40% de descuento</strong> en una selección de prendas por tiempo limitado.</p>
-      <a href="tienda.html" class="boton boton-amarillo">Ir a la tienda →</a>
+
+    <!-- =====================================================
+         LLAMADA FINAL
+         ===================================================== -->
+    <section class="lp-final" id="apuntarse">
+      <div class="lp-contenedor lp-final-contenedor">
+        <h2 class="lp-subtitulo">Entra antes que nadie</h2>
+        <p>Deja tu correo y recibe hoy mismo tu código del 15%.</p>
+
+        <form class="lp-form" novalidate>
+          <label for="email-final" class="solo-lectores">Tu correo electrónico</label>
+          <input type="email" id="email-final" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+          <button type="submit" class="boton boton-verde">Apuntarme →</button>
+          <p class="lp-form-mensaje" role="status" aria-live="polite"></p>
+        </form>
+
+        <a href="tienda.html" class="boton boton-amarillo lp-ir-tienda"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l-1 14H6Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span>Ver toda la tienda</span></a>
+
+        <p class="lp-legal">Al apuntarte aceptas nuestra <a href="#">política de privacidad</a>.</p>
+      </div>
     </section>
 
   </main>
 
-  <footer class="landing-footer">
-    <p><small>&copy; 2022&ndash;2026 TISION<sup>&reg;</sup>. Todos los derechos reservados.</small></p>
-    <a href="pages/contacto.html">Contacto</a>
+
+  <!-- =====================================================
+       FOOTER (el mismo que en el resto de la web)
+       ===================================================== -->
+  <footer class="footer">
+    <div class="footer-contenedor">
+
+      <ul class="footer-enlaces">
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="pages/sobre.html">Sobre Tision</a></li>
+        <li><a href="pages/contacto.html">Contacto</a></li>
+        <li><a href="#">Privacidad</a></li>
+      </ul>
+
+      <div class="footer-redes">
+        <a href="#" aria-label="Instagram"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3c.4 2.6 2 4.3 5 4.6v3.2c-1.9 0-3.6-.6-5-1.6v6.1A5.3 5.3 0 1 1 9.7 10v3.3a2.1 2.1 0 1 0 2.1 2.1V3Z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+
+      <p class="footer-copy"><small>&copy; 2022&ndash;2026 TISION<sup>&reg;</sup>. Todos los derechos reservados.</small></p>
+
+    </div>
   </footer>
 
+  <script src="assets/js/landing.js"></script>
+
+  <script src="assets/js/efectos.js"></script>
 </body>
 </html>

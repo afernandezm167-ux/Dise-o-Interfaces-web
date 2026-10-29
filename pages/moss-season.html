@@ -12,14 +12,15 @@
   <meta property="og:site_name" content="TISION">
   <meta property="og:title" content="Moss Season | TISION">
   <meta property="og:description" content="Moss Season, la colección de otoño de TISION: verdes de bosque, tejidos técnicos para la lluvia y felpas con tacto de musgo.">
-  <meta property="og:image" content="../assets/img/index/hero.svg">
+  <meta property="og:image" content="../assets/img-index/hero.png">
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/minimal.css">
 </head>
 
 <!-- tema-moss cambia los colores de toda la página (ver sección 17.8 del CSS) -->
@@ -107,7 +108,7 @@
 
           <div class="cx-hero-imagen">
             <!-- 📷 FOTO 1: modelo con chaqueta o sudadera verde bosque, bajo la lluvia o entre árboles / helechos. VERTICAL -->
-            <img src="../assets/img/colecciones/moss-hero.svg" alt="Modelo con sudadera verde bosque entre helechos">
+            <img src="../assets/img-moss/moss-hero.png" alt="Modelo con sudadera verde bosque entre helechos">
             <div class="cx-sello">AW<br>26</div>
           </div>
 
@@ -160,7 +161,12 @@
     <!-- =====================================================
          PRODUCTOS (banda oscura)
          ===================================================== -->
-    <section class="cx-seccion cx-oscura" id="coleccion">
+    <section class="cx-seccion cx-oscura moss-tormenta" id="coleccion">
+
+      <!-- Fondo: foto del bosque (📷 FOTO assets/img-moss/moos.lluvia.png) + lluvia animada encima -->
+      <div class="tormenta-fondo" aria-hidden="true"></div>
+      <canvas class="lluvia-lienzo" aria-hidden="true"></canvas>
+
       <div class="contenedor">
 
         <div class="seccion-cabecera">
@@ -184,7 +190,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 2: sudadera verde bosque oversize -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-01.svg" alt="Hoodie Moss Oversize">
+              <img loading="lazy" src="../assets/img-moss/moss-01.png" alt="Hoodie Moss Oversize">
               <span class="etiqueta">Nuevo</span>
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
@@ -203,7 +209,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 3: chaqueta impermeable con capucha, verde oscuro -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-02.svg" alt="Chaqueta Rain Shell">
+              <img loading="lazy" src="../assets/img-moss/moss-02.png" alt="Chaqueta Rain Shell">
               <span class="etiqueta">Nuevo</span>
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
@@ -221,7 +227,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 4: camiseta con estampado de helecho -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-03.svg" alt="T-Shirt Fern Print">
+              <img loading="lazy" src="../assets/img-moss/moss-03.png" alt="T-Shirt Fern Print">
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
             <div class="producto-info">
@@ -238,7 +244,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 5: pantalón cargo verde oliva / musgo -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-04.svg" alt="Pantalón Cargo Forest">
+              <img loading="lazy" src="../assets/img-moss/moss-04.png" alt="Pantalón Cargo Forest">
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
             <div class="producto-info">
@@ -256,7 +262,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 6: sudadera sin capucha (crewneck) gris verdoso -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-05.svg" alt="Crewneck Dew">
+              <img loading="lazy" src="../assets/img-moss/moss-05.png" alt="Crewneck Dew">
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
             <div class="producto-info">
@@ -273,7 +279,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 7: gorro de lana verde -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-06.svg" alt="Gorro Mist Beanie">
+              <img loading="lazy" src="../assets/img-moss/moss-06.png" alt="Gorro Mist Beanie">
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
             <div class="producto-info">
@@ -291,7 +297,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 8: calcetines gruesos verdes -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-07.svg" alt="Calcetines Lichen">
+              <img loading="lazy" src="../assets/img-moss/moss-07.png" alt="Calcetines Lichen">
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
             <div class="producto-info">
@@ -308,7 +314,7 @@
           <article class="producto">
             <div class="producto-imagen">
               <!-- 📷 FOTO 9: bolsa tote de tela verde -->
-              <img loading="lazy" src="../assets/img/colecciones/moss-08.svg" alt="Tote Canopy">
+              <img loading="lazy" src="../assets/img-moss/moss-08.png" alt="Tote Canopy">
               <span class="etiqueta">Últimas</span>
               <button class="favorito" aria-label="Añadir a favoritos"><svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></button>
             </div>
@@ -341,7 +347,7 @@
         <figure class="cx-foto f-5 alta">
           <div class="cx-foto-img">
             <!-- 📷 FOTO 10: modelo caminando por un bosque con niebla -->
-            <img loading="lazy" src="../assets/img/colecciones/moss-look-1.svg" alt="Modelo caminando por el bosque">
+            <img loading="lazy" src="../assets/img-moss/moss-look-1.png" alt="Modelo caminando por el bosque">
           </div>
           <figcaption>Bosque de hayas</figcaption>
         </figure>
@@ -349,7 +355,7 @@
         <figure class="cx-foto f-7 alta">
           <div class="cx-foto-img">
             <!-- 📷 FOTO 11: detalle de musgo / hojas mojadas o textura de la tela. HORIZONTAL -->
-            <img loading="lazy" src="../assets/img/colecciones/moss-look-2.svg" alt="Detalle de musgo y gotas de lluvia">
+            <img loading="lazy" src="../assets/img-moss/moss-look-2.png" alt="Detalle de musgo y gotas de lluvia">
           </div>
           <figcaption>Textura y rocío</figcaption>
         </figure>
@@ -357,7 +363,7 @@
         <figure class="cx-foto f-4 media">
           <div class="cx-foto-img">
             <!-- 📷 FOTO 12: persona con capucha mirando la lluvia -->
-            <img loading="lazy" src="../assets/img/colecciones/moss-look-3.svg" alt="Persona con capucha bajo la lluvia">
+            <img loading="lazy" src="../assets/img-moss/moss-look-3.png" alt="Persona con capucha bajo la lluvia">
           </div>
           <figcaption>Capucha arriba</figcaption>
         </figure>
@@ -365,7 +371,7 @@
         <figure class="cx-foto f-4 media">
           <div class="cx-foto-img">
             <!-- 📷 FOTO 13: botas y pantalón entre hojas y charcos -->
-            <img src="../assets/img/colecciones/moss-look-4.svg" alt="Botas entre hojas y charcos">
+            <img src="../assets/img-moss/moss-look-4.png" alt="Botas entre hojas y charcos">
           </div>
           <figcaption>Charcos</figcaption>
         </figure>
@@ -373,7 +379,7 @@
         <figure class="cx-foto f-4 media">
           <div class="cx-foto-img">
             <!-- 📷 FOTO 14: helechos o árboles desde abajo -->
-            <img loading="lazy" src="../assets/img/colecciones/moss-look-5.svg" alt="Helechos del bosque">
+            <img loading="lazy" src="../assets/img-moss/moss-look-5.png" alt="Helechos del bosque">
           </div>
           <figcaption>Helechos</figcaption>
         </figure>
@@ -474,5 +480,6 @@
   <script src="../assets/js/productos.js"></script>
   <script src="../assets/js/script.js"></script>
 
+  <script src="../assets/js/efectos.js"></script>
 </body>
 </html>
