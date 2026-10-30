@@ -3215,3 +3215,419 @@ body.tema-field {
   font-weight: 700;
   color: var(--verde);
 }
+
+/* =========================================
+   30. PÁGINA DE PRODUCTO (producto.html)
+   ========================================= */
+.producto-pagina {
+  padding-top: 24px;
+}
+
+/* Las tarjetas que llevan a su ficha */
+.producto-enlazado .producto-imagen {
+  cursor: pointer;
+}
+
+.producto-nombre a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.producto-nombre a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Migas de pan */
+.migas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--gris);
+  margin-bottom: 24px;
+}
+
+.migas a {
+  color: var(--gris);
+  text-decoration: none;
+}
+
+.migas a:hover {
+  color: var(--verde);
+  text-decoration: underline;
+}
+
+.migas [aria-current] {
+  color: var(--texto);
+}
+
+/* Foto + información */
+.ficha {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.ficha-imagen {
+  aspect-ratio: 4 / 5;
+  background: var(--hueco);
+  overflow: hidden;
+  position: sticky;
+  top: 96px;
+}
+
+.ficha-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ficha-imagen .etiqueta {
+  top: 16px;
+  bottom: auto;
+  left: 16px;
+}
+
+.ficha-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ficha-coleccion {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.ficha-coleccion a {
+  color: var(--verde);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ficha-coleccion em {
+  font-family: var(--fuente-serif, Georgia, serif);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 15px;
+}
+
+.ficha-nombre {
+  font-size: 44px;
+  line-height: 1.05;
+  color: var(--verde);
+}
+
+.ficha-precio {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.ficha-texto {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* Color y talla */
+.ficha-opcion {
+  border: none;
+  border-top: 1px solid var(--linea, #E5E2D6);
+  padding: 20px 0 0;
+  margin: 0;
+  min-width: 0;
+}
+
+/* La leyenda flotando se comporta como un texto más dentro del grupo */
+.ficha-opcion legend {
+  float: left;
+  font-size: 14px;
+  padding: 0;
+}
+
+.ficha-guia-enlace {
+  float: right;
+  font-size: 13px;
+  color: var(--verde);
+}
+
+.ficha-colores,
+.ficha-tallas,
+.ficha-ajuste {
+  clear: both;
+  padding-top: 12px;
+}
+
+.ficha-colores,
+.ficha-tallas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ficha-color,
+.ficha-talla {
+  position: relative;
+  cursor: pointer;
+}
+
+.ficha-color input,
+.ficha-talla input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.ficha-color .color {
+  display: block;
+  width: 32px;
+  height: 32px;
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+  transition: outline-color 0.2s;
+}
+
+.ficha-color input:checked + .color {
+  outline-color: var(--verde);
+}
+
+.ficha-color input:focus-visible + .color,
+.ficha-talla input:focus-visible + span {
+  outline: 2px solid var(--amarillo);
+  outline-offset: 3px;
+}
+
+.ficha-talla span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--linea, #E5E2D6);
+  background: var(--blanco);
+  font-size: 14px;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.ficha-talla:hover span {
+  border-color: var(--verde);
+}
+
+.ficha-talla input:checked + span {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: var(--blanco);
+}
+
+.ficha-tallas.falta .ficha-talla span {
+  border-color: #B4574A;
+}
+
+.ficha-ajuste {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+/* Cantidad + comprar + favorito */
+.ficha-compra {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.ficha-cantidad {
+  display: flex;
+  border: 1px solid var(--linea, #E5E2D6);
+  background: var(--blanco);
+}
+
+.ficha-cantidad button {
+  width: 40px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: var(--verde);
+  cursor: pointer;
+}
+
+.ficha-cantidad input {
+  width: 40px;
+  border: none;
+  background: none;
+  text-align: center;
+  font: inherit;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.ficha-cantidad input::-webkit-inner-spin-button,
+.ficha-cantidad input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ficha-compra .boton-verde {
+  flex: 1;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+}
+
+.ficha-compra .ficha-favorito {
+  position: static;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid var(--linea, #E5E2D6);
+}
+
+.ficha-favorito.activo .icono {
+  fill: currentColor;
+}
+
+.ficha-ventajas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.ficha-ventajas li::before {
+  content: '✓ ';
+  color: var(--verde);
+}
+
+/* Desplegables de información */
+.ficha-detalle {
+  border-top: 1px solid var(--linea, #E5E2D6);
+  padding-top: 16px;
+}
+
+.ficha-detalle:last-child {
+  border-bottom: 1px solid var(--linea, #E5E2D6);
+  padding-bottom: 16px;
+}
+
+.ficha-detalle summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ficha-detalle summary::-webkit-details-marker {
+  display: none;
+}
+
+.ficha-detalle summary::after {
+  content: '+';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--verde);
+}
+
+.ficha-detalle[open] summary::after {
+  content: '−';
+}
+
+.ficha-detalle > *:not(summary) {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ficha-detalle ul {
+  padding-left: 18px;
+}
+
+.ficha-tabla {
+  overflow-x: auto;
+}
+
+.ficha-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.ficha-tabla th,
+.ficha-tabla td {
+  padding: 8px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--linea, #E5E2D6);
+  white-space: nowrap;
+}
+
+.ficha-tabla thead th {
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.ficha-mas {
+  margin-top: 80px;
+}
+
+.ficha-vacia {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 64px 0;
+}
+
+@media (max-width: 900px) {
+  .ficha {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .ficha-imagen {
+    position: relative;
+    top: 0;
+  }
+
+  .ficha-nombre {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ficha-compra {
+    flex-wrap: wrap;
+  }
+
+  .ficha-compra .boton-verde {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .ficha-cantidad {
+    flex: 1;
+    justify-content: space-between;
+  }
+}

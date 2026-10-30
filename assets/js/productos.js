@@ -366,3 +366,100 @@ const PRODUCTOS = [
     colores: [{ clase: 'color-adormidera', nombre: 'Adormidera' }, { clase: 'color-heno', nombre: 'Heno' }, { clase: 'color-campo', nombre: 'Campo' }]
   }
 ];
+
+// Ficha de cada tipo de prenda: tallas, tabla de medidas, tejido y cuidados.
+// La usa la página de producto (pages/producto.html).
+const FICHAS = {
+  sudaderas: {
+    tallas: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    medidas: {
+      cabecera: ['Talla', 'Pecho (cm)', 'Largo (cm)', 'Manga (cm)'],
+      filas: [['XS', 104, 66, 60], ['S', 110, 68, 61], ['M', 116, 70, 62], ['L', 122, 72, 63], ['XL', 128, 74, 64], ['XXL', 134, 76, 65]]
+    },
+    material: '80% algodón orgánico, 20% poliéster reciclado. Felpa perchada de 340 g/m².',
+    ajuste: 'Corte amplio con hombro caído. Si prefieres un ajuste más ceñido, pide una talla menos.',
+    caracteristicas: ['Puños y bajo de canalé elástico', 'Interior perchado muy suave', 'Costuras dobles reforzadas', 'Etiqueta estampada, sin roces en el cuello'],
+    cuidado: ['Lavar a máquina a 30 °C del revés', 'No usar lejía', 'Secar en tendedero', 'Planchar a temperatura baja sin tocar el estampado']
+  },
+  camisetas: {
+    tallas: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    medidas: {
+      cabecera: ['Talla', 'Pecho (cm)', 'Largo (cm)', 'Hombro (cm)'],
+      filas: [['XS', 96, 66, 42], ['S', 102, 69, 44], ['M', 108, 72, 46], ['L', 114, 74, 48], ['XL', 120, 76, 50], ['XXL', 126, 78, 52]]
+    },
+    material: '100% algodón orgánico peinado. Punto de 220 g/m².',
+    ajuste: 'Corte recto, ligeramente holgado. Elige tu talla habitual.',
+    caracteristicas: ['Cuello canalé que no se deforma', 'Algodón preencogido', 'Tintes sin metales pesados', 'Costuras laterales para que no gire'],
+    cuidado: ['Lavar a máquina a 30 °C', 'Lavar con colores parecidos', 'No usar secadora', 'Planchar del revés']
+  },
+  abrigos: {
+    tallas: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+    medidas: {
+      cabecera: ['Talla', 'Pecho (cm)', 'Largo (cm)', 'Manga (cm)'],
+      filas: [['XS', 108, 70, 62], ['S', 114, 72, 63], ['M', 120, 74, 64], ['L', 126, 76, 65], ['XL', 132, 78, 66], ['XXL', 138, 80, 67]]
+    },
+    material: '100% poliamida reciclada con acabado repelente al agua sin PFC.',
+    ajuste: 'Corte regular con espacio para una sudadera debajo. Elige tu talla habitual.',
+    caracteristicas: ['Capucha ajustable con cordón', 'Bolsillos con cremallera', 'Costuras termoselladas', 'Se guarda plegada en su propio bolsillo'],
+    cuidado: ['Lavar a máquina a 30 °C en programa delicado', 'No usar suavizante', 'No usar secadora', 'No planchar']
+  },
+  pantalones: {
+    tallas: ['36', '38', '40', '42', '44', '46'],
+    medidas: {
+      cabecera: ['Talla', 'Cintura (cm)', 'Cadera (cm)', 'Largo interior (cm)'],
+      filas: [['36', 72, 94, 78], ['38', 76, 98, 79], ['40', 80, 102, 80], ['42', 84, 106, 81], ['44', 88, 110, 82], ['46', 92, 114, 82]]
+    },
+    material: '98% algodón orgánico, 2% elastano. Sarga de 300 g/m².',
+    ajuste: 'Tiro medio y pernera recta. Elige tu talla habitual de cintura.',
+    caracteristicas: ['Bolsillos laterales de fuelle', 'Cintura con trabillas', 'Bajos ajustables con cordón', 'Rodillas articuladas para moverte mejor'],
+    cuidado: ['Lavar a máquina a 40 °C del revés', 'No usar lejía', 'Secar en tendedero', 'Planchar a temperatura media']
+  },
+  gorros: {
+    tallas: ['Única'],
+    medidas: null,
+    material: '100% algodón orgánico en sarga lavada.',
+    ajuste: 'Talla única ajustable: perímetro de 54 a 60 cm.',
+    caracteristicas: ['Cierre trasero ajustable', 'Logo bordado', 'Banda interior que absorbe el sudor', 'Visera precurvada'],
+    cuidado: ['Lavar a mano en agua fría', 'No retorcer', 'Secar al aire sobre un molde', 'No usar secadora']
+  },
+  accesorios: {
+    tallas: ['Única'],
+    medidas: null,
+    material: '100% algodón orgánico.',
+    ajuste: 'Talla única.',
+    caracteristicas: ['Hecho con restos de tela de nuestras prendas', 'Estampado con tintas al agua', 'Costuras reforzadas'],
+    cuidado: ['Lavar a máquina a 30 °C', 'Secar en tendedero', 'No usar secadora']
+  }
+};
+
+// Lo propio de cada prenda: descripción y, si cambian, su tejido, ajuste o tallas
+const DETALLES = {
+  'pro-sudadera': { texto: 'Sudadera de corte amplio con capucha y bolsillo canguro. La pieza base de Essentials: suave por dentro y con cuerpo por fuera.' },
+  'prod-tshirt': { texto: 'Camiseta de punto denso con el logo TISION bordado en el pecho. Un básico que aguanta lavado tras lavado.' },
+  'prop-pants': { texto: 'Cargo de sarga resistente con bolsillos laterales de fuelle y bajos ajustables con cordón. Para todos los días.' },
+  'prop-cup': { texto: 'Gorra de seis paneles en sarga lavada con logo bordado y cierre trasero de hebilla metálica.' },
+  'moss-01': { texto: 'Hoodie de hombro caído en los tonos de un bosque húmedo, con capucha doble y puños de canalé largos.' },
+  'moss-02': { texto: 'Chaqueta ligera repelente al agua para los días de lluvia fina. Capucha ajustable y bolsillos con cremallera.' },
+  'moss-03': { texto: 'Camiseta con estampado de helecho a una tinta, impreso con tintas al agua que no endurecen el tejido.' },
+  'moss-04': { texto: 'Cargo de corte recto con rodillas articuladas y seis bolsillos, pensado para caminar entre árboles.' },
+  'moss-05': { texto: 'Sudadera de cuello redondo con lavado enzimático: tacto suave y aspecto usado desde el primer día.' },
+  'moss-06': { texto: 'Gorro de punto canalé con vuelta, tejido en lana merino reciclada.', material: '70% lana merino reciclada, 30% poliamida.', ajuste: 'Talla única elástica.' },
+  'moss-07': { texto: 'Calcetines de algodón peinado con puño canalé y planta reforzada.', material: '80% algodón orgánico, 18% poliamida, 2% elastano.', tallas: ['35-38', '39-42', '43-46'], ajuste: 'Elige la talla según tu número de calzado.' },
+  'moss-08': { texto: 'Bolsa de lona gruesa con asas largas para llevar al hombro y bolsillo interior. Medidas: 38 × 42 cm.', material: '100% lona de algodón orgánico de 400 g/m².' },
+  'garden-01': { texto: 'Camisa de lino con estampado de hojas de monstera, cuello abierto y botones de corozo.', material: '100% lino europeo lavado.' },
+  'garden-02': { texto: 'Hoodie en color barro cocido con una maceta bordada en el pecho y forro de felpa.' },
+  'garden-03': { texto: 'Camiseta con láminas botánicas inspiradas en los herbarios antiguos.' },
+  'garden-04': { texto: 'Pantalón de lino de pernera ancha con cintura elástica y cordón. Fresco para el verano.', material: '55% lino, 45% algodón orgánico.' },
+  'garden-05': { texto: 'Delantal de lona con bolsillos para herramientas y tiras cruzadas a la espalda.', material: '100% lona de algodón encerada.' },
+  'garden-06': { texto: 'Gorra de visera curva con un invernadero bordado y cierre ajustable.' },
+  'garden-07': { texto: 'Tote de algodón con impresión de herbario y fondo reforzado. Medidas: 36 × 40 cm.' },
+  'garden-08': { texto: 'Calcetines con dibujo de helecho tejido en jacquard.', material: '80% algodón orgánico, 18% poliamida, 2% elastano.', tallas: ['35-38', '39-42', '43-46'], ajuste: 'Elige la talla según tu número de calzado.' },
+  'field-01': { texto: 'Hoodie oversize en verde campo con capucha amplia y bolsillo canguro de costura oculta.' },
+  'field-02': { texto: 'Camiseta de algodón con una flor de manzanilla bordada a la altura del corazón.' },
+  'field-03': { texto: 'Cargo en tono rastrojo con bolsillos de fuelle y cintura con trabillas.' },
+  'field-04': { texto: 'Gorra de cinco paneles en color heno con etiqueta tejida.' },
+  'field-05': { texto: 'Camisa de manga corta con estampado de flores silvestres y cuello bowling.', material: '100% viscosa de origen sostenible.' },
+  'field-06': { texto: 'Short de algodón con cintura elástica y largo hasta la rodilla en rojo amapola.' },
+  'field-07': { texto: 'Sudadera de cuello redondo color aciano con costuras en contraste.' },
+  'field-08': { texto: 'Bandana de algodón estampada con cuatro láminas de herbario. Medidas: 55 × 55 cm.' }
+};

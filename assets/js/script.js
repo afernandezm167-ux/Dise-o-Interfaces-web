@@ -52,6 +52,20 @@ function parametro(nombre) {
   return new URLSearchParams(location.search).get(nombre);
 }
 
+// Página de detalle de un producto
+function enlaceProducto(id) {
+  return ruta('pages/producto.html?id=' + id);
+}
+
+// Tallas de un producto: las suyas propias o las de su tipo de prenda
+function tallasDe(p) {
+  const extra = typeof DETALLES !== 'undefined' && DETALLES[p.id];
+  if (extra && extra.tallas) return extra.tallas;
+  const ficha = typeof FICHAS !== 'undefined' && FICHAS[p.tipo];
+  if (ficha) return ficha.tallas;
+  return ['gorros', 'accesorios'].indexOf(p.tipo) !== -1 ? ['Única'] : ['M'];
+}
+
 const ICONO_CORAZON = '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>';
 const ICONO_CERRAR = '<svg class="icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
 
@@ -110,7 +124,7 @@ function tarjetaHTML(p) {
         '<button class="favorito" aria-label="Añadir a favoritos">' + ICONO_CORAZON + '</button>' +
       '</div>' +
       '<div class="producto-info">' +
-        '<h3 class="producto-nombre">' + p.nombre + '</h3>' +
+        '<h3 class="producto-nombre"><a href="' + enlaceProducto(p.id) + '">' + p.nombre + '</a></h3>' +
         '<p class="producto-coleccion">' + p.coleccion + '</p>' +
         '<p class="producto-precio">' + precio(p.precio) + '</p>' +
         '<div class="colores">' + colores + '</div>' +
@@ -146,6 +160,182 @@ function pintarCategoria() {
   lista.innerHTML = productos.map(tarjetaHTML).join('');
 }
 
+// Las tarjetas escritas a mano en el HTML: el nombre pasa a ser un enlace
+// a su ficha y la foto se puede pulsar (ver los clics más abajo)
+function enlazarTarjetas() {
+  document.querySelectorAll('.producto').forEach(function (tarjeta) {
+    const id = idDeTarjeta(tarjeta);
+    if (!buscarProducto(id)) return;
+    const nombre = tarjeta.querySelector('.producto-nombre');
+    if (nombre && !nombre.querySelector('a')) {
+      nombre.innerHTML = '<a href="' + enlaceProducto(id) + '">' + nombre.innerHTML + '</a>';
+    }
+    tarjeta.classList.add('producto-enlazado');
+  });
+}
+
+// =========================================================
+// PÁGINA DE PRODUCTO (producto.html?id=...)
+// =========================================================
+function pintarProducto() {
+  const caja = document.getElementById('ficha-producto');
+  if (!caja) return;
+
+  const p = buscarProducto(parametro('id'));
+  if (!p) {
+    caja.innerHTML =
+      '<div class="ficha-vacia">' +
+        '<h1 class="info-titulo">Prenda no encontrada</h1>' +
+        '<p class="info-texto">Puede que ya no esté a la venta o que el enlace no sea correcto.</p>' +
+        '<a href="categoria.html" class="boton boton-verde">Ver toda la tienda →</a>' +
+      '</div>';
+    document.querySelector('.ficha-mas').hidden = true;
+    return;
+  }
+
+  const ficha = FICHAS[p.tipo];
+  const extra = DETALLES[p.id] || {};
+  const tallas = tallasDe(p);
+  const unica = tallas.length === 1;
+
+  document.title = p.nombre + ' | TISION';
+  const meta = document.querySelector('meta[name="description"]');
+  if (meta && extra.texto) meta.setAttribute('content', extra.texto);
+
+  const lista = function (cosas) {
+    return '<ul>' + cosas.map(function (c) { return '<li>' + c + '</li>'; }).join('') + '</ul>';
+  };
+
+  const colores = p.colores.map(function (c, i) {
+    return '<label class="ficha-color" title="' + c.nombre + '">' +
+             '<input type="radio" name="color" value="' + c.nombre + '"' + (i === 0 ? ' checked' : '') + '>' +
+             '<span class="color ' + c.clase + '"></span>' +
+             '<span class="solo-lector">' + c.nombre + '</span>' +
+           '</label>';
+  }).join('');
+
+  const botonesTalla = tallas.map(function (t) {
+    return '<label class="ficha-talla">' +
+             '<input type="radio" name="talla" value="' + t + '"' + (unica ? ' checked' : '') + '>' +
+             '<span>' + t + '</span>' +
+           '</label>';
+  }).join('');
+
+  const tabla = ficha.medidas
+    ? '<div class="ficha-tabla"><table>' +
+        '<thead><tr>' + ficha.medidas.cabecera.map(function (h) { return '<th scope="col">' + h + '</th>'; }).join('') + '</tr></thead>' +
+        '<tbody>' + ficha.medidas.filas.map(function (fila) {
+          return '<tr>' + fila.map(function (v, i) { return i === 0 ? '<th scope="row">' + v + '</th>' : '<td>' + v + '</td>'; }).join('') + '</tr>';
+        }).join('') + '</tbody>' +
+      '</table></div>'
+    : '';
+
+  caja.dataset.id = p.id;
+  caja.innerHTML =
+    '<nav class="migas" aria-label="Estás aquí">' +
+      '<a href="../tienda.html">Tienda</a><span aria-hidden="true">/</span>' +
+      '<a href="categoria.html?c=' + p.tipo + '">' + TIPOS[p.tipo] + '</a><span aria-hidden="true">/</span>' +
+      '<span aria-current="page">' + p.nombre + '</span>' +
+    '</nav>' +
+
+    '<div class="ficha">' +
+      '<div class="ficha-imagen">' +
+        '<img src="' + ruta(p.img) + '" alt="' + p.alt + '">' +
+        (p.nuevo ? '<span class="etiqueta">Nuevo</span>' : '') +
+      '</div>' +
+
+      '<form class="ficha-info" id="ficha-form" novalidate>' +
+        '<p class="ficha-coleccion"><a href="' + ruta(p.pagina) + '">' + p.coleccion + '</a>' +
+          (p.detalle ? ' · <em>' + p.detalle + '</em>' : '') + '</p>' +
+        '<h1 class="ficha-nombre">' + p.nombre + '</h1>' +
+        '<p class="ficha-precio">' + precio(p.precio) + '</p>' +
+        (extra.texto ? '<p class="ficha-texto">' + extra.texto + '</p>' : '') +
+
+        '<fieldset class="ficha-opcion">' +
+          '<legend>Color: <strong id="ficha-color-nombre">' + p.colores[0].nombre + '</strong></legend>' +
+          '<div class="ficha-colores">' + colores + '</div>' +
+        '</fieldset>' +
+
+        '<fieldset class="ficha-opcion">' +
+          '<legend>Talla' + (unica ? ': <strong>' + tallas[0] + '</strong>' : '') + '</legend>' +
+          (tabla ? '<a href="#ficha-guia" class="ficha-guia-enlace">Guía de tallas</a>' : '') +
+          '<div class="ficha-tallas">' + botonesTalla + '</div>' +
+          '<p class="ficha-ajuste">' + (extra.ajuste || ficha.ajuste) + '</p>' +
+        '</fieldset>' +
+
+        '<div class="ficha-compra">' +
+          '<div class="ficha-cantidad">' +
+            '<button type="button" data-cantidad="-1" aria-label="Quitar una unidad">−</button>' +
+            '<input type="number" id="ficha-cantidad" value="1" min="1" max="10" aria-label="Cantidad">' +
+            '<button type="button" data-cantidad="1" aria-label="Añadir una unidad">+</button>' +
+          '</div>' +
+          '<button type="submit" class="boton boton-verde">Añadir al carrito</button>' +
+          '<button type="button" class="favorito ficha-favorito" aria-label="Añadir a favoritos">' + ICONO_CORAZON + '</button>' +
+        '</div>' +
+
+        '<ul class="ficha-ventajas">' +
+          '<li>Envío gratis a partir de 60 €</li>' +
+          '<li>Devoluciones gratis hasta 30 días</li>' +
+        '</ul>' +
+
+        '<details class="ficha-detalle" open><summary>Características</summary>' + lista(ficha.caracteristicas) + '</details>' +
+        (tabla ? '<details class="ficha-detalle" id="ficha-guia"><summary>Guía de tallas</summary>' + tabla +
+          '<p>Medidas de la prenda en plano. Si estás entre dos tallas, elige la mayor.</p></details>' : '') +
+        '<details class="ficha-detalle"><summary>Composición y cuidados</summary>' +
+          '<p>' + (extra.material || ficha.material) + '</p>' + lista(ficha.cuidado) + '</details>' +
+        '<details class="ficha-detalle"><summary>Envíos y devoluciones</summary>' +
+          '<p>Preparamos tu pedido en 24 horas y llega en 2-4 días laborables. Tienes 30 días para cambiarlo o devolverlo gratis.</p></details>' +
+      '</form>' +
+    '</div>';
+
+  // "También te puede gustar": primero las del mismo tipo, luego las de la misma colección
+  const relacionados = catalogo()
+    .filter(function (o) { return o.id !== p.id; })
+    .sort(function (a, b) {
+      const puntos = function (o) { return (o.tipo === p.tipo ? 2 : 0) + (o.coleccion === p.coleccion ? 1 : 0); };
+      return puntos(b) - puntos(a);
+    })
+    .slice(0, 4);
+  document.getElementById('ficha-relacionados').innerHTML = relacionados.map(tarjetaHTML).join('');
+
+  const form = document.getElementById('ficha-form');
+  const cantidad = document.getElementById('ficha-cantidad');
+
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'color') document.getElementById('ficha-color-nombre').textContent = e.target.value;
+    if (e.target.name === 'talla') form.querySelector('.ficha-tallas').classList.remove('falta');
+  });
+
+  form.addEventListener('click', function (e) {
+    const boton = e.target.closest('[data-cantidad]');
+    if (!boton) return;
+    const n = (parseInt(cantidad.value, 10) || 1) + parseInt(boton.dataset.cantidad, 10);
+    cantidad.value = Math.min(10, Math.max(1, n));
+  });
+
+  // La guía de tallas se abre al pulsar su enlace
+  const enlaceGuia = form.querySelector('.ficha-guia-enlace');
+  if (enlaceGuia) {
+    enlaceGuia.addEventListener('click', function () {
+      document.getElementById('ficha-guia').open = true;
+    });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const talla = form.querySelector('input[name="talla"]:checked');
+    if (!talla) {
+      form.querySelector('.ficha-tallas').classList.add('falta');
+      form.querySelector('input[name="talla"]').focus();
+      return avisar('Elige una talla');
+    }
+    const color = form.querySelector('input[name="color"]:checked').value;
+    const n = Math.min(10, Math.max(1, parseInt(cantidad.value, 10) || 1));
+    cantidad.value = n;
+    Carrito.anadir(p.id, color, talla.value, n);
+  });
+}
+
 // =========================================================
 // CARRITO
 // =========================================================
@@ -160,7 +350,8 @@ const Carrito = {
     const p = buscarProducto(id);
     if (!p) return;
     color = color || (p.colores[0] ? p.colores[0].nombre : '');
-    talla = talla || (['gorros', 'accesorios', 'jardineria'].indexOf(p.tipo) !== -1 ? 'Única' : 'M');
+    const tallas = tallasDe(p);
+    talla = talla || (tallas.indexOf('M') !== -1 ? 'M' : tallas[Math.floor((tallas.length - 1) / 2)]);
     const igual = this.lineas.find(function (l) { return l.id === id && l.color === color && l.talla === talla; });
     if (igual) {
       igual.cantidad += cantidad || 1;
@@ -266,7 +457,7 @@ const Favoritos = {
   marcar: function () {
     const ids = this.ids;
     document.querySelectorAll('.favorito').forEach(function (b) {
-      const tarjeta = b.closest('.producto, .vendido');
+      const tarjeta = b.closest('.producto, .vendido, #ficha-producto');
       const id = tarjeta && (tarjeta.dataset.id || idDeTarjeta(tarjeta));
       const activo = ids.indexOf(id) !== -1;
       b.classList.toggle('activo', activo);
@@ -346,9 +537,9 @@ function crearBuscador() {
     });
     resultados.innerHTML = encontrados.length
       ? encontrados.map(function (p) {
-          return '<a class="buscador-item" href="' + ruta(p.pagina) + '">' +
+          return '<a class="buscador-item" href="' + enlaceProducto(p.id) + '">' +
                    '<img src="' + ruta(p.img) + '" alt="">' +
-                   '<span><strong>' + p.nombre + '</strong><small>Ver en ' + p.coleccion + ' · ' + TIPOS[p.tipo] + '</small></span>' +
+                   '<span><strong>' + p.nombre + '</strong><small>' + p.coleccion + ' · ' + TIPOS[p.tipo] + '</small></span>' +
                    '<em>' + precio(p.precio) + '</em></a>';
         }).join('')
       : '<p class="buscador-ayuda">No hay resultados para «' + campo.value + '».</p>';
@@ -379,6 +570,8 @@ function cerrarBuscador() {
 document.addEventListener('DOMContentLoaded', function () {
 
   pintarCategoria();
+  pintarProducto();
+  enlazarTarjetas();
 
   Carrito.crearPanel();
   Carrito.actualizar();
@@ -406,11 +599,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Favoritos
     const fav = e.target.closest('.favorito');
     if (fav) {
-      const tarjeta = fav.closest('.producto, .vendido');
+      const tarjeta = fav.closest('.producto, .vendido, #ficha-producto');
       const id = tarjeta.dataset.id || idDeTarjeta(tarjeta);
       const p = buscarProducto(id);
       const nombre = p ? p.nombre : (tarjeta.querySelector('h3') || {}).textContent;
       Favoritos.alternar(id, nombre);
+      return;
+    }
+
+    // La foto de una tarjeta lleva a la ficha del producto
+    const foto = e.target.closest('.producto-enlazado .producto-imagen');
+    if (foto) {
+      location.href = foto.closest('.producto').querySelector('.producto-nombre a').href;
       return;
     }
 
