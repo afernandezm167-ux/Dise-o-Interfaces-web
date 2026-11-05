@@ -43,6 +43,43 @@ body.tema-field {
   background: rgba(245, 243, 234, 0.08) !important;
 }
 
+/* Separador antes del pie: una línea fina con el botón de "Más información"
+   (al formulario de contacto) en el centro. En contacto queda solo la línea. */
+.pie-separador {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1400px;
+  margin: clamp(64px, 9vw, 128px) auto clamp(40px, 5vw, 64px);
+  padding: 0 24px;
+}
+
+.pie-separador::before,
+.pie-separador::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--linea);
+}
+
+.pie-separador .boton {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  justify-content: center;
+  border-radius: 50% !important;
+}
+
+.pie-separador .boton .ico {
+  width: 22px;
+  height: 22px;
+}
+
+.footer {
+  margin-top: 0 !important;
+  border-top: none !important;
+}
+
 /* La etiqueta al pasar el ratón, en claro sobre fondo oscuro */
 .lp-seccion-verde [data-tip]::after,
 .footer [data-tip]::after {

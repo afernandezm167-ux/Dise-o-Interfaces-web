@@ -42,7 +42,6 @@ No necesita instalación ni servidor: abre `index.html` en el navegador. Es la l
 ├── index.html               Landing (lo primero que se abre)
 ├── tienda.html
 ├── README.md
-├── PROMPTS-IMAGENES.md      Prompts de Nano Banana para las fotos que faltan
 ├── pages/
 │   ├── moss-season.html
 │   ├── static-garden.html
@@ -67,7 +66,7 @@ No necesita instalación ni servidor: abre `index.html` en el navegador. Es la l
     │   ├── essentials/      Tienda y landing (essentials-01 … 04, essentials-hero)
     │   ├── moss/            Moss Season (moss-01 … 08, moss-hero, moss-lluvia)
     │   ├── garden/          Static Garden (garden-01 … 08, garden-arco-1 … 3)
-    │   └── field/           Field Theory (field-01 … 08)
+    │   └── field/           Field Theory (field-01 … 08, field-hero)
     └── icons/
         └── favicon.svg
 ```
@@ -100,7 +99,7 @@ Cada foto de producto se llama como su `id`. Las fotos de los otros colores aña
 
 ## Diseño
 
-- **Minimalismo**: solo las secciones imprescindibles, sin sombras ni esquinas redondeadas, títulos finos y mucho aire. Los fondos de color se reservan para los heroes (verde claro) y para el pie y las ventajas (verde oscuro).
+- **Minimalismo**: solo las secciones imprescindibles, sin sombras ni esquinas redondeadas, títulos finos y mucho aire. Los fondos de color se reservan para los heroes (verde claro) y para el pie y las ventajas (verde oscuro). Antes del pie, una línea fina con el botón «Más información» (icono de sobre) que lleva al formulario de contacto.
 - **Iconos**: SVG de línea fina en el menú, las categorías, los botones, los filtros, el pie y los formularios. El texto sigue ahí para lectores de pantalla y como etiqueta al pasar el ratón.
 - **Tipografías**: Inter e Instrument Serif (cursiva para las palabras destacadas), desde Google Fonts.
 - **Colores**: variables en `:root` (`--verde`, `--amarillo`, `--crema`…). Cada colección las cambia con una clase en el `<body>` (`tema-moss`, `tema-static`, `tema-field`).
@@ -127,9 +126,8 @@ Con eso ya tiene ficha, aparece en el buscador y en su categoría, y se puede a�
 
 ---
 
-## Pendiente
+## Notas
 
-- La portada de Field Theory usa por ahora la foto de la sudadera. Los prompts para generar la definitiva están en `PROMPTS-IMAGENES.md`.
 - El pago, «Mi cuenta» y el envío del formulario son simulados: no hay servidor.
 
 ---

@@ -86,7 +86,7 @@ document.documentElement.classList.toggle('sin-efectos', efectosApagados());
     'ver prendas': T.flecha,
     'ver coleccion': T.flecha,
     'ver la coleccion': T.flecha,
-    'mas informacion': T.flecha,
+    'mas informacion': T.correo,
     'comprar': T.flecha,
     'pasear por el jardin': T.flecha,
     'quiero mi 15%': T.flecha,
