@@ -1,0 +1,471 @@
+/* =========================================================
+   TISION - zen.css
+   Versión todavía más minimalista. Se carga DESPUÉS de
+   minimal.css: quita bloques de color y textos secundarios,
+   deja iconos con etiqueta al pasar el ratón y añade los
+   estilos de los efectos de zen.js (cursor, imanes, revelado).
+   ========================================================= */
+
+/* =========================================
+   1. COLOR: casi todo en tinta sobre papel
+   ========================================= */
+:root,
+body.tema-moss,
+body.tema-static,
+body.tema-field {
+  --linea: rgba(30, 42, 34, 0.12);
+  --zen-tinta: var(--texto);
+  --zen-suave: rgba(30, 42, 34, 0.45);
+}
+
+/* Los fondos verdes de la versión normal se mantienen (heroes en verde
+   claro, "Ventajas" y pie en verde oscuro); el resto de bloques, sin fondo */
+.beneficios,
+.equipo-persona {
+  background: transparent !important;
+}
+
+/* Sobre verde oscuro, todo en claro: textos, iconos y círculos */
+.lp-seccion-verde,
+.lp-seccion-verde .lp-subtitulo,
+.lp-seccion-verde .lp-ventaja,
+.footer,
+.footer a {
+  color: var(--crema) !important;
+}
+
+.lp-seccion-verde .lp-ventaja {
+  border-color: rgba(245, 243, 234, 0.3) !important;
+}
+
+.lp-seccion-verde .lp-ventaja:hover {
+  border-color: var(--crema) !important;
+  background: rgba(245, 243, 234, 0.08) !important;
+}
+
+/* La etiqueta al pasar el ratón, en claro sobre fondo oscuro */
+.lp-seccion-verde [data-tip]::after,
+.footer [data-tip]::after {
+  background: var(--crema);
+  color: var(--verde);
+}
+
+/* =========================================
+   2. MENOS TEXTO
+   Solo se ocultan textos de apoyo: títulos,
+   precios y formularios se quedan.
+   ========================================= */
+.hero-subtitulo,
+.hero-texto,
+.info-texto,
+.lp-etiqueta,
+.lp-entradilla,
+.lp-nota,
+.lp-legal,
+.lp-prueba,
+.cx-etiqueta,
+.cx-lema,
+.cx-subtitulo,
+.cx-latin,
+.producto-coleccion,
+.categoria-info p,
+.vendido-info p,
+.linea-hito p,
+.equipo-persona p,
+.equipo-persona small,
+.mas-info-texto p,
+.banner-lema,
+.banner-est,
+.hero-marcas,
+.footer-copy,
+.ficha-ajuste,
+.ficha-texto,
+.ficha-mas,
+.hero-descuento,
+.lp-coleccion-info p,
+.lp-coleccion-num,
+.sobre-lema,
+.contacto-texto,
+.cx-sello,
+.cx-banda,
+.cx-botones a:not([href="#coleccion"]),
+.equipo-persona h3 {
+  display: none !important;
+}
+
+/* =========================================
+   TIENDA: hero → categorías → productos → ventajas
+   ========================================= */
+.layout {
+  display: flex !important;
+  flex-direction: column;
+  gap: clamp(48px, 7vw, 96px) !important;
+}
+
+.layout > .col-derecha,
+.layout > .col-izquierda {
+  display: contents;
+}
+
+.layout .hero          { order: 1; }
+.layout .categorias    { order: 2; }
+.layout #nueva-llegada { order: 3; }
+.layout .beneficios    { order: 4; }
+
+/* Categorías: solo un icono redondo por categoría (zen.js) */
+.categorias {
+  display: flex !important;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(16px, 4vw, 48px) !important;
+}
+
+.categoria-card {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--linea) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: var(--zen-tinta);
+  overflow: visible !important;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s !important;
+}
+
+.categoria-card:hover {
+  background: var(--zen-tinta) !important;
+  color: var(--crema);
+  transform: none !important;
+}
+
+.categoria-card .ico {
+  width: 26px;
+  height: 26px;
+}
+
+/* Equipo: solo las iniciales, el nombre sale al pasar el ratón */
+.equipo {
+  display: flex !important;
+  justify-content: center;
+  gap: 24px !important;
+}
+
+.equipo-persona {
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Tarjetas de icono + título + texto: solo queda el icono
+   (el título sale como etiqueta al pasar el ratón) */
+.beneficio > div,
+.valor h3,
+.valor p,
+.lp-ventaja h3,
+.lp-ventaja p,
+.cx-tarjeta h3,
+.cx-tarjeta p {
+  display: none !important;
+}
+
+.beneficios,
+.valores,
+.lp-ventajas,
+.cx-tarjetas {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(24px, 6vw, 96px) !important;
+  padding: 48px 0 !important;
+  border: none !important;
+}
+
+.beneficio,
+.valor,
+.lp-ventaja,
+.cx-tarjeta {
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0 !important;
+  border: 1px solid var(--linea) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: var(--zen-tinta);
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.beneficio:hover,
+.valor:hover,
+.lp-ventaja:hover,
+.cx-tarjeta:hover {
+  border-color: var(--zen-tinta) !important;
+}
+
+.beneficio .icono,
+.valor .icono,
+.lp-ventaja .icono,
+.cx-tarjeta .icono {
+  width: 24px;
+  height: 24px;
+}
+
+.beneficio-icono,
+.valor-icono,
+.lp-ventaja-icono,
+.cx-tarjeta-icono {
+  display: flex;
+  margin: 0 !important;
+  background: none !important;
+  color: inherit !important;
+}
+
+/* =========================================
+   3. TIPOGRAFÍA MÁS LIGERA Y MÁS AIRE
+   ========================================= */
+h1, h2,
+.seccion-titulo,
+.info-titulo,
+.lp-titulo,
+.lp-subtitulo,
+.cx-titulo,
+.ficha-nombre {
+  font-weight: 300 !important;
+  letter-spacing: -0.03em;
+}
+
+.seccion-titulo {
+  font-size: clamp(22px, 2.4vw, 32px) !important;
+}
+
+.seccion-cabecera {
+  margin-bottom: 32px;
+}
+
+main section + section,
+.layout > div > section + section {
+  margin-top: clamp(48px, 8vw, 120px);
+}
+
+/* Los precios y nombres de las tarjetas, más discretos */
+.producto-info {
+  gap: 6px !important;
+  padding: 12px 0 !important;
+}
+
+.producto-nombre {
+  font-weight: 400 !important;
+}
+
+/* Opacidad en vez de color: así se lee también sobre fondos oscuros */
+.producto-precio {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* El botón de compra de las tarjetas solo aparece al pasar el ratón */
+@media (hover: hover) {
+  .producto-info .boton {
+    opacity: 0;
+    translate: 0 6px;
+    transition: opacity 0.3s, translate 0.3s;
+  }
+
+  .producto:hover .producto-info .boton,
+  .producto-info .boton:focus-visible {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* =========================================
+   4. ETIQUETAS AL PASAR EL RATÓN
+   zen.js pasa el title de cada icono a data-tip
+   ========================================= */
+
+/* Los botones nunca van posicionados: la etiqueta se coloca respecto a ellos */
+button[data-tip],
+a.boton[data-tip] {
+  position: relative;
+}
+
+[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  translate: -50% 4px;
+  padding: 5px 9px;
+  background: var(--zen-tinta);
+  color: var(--crema);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 50;
+  transition: opacity 0.2s, translate 0.2s;
+}
+
+[data-tip]:hover::after,
+[data-tip]:focus-visible::after {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+/* En la cabecera y el pie la etiqueta sale por debajo / encima según haga falta */
+.header [data-tip]::after {
+  bottom: auto;
+  top: calc(100% + 10px);
+}
+
+/* =========================================
+   5. PÁGINA DE PRODUCTO EN VERSIÓN ICONO
+   ========================================= */
+.ficha-ventajas {
+  gap: 12px !important;
+}
+
+.ficha-ventajas li::before {
+  content: none !important;
+}
+
+.ficha-ventajas li {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--linea);
+  border-radius: 50% !important;
+}
+
+.ficha-detalle summary {
+  justify-content: flex-start !important;
+  align-items: center;
+  gap: 12px;
+  font-weight: 400 !important;
+}
+
+.ficha-detalle summary::after {
+  margin-left: auto;
+}
+
+.ficha-detalle summary .ico {
+  width: 18px;
+  height: 18px;
+}
+
+.ficha-opcion legend .ico {
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+  margin-right: 6px;
+}
+
+/* Contador de la oferta: solo números y una letra */
+.contador-texto {
+  font-size: 10px !important;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+/* Etiquetas del formulario como iconos */
+.campo > label .ico {
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+}
+
+/* =========================================
+   6. EFECTOS DE zen.js
+   ========================================= */
+
+/* Cursor: punto + aro que se agranda sobre lo que se puede pulsar */
+.zen-cursor {
+  cursor: none;
+}
+
+.zen-cursor a,
+.zen-cursor button,
+.zen-cursor label,
+.zen-cursor summary,
+.zen-cursor input,
+.zen-cursor .producto-imagen {
+  cursor: none;
+}
+
+.cursor-punto,
+.cursor-aro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50% !important;
+  translate: -50% -50%;
+}
+
+.cursor-punto {
+  width: 6px;
+  height: 6px;
+  background: var(--zen-tinta);
+}
+
+.cursor-aro {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--zen-tinta);
+  opacity: 0.5;
+  transition: width 0.3s var(--curva), height 0.3s var(--curva), opacity 0.3s, background-color 0.3s;
+}
+
+.cursor-aro.sobre {
+  width: 64px;
+  height: 64px;
+  opacity: 1;
+  background: color-mix(in srgb, var(--amarillo) 35%, transparent);
+  border-color: transparent;
+  mix-blend-mode: multiply;
+}
+
+.cursor-aro.pulsado {
+  width: 22px;
+  height: 22px;
+}
+
+/* Imanes: los iconos siguen un poco al ratón */
+.zen-iman {
+  transition: translate 0.4s var(--curva);
+}
+
+/* Fotos que se descubren al entrar en pantalla */
+.zen-revela {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.1s var(--curva);
+}
+
+.zen-revela.zen-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Sin efectos (botón flotante): todo quieto */
+html.sin-efectos .zen-revela {
+  clip-path: none;
+}
+
+@media (max-width: 700px) {
+  .beneficio,
+  .valor,
+  .lp-ventaja,
+  .cx-tarjeta,
+  .categoria-card {
+    width: 52px;
+    height: 52px;
+  }
+}

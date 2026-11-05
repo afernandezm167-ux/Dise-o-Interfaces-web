@@ -3631,3 +3631,24 @@ body.tema-field {
     justify-content: space-between;
   }
 }
+
+/* Círculos de color de las tarjetas: se pulsan para cambiar la foto */
+.colores button.color {
+  padding: 0;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.2s, transform 0.2s;
+}
+
+.colores button.color:hover {
+  transform: scale(1.15);
+}
+
+.colores button.color.activo {
+  outline-color: var(--verde);
+}
+
+.colores button.color:focus-visible {
+  outline: 2px solid var(--amarillo);
+}

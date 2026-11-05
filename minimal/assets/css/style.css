@@ -1,0 +1,3654 @@
+/* =========================================================
+   TISION - styles.css
+   ========================================================= */
+
+/* =========================================
+   1. VARIABLES (colores y medidas del diseño)
+   ========================================= */
+:root {
+  --verde: #1F4D36;        /* verde oscuro principal */
+  --verde-hover: #163A28;  /* verde más oscuro para :hover */
+  --verde-claro: #DDE5C4;  /* fondo verdoso del hero */
+  --amarillo: #F6DC5C;     /* amarillo de ofertas y botones */
+  --crema: #F5F3EA;        /* fondo general de la página */
+  --blanco: #FFFFFF;
+  --texto: #1E2A22;        /* color del texto normal */
+  --gris: #6B6B6B;         /* textos secundarios */
+  --hueco: #E6E3D6;        /* color del hueco donde irá cada foto */
+
+  --radio: 12px;                             /* esquinas redondeadas */
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.06);  /* sombra suave */
+}
+
+/* =========================================
+   2. RESET
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+/* Todas las fotos rellenan su hueco sin deformarse */
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* =========================================
+   3. BOTONES
+   ========================================= */
+.boton {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.boton:hover {
+  transform: translateY(-2px);
+}
+
+.boton-amarillo {
+  background: var(--amarillo);
+  color: var(--verde);
+}
+
+.boton-verde {
+  background: var(--verde);
+  color: var(--blanco);
+}
+
+.boton-verde:hover {
+  background: var(--verde-hover);
+}
+
+.boton-bloque {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.boton-pequeno {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* Oculta un texto a la vista pero lo deja para lectores de pantalla */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Iconos SVG: toman el tamaño de la letra y el color del texto */
+.icono {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   4. CABECERA Y MENÚ
+   ========================================= */
+.header {
+  background: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--sombra);
+}
+
+.header-contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--verde);
+}
+
+.logo sup {
+  font-size: 12px;
+}
+
+.nav-lista {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 6px 0;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.activo {
+  border-bottom-color: var(--verde);
+  font-weight: 600;
+}
+
+/* Submenú desplegable */
+.desplegable {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: var(--blanco);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+}
+
+.desplegable:hover .submenu {
+  display: block;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+.submenu a:hover {
+  background: var(--crema);
+  color: var(--verde);
+}
+
+/* Botón hamburguesa (oculto en ordenador) */
+.menu-toggle {
+  display: none;
+}
+
+.menu-icono {
+  display: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--verde);
+}
+
+/* Iconos */
+.header-iconos {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 22px;
+  color: var(--verde);
+}
+
+.header-iconos a {
+  display: flex;
+  transition: transform 0.2s;
+}
+
+.header-iconos a:hover {
+  transform: translateY(-2px);
+}
+
+.carrito {
+  position: relative;
+}
+
+.carrito-contador {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   5. DISEÑO GENERAL: DOS BLOQUES APILADOS
+   (bloque derecho arriba, bloque izquierdo debajo)
+   ========================================= */
+.layout {
+  max-width: 1400px;
+  margin: 24px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.col-izquierda,
+.col-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cabecera de sección: "Título ......... Ver todo →" */
+.seccion-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.seccion-titulo {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+.ver-todo {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ver-todo:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   6. CATEGORÍAS
+   ========================================= */
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.categoria-card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: transform 0.2s;
+}
+
+.categoria-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 📷 Hueco de las fotos de categoría */
+.categoria-imagen {
+  height: 180px;
+  background: var(--hueco);
+}
+
+.categoria-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.categoria-info h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.categoria-info p {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.flecha-circulo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   7. OFERTA + CONTADOR
+   ========================================= */
+.oferta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.oferta-izq {
+  background: var(--verde);
+  color: var(--blanco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* 📷 Hueco de la zapatilla */
+.oferta-imagen {
+  width: 180px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.oferta-imagen img {
+  object-fit: cover; /* rellena todo el hueco a lo ancho */
+}
+
+.oferta-izq h2 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.oferta-precio {
+  display: inline-block;
+  border: 2px solid var(--blanco);
+  border-radius: 30px;
+  padding: 6px 16px;
+  font-weight: 600;
+}
+
+.oferta-der {
+  background: var(--amarillo);
+  color: var(--verde);
+  padding: 24px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.oferta-aviso {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.contador {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contador-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contador-numero {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.contador-texto {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================
+   8. MÁS VENDIDOS
+   ========================================= */
+.vendidos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.vendido {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+/* 📷 Hueco de las fotos de "Más vendidos" */
+.vendido-imagen {
+  position: relative;
+  height: 320px;
+  background: var(--hueco);
+}
+
+.vendido-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.vendido-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.vendido-info p {
+  font-size: 13px;
+  color: var(--gris);
+  margin-bottom: 8px;
+}
+
+/* =========================================
+   10. BANNER DE MARCA
+   ========================================= */
+.banner-marca {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 1fr;
+  align-items: center;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.banner-logo {
+  text-align: center;
+  padding: 24px;
+}
+
+.banner-est {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--verde);
+}
+
+.banner-lema {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  line-height: 1;
+  color: var(--verde);
+  border-left: 1px solid var(--verde);
+  padding-left: 20px;
+  transform: rotate(-6deg);
+}
+
+/* 📷 Hueco de la foto del banner */
+.banner-imagen {
+  height: 180px;
+  background: var(--hueco);
+}
+
+/* =========================================
+   11. HERO
+   ========================================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.hero-contenido {
+  padding: 56px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hero-subtitulo {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--verde);
+}
+
+.hero-titulo {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--verde);
+}
+
+.hero-titulo sup {
+  font-size: 16px;
+  vertical-align: top;
+}
+
+.hero-titulo span {
+  font-size: 54px;
+  font-weight: 700;
+}
+
+.hero-texto {
+  font-size: 18px;
+}
+
+.hero-contenido .boton {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+/* 📷 Hueco de la foto grande del hero */
+.hero-imagen {
+  position: relative;
+  min-height: 420px;
+  background: var(--hueco);
+}
+
+.hero-descuento {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--amarillo);
+  color: var(--verde);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-marcas {
+  grid-column: 1 / -1;
+  background: var(--verde);
+  color: var(--blanco);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* =========================================
+   12. TARJETAS DE PRODUCTO (Nueva llegada)
+   ========================================= */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.producto {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 📷 Hueco de las fotos de producto */
+.producto-imagen {
+  position: relative;
+  height: 260px;
+  background: var(--hueco);
+}
+
+.etiqueta {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: var(--amarillo);
+  color: var(--verde);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.favorito {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: var(--blanco);
+  font-size: 16px;
+  color: var(--verde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: background 0.2s;
+}
+
+.favorito:hover {
+  background: var(--amarillo);
+}
+
+.favorito:hover .icono {
+  fill: currentColor;
+}
+
+.producto-info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.producto-nombre {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.producto-precio {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.producto-info .boton {
+  margin-top: auto;
+  font-size: 13px;
+}
+
+/* Circulitos de colores */
+.colores {
+  display: flex;
+  gap: 8px;
+}
+
+.color {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.color-verde    { background: #1F4D36; }
+.color-beige    { background: #E6DCC8; }
+.color-negro    { background: #222222; }
+.color-blanco   { background: #FFFFFF; }
+.color-amarillo { background: #F6DC5C; }
+.color-caqui    { background: #C8A87A; }
+.color-oliva    { background: #6B8E5A; }
+
+/* =========================================
+   13. BENEFICIOS
+   ========================================= */
+.beneficios {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.beneficio {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.beneficio:not(:last-child) {
+  border-right: 1px solid #E5E2D6;
+  padding-right: 12px;
+}
+
+.beneficio-icono {
+  display: flex;
+  font-size: 28px;
+  color: var(--verde);
+}
+
+.beneficio h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.beneficio p {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+/* =========================================
+   14. FORMULARIO DE CONTACTO
+   ========================================= */
+.contacto {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 24px;
+}
+
+.contacto-contenedor {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+}
+
+.contacto-texto p {
+  margin-top: 12px;
+  color: var(--gris);
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.campo-completo {
+  grid-column: 1 / -1;
+}
+
+.campo label,
+.campo legend {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 12px 14px;
+  border: 1px solid #D6D3C4;
+  border-radius: 8px;
+  background: var(--crema);
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--verde);
+  box-shadow: 0 0 0 3px rgba(31, 77, 54, 0.15);
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+/* Radios */
+.opciones {
+  display: flex;
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.opciones label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.opciones input,
+.check input {
+  accent-color: var(--verde);
+  width: 16px;
+  height: 16px;
+}
+
+/* Checkbox */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.formulario .boton {
+  justify-self: start;
+}
+
+/* =========================================
+   15. FOOTER
+   ========================================= */
+.footer {
+  background: var(--verde);
+  color: var(--blanco);
+}
+
+.footer-contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-enlaces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+}
+
+.footer-enlaces a:hover {
+  text-decoration: underline;
+}
+
+.footer-redes {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-redes a {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--blanco);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.footer-redes a:hover {
+  background: var(--blanco);
+  color: var(--verde);
+}
+
+.footer-copy {
+  font-size: 12px;
+}
+
+/* =========================================
+   16. RESPONSIVE (móvil y tablet)
+   ========================================= */
+
+/* --- Tablets: aparece el menú hamburguesa --- */
+@media (max-width: 900px) {
+  .menu-icono {
+    display: block;
+    order: 3;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blanco);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Si el checkbox está marcado, se muestra el menú */
+  .menu-toggle:checked ~ .nav {
+    display: block;
+  }
+
+  .nav-lista {
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 24px 20px;
+  }
+
+  .nav-link {
+    padding: 12px 0;
+  }
+
+  .submenu {
+    display: block;
+    position: static;
+    box-shadow: none;
+    padding: 0 0 0 16px;
+  }
+
+  .contacto-contenedor {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Móviles --- */
+@media (max-width: 700px) {
+  .header-iconos {
+    gap: 12px;
+    font-size: 18px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-contenido {
+    padding: 32px 24px;
+  }
+
+  .hero-titulo {
+    font-size: 44px;
+  }
+
+  .hero-titulo span {
+    font-size: 38px;
+  }
+
+  .hero-imagen {
+    min-height: 260px;
+  }
+
+  .hero-marcas {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .categorias,
+  .productos,
+  .beneficios {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .beneficio:not(:last-child) {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .oferta {
+    grid-template-columns: 1fr;
+  }
+
+  .vendido-imagen {
+    height: 240px;
+  }
+
+  .banner-marca {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .banner-lema {
+    border-left: none;
+    padding: 0 0 16px;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-contenedor {
+    padding: 24px;
+  }
+
+  .footer-contenedor {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-enlaces {
+    justify-content: center;
+  }
+
+  .seccion-titulo {
+    font-size: 26px;
+  }
+}
+
+/* --- Móviles pequeños --- */
+@media (max-width: 480px) {
+  .productos,
+  .vendidos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   17. COLECCIONES
+   Páginas: moss-season.html · static-garden.html · field-theory.html
+   Cada página tiene su "tema" (class en el <body>) que cambia
+   las variables de color; los componentes son compartidos.
+   ========================================================= */
+
+/* ---------- 17.1 Base compartida ---------- */
+:root {
+  --fuente-titulo: 'Montserrat', sans-serif;
+  --acento: var(--amarillo);
+}
+
+.seccion-titulo,
+.hero-titulo {
+  font-family: var(--fuente-titulo);
+}
+
+.contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cx-seccion {
+  margin-top: 64px;
+}
+
+.cx-subtitulo {
+  color: var(--gris);
+  max-width: 560px;
+  margin-top: 6px;
+}
+
+/* Colores extra para los circulitos y las paletas */
+.color-musgo    { background: #6F8F4E; }
+.color-helecho  { background: #2F5D3A; }
+.color-niebla   { background: #C9D1BC; }
+.color-corteza  { background: #4B3A2A; }
+.color-gota     { background: #9FB8B0; }
+.color-terracota{ background: #C8734B; }
+.color-salvia   { background: #B9C7A6; }
+.color-crema    { background: #F4EFE3; }
+.color-arcilla  { background: #E3C9B0; }
+.color-hoja     { background: #2F5D44; }
+
+/* ---------- 17.2 Hero de colección ---------- */
+.cx-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radio);
+  margin-top: 24px;
+}
+
+.cx-hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  padding: 56px 48px;
+}
+
+.cx-etiqueta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 6px 16px;
+  border-radius: 30px;
+}
+
+.cx-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 88px;
+  font-weight: 800;
+  line-height: 0.95;
+  margin: 18px 0;
+}
+
+.cx-lema {
+  font-size: 19px;
+  max-width: 470px;
+}
+
+.cx-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.cx-boton-borde {
+  background: transparent;
+  border: 2px solid currentColor;
+}
+
+/* 📷 Hueco de la foto principal de la colección */
+.cx-hero-imagen {
+  position: relative;
+  height: 480px;
+  background: var(--hueco);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+/* Sello circular encima de la foto */
+.cx-sello {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--amarillo);
+  color: var(--verde);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Banda de palabras (como la barra verde del hero principal) */
+.cx-banda {
+  margin-top: 24px;
+  background: var(--verde);
+  color: var(--blanco);
+  border-radius: var(--radio);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 12px 24px;
+  padding: 18px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* ---------- 17.3 Tarjetas de texto (sensaciones, cuidados...) ---------- */
+.cx-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.cx-tarjetas.cuatro {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.cx-tarjeta {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 28px;
+}
+
+.cx-tarjeta-icono {
+  display: block;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--acento);
+  margin-bottom: 12px;
+}
+
+.cx-num {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--acento);
+  margin-bottom: 10px;
+}
+
+.cx-tarjeta h3 {
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+.cx-tarjeta p {
+  font-size: 15px;
+  color: var(--gris);
+}
+
+/* ---------- 17.4 Barra de filtros y orden ---------- */
+.cx-herramientas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cx-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cx-chip {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1.5px solid var(--verde);
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--verde);
+  transition: background 0.2s, color 0.2s;
+}
+
+.cx-chip:hover,
+.cx-chip.activo {
+  background: var(--verde);
+  color: var(--blanco);
+}
+
+/* La rejilla de productos de la colección: 4 columnas, 2 filas */
+.cx-productos {
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 24px;
+}
+
+/* ---------- 17.5 Lookbook (fotos en mosaico) ---------- */
+.cx-lookbook {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cx-foto {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+/* 📷 Hueco de cada foto del lookbook */
+.cx-foto-img {
+  position: relative;
+  flex: 1;
+  background: var(--hueco);
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.cx-foto-img img {
+  position: absolute;
+  inset: 0;
+}
+
+.cx-foto figcaption {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  background: var(--blanco);
+  color: var(--verde);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* Cuántas columnas (de 12) ocupa cada foto */
+.f-3 { grid-column: span 3; }
+.f-4 { grid-column: span 4; }
+.f-5 { grid-column: span 5; }
+.f-6 { grid-column: span 6; }
+.f-7 { grid-column: span 7; }
+
+/* Altura de cada foto */
+.baja  { height: 240px; }
+.media { height: 320px; }
+.alta  { height: 460px; }
+
+/* ---------- 17.6 Paleta de colores ---------- */
+.cx-paleta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cx-muestra {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+}
+
+.cx-muestra .bola {
+  display: block;
+  height: 120px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.cx-muestra strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--verde);
+}
+
+.cx-muestra small {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+/* ---------- 17.7 Enlaces a las otras colecciones ---------- */
+.cx-otras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cx-otra {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 200px;
+  padding: 32px;
+  border-radius: var(--radio);
+  color: #fff;
+  transition: transform 0.2s;
+}
+
+.cx-otra:hover {
+  transform: translateY(-4px);
+}
+
+.cx-otra span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  opacity: 0.8;
+}
+
+.cx-otra h3 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 4px 0;
+}
+
+.cx-otra p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.otra-moss   { background: linear-gradient(135deg, #0D2014, #2E5B3C); }
+.otra-static { background: linear-gradient(135deg, #2F5D44, #7E9C6B); }
+.otra-field  { background: linear-gradient(135deg, #2B3624, #7A8660); }
+
+/* =========================================================
+   17.8 TEMA 1: MOSS SEASON
+   Lluvia · bosque · musgo
+   ========================================================= */
+body.tema-moss {
+  --verde: #16331F;
+  --verde-hover: #0E2315;
+  --verde-claro: #CFD8BE;
+  --amarillo: #B9CF6A;      /* verde musgo claro */
+  --crema: #E7ECDD;
+  --hueco: #C3CCB4;
+  --texto: #16231A;
+  --gris: #5C685E;
+  --acento: #6F8F4E;
+}
+
+.moss-hero {
+  background:
+    radial-gradient(ellipse at 85% 15%, #2E5B3C 0, transparent 55%),
+    linear-gradient(160deg, #0D2014, #16331F 55%, #1F4630);
+  color: #fff;
+}
+
+.moss-hero .cx-etiqueta {
+  background: rgba(185, 207, 106, 0.15);
+  border: 1px solid rgba(185, 207, 106, 0.5);
+  color: #B9CF6A;
+}
+
+.moss-hero .cx-titulo span {
+  color: #B9CF6A;
+}
+
+.moss-hero .cx-hero-imagen {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Niebla en la parte baja de la foto */
+.moss-hero .cx-hero-imagen::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  background: linear-gradient(transparent, rgba(13, 32, 20, 0.85));
+  pointer-events: none;
+}
+
+.moss-hero .boton-amarillo {
+  color: #0D2014;
+}
+
+/* La lluvia: tres capas de gotitas que caen a distinta velocidad */
+.lluvia {
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -10%;
+  right: -10%;
+  z-index: 1;
+  pointer-events: none;
+  transform: skewX(-8deg);
+  background-image:
+    radial-gradient(ellipse 1.2px 26px at 50% 50%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(ellipse 1px 20px at 50% 50%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(ellipse 1.4px 34px at 50% 50%, rgba(255, 255, 255, 0.35), transparent);
+  background-size: 64px 119px, 47px 83px, 101px 167px;
+  background-position: 0 0, 13px 31px, 40px 70px;
+  animation: lluvia 1s linear infinite;
+}
+
+@keyframes lluvia {
+  to {
+    background-position: 0 119px, 13px 114px, 40px 237px;
+  }
+}
+
+/* Quien prefiere menos movimiento, no ve la animación */
+@media (prefers-reduced-motion: reduce) {
+  .lluvia {
+    animation: none;
+  }
+}
+
+/* Banda oscura de productos */
+.cx-oscura {
+  background: var(--verde);
+  color: #fff;
+  padding: 56px 0;
+}
+
+.cx-oscura .seccion-titulo {
+  color: #fff;
+}
+
+.cx-oscura .cx-subtitulo {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cx-oscura .cx-chip {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.cx-oscura .cx-chip:hover,
+.cx-oscura .cx-chip.activo {
+  background: var(--amarillo);
+  border-color: var(--amarillo);
+  color: var(--verde);
+}
+
+.tema-moss .cx-tarjeta {
+  border-top: 4px solid var(--acento);
+}
+
+.tema-moss .contacto-contenedor {
+  border-top: 4px solid var(--amarillo);
+}
+
+/* =========================================================
+   17.9 TEMA 2: STATIC GARDEN
+   Jardín botánico · jardín de casa · invernadero
+   ========================================================= */
+body.tema-static {
+  --verde: #2F5D44;
+  --verde-hover: #234634;
+  --verde-claro: #DDE6CF;
+  --amarillo: #EBC9A8;      /* arcilla clara */
+  --crema: #F5F0E4;
+  --hueco: #E4DCC6;
+  --texto: #25362B;
+  --gris: #6F6A5C;
+  --acento: #C8734B;        /* terracota */
+  --fuente-titulo: 'Cormorant Garamond', serif;
+}
+
+/* En este tema los títulos son serif: los hacemos un poco más grandes */
+.tema-static .seccion-titulo {
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.tema-static .cx-titulo {
+  font-size: 104px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.garden-hero {
+  background: var(--verde-claro);
+}
+
+/* Cuadrícula de cristales de invernadero */
+.garden-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(47, 93, 68, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 93, 68, 0.12) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.garden-hero .cx-etiqueta {
+  background: var(--acento);
+  color: #fff;
+}
+
+.garden-hero .cx-titulo {
+  color: var(--verde);
+}
+
+.garden-hero .cx-lema {
+  color: var(--texto);
+  font-size: 21px;
+}
+
+/* Tres arcos de invernadero con foto */
+.arcos {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.arco {
+  position: relative;
+  flex: 1;
+  background: var(--hueco);
+  border-radius: 999px 999px 0 0;
+  border: 3px solid var(--blanco);
+  overflow: hidden;
+}
+
+.arco.a1 { height: 340px; }
+.arco.a2 { height: 440px; }
+.arco.a3 { height: 290px; }
+
+.tema-static .cx-banda {
+  background: var(--acento);
+  letter-spacing: 6px;
+}
+
+.tema-static .cx-tarjeta {
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid rgba(47, 93, 68, 0.28);
+  text-align: center;
+}
+
+.tema-static .cx-tarjeta h3 {
+  font-size: 28px;
+}
+
+/* Productos con foto en forma de arco */
+.tema-static .producto {
+  box-shadow: none;
+  border: 1px solid rgba(47, 93, 68, 0.18);
+}
+
+.tema-static .producto-imagen {
+  margin: 12px 12px 0;
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+.tema-static .producto-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.cx-latin {
+  font-family: var(--fuente-titulo);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--acento);
+  margin-bottom: -6px;
+}
+
+.tema-static .etiqueta {
+  background: var(--acento);
+  color: #fff;
+}
+
+.tema-static .cx-foto figcaption {
+  font-family: var(--fuente-titulo);
+  font-size: 16px;
+  font-style: italic;
+}
+
+.tema-static .cx-muestra .bola {
+  border-radius: 999px 999px var(--radio) var(--radio);
+  height: 150px;
+}
+
+.tema-static .contacto-contenedor {
+  border: 1px solid rgba(47, 93, 68, 0.25);
+  box-shadow: none;
+}
+
+/* =========================================================
+   17.10 TEMA 3: FIELD THEORY
+   Prado abierto · hierba alta · flores silvestres
+   Estilo "cuaderno de campo": serif editorial, dibujos
+   botánicos a línea fina y colores apagados de final de verano.
+   ========================================================= */
+body.tema-field {
+  --verde: #3D4A2F;          /* oliva de prado */
+  --verde-hover: #2D3822;
+  --verde-claro: #E6E2CC;
+  --amarillo: #D9B65D;       /* heno / ocre */
+  --crema: #F4F0E4;          /* avena clara */
+  --hueco: #DCD6C0;
+  --texto: #2A2E22;
+  --gris: #6E6A58;
+  --acento: #B4574A;         /* amapola apagada */
+  --aciano: #5E7393;         /* azul aciano */
+  --papel: #FBF8F0;          /* papel de herbario */
+  --linea: rgba(61, 74, 47, 0.18);
+  --radio: 4px;
+  --fuente-titulo: 'Fraunces', Georgia, serif;
+}
+
+/* Colores apagados para los circulitos y la paleta */
+.color-campo      { background: #4F5B3A; }
+.color-avena      { background: #E3D9BC; }
+.color-heno       { background: #C9A24B; }
+.color-adormidera { background: #B4574A; }
+.color-brezo      { background: #8F7BA8; }
+.color-aciano     { background: #5E7393; }
+.color-manzanilla { background: #F1EBD6; }
+.color-rastrojo   { background: #A39A74; }
+
+/* Títulos serif con una palabra en cursiva color amapola */
+.tema-field .seccion-titulo {
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.tema-field .seccion-titulo em,
+.tema-field .cx-titulo em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--acento);
+}
+
+.tema-field .cx-subtitulo {
+  font-size: 15px;
+}
+
+/* ---------- Hero ---------- */
+.field-hero {
+  background: #ECE5CF;
+  border: 1px solid var(--linea);
+  color: var(--texto);
+}
+
+/* Dibujos botánicos de fondo (muy suaves) */
+.field-dibujo {
+  position: absolute;
+  z-index: 1;
+  color: var(--verde);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.field-dibujo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fd-1 { left: 8px;   bottom: 30px; width: 110px; height: 230px; }
+.fd-2 { left: 90px;  bottom: 20px; width: 90px;  height: 190px; }
+.fd-3 { left: 44%;   top: 24px;    width: 80px;  height: 170px; }
+
+.field-hero .cx-hero-grid {
+  grid-template-columns: 1fr 0.9fr;
+  gap: 56px;
+  padding: 80px 56px 110px;
+}
+
+.field-hero .cx-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--acento);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+.field-hero .cx-etiqueta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: currentColor;
+}
+
+.field-hero .cx-titulo {
+  margin: 22px 0;
+  font-size: 108px;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--verde);
+}
+
+.field-hero .cx-lema {
+  max-width: 440px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--gris);
+}
+
+.field-hero .cx-boton-borde {
+  color: var(--verde);
+}
+
+/* Foto enmarcada como una lámina sujeta al cuaderno */
+.field-marco {
+  position: relative;
+  padding: 14px 14px 48px;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  box-shadow: 0 18px 40px rgba(42, 46, 34, 0.12);
+  transform: rotate(1.5deg);
+}
+
+.field-marco .cx-hero-imagen {
+  height: 440px;
+  border-radius: 2px;
+}
+
+.field-marco-pie {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.field-marco-pie em {
+  font-family: var(--fuente-titulo);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--verde);
+}
+
+/* Etiqueta de espécimen pegada sobre la foto */
+.field-ficha {
+  position: absolute;
+  left: -34px;
+  top: 40px;
+  z-index: 3;
+  background: var(--crema);
+  border: 1px solid rgba(61, 74, 47, 0.3);
+  padding: 12px 18px;
+  transform: rotate(-4deg);
+  box-shadow: var(--sombra);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.field-ficha strong {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--fuente-titulo);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--acento);
+}
+
+/* Línea de hierba fina en la parte baja del hero */
+.field-hierba {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 70px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='70' viewBox='0 0 160 70'%3E%3Cg fill='none' stroke='%233D4A2F' stroke-opacity='.3' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M10 70 C12 45 8 25 14 8'/%3E%3Cpath d='M30 70 C28 50 36 32 32 14'/%3E%3Cpath d='M52 70 C54 48 48 30 56 6'/%3E%3Cpath d='M76 70 C74 52 82 36 78 18'/%3E%3Cpath d='M98 70 C100 46 94 28 102 10'/%3E%3Cpath d='M120 70 C118 50 126 34 122 16'/%3E%3Cpath d='M142 70 C144 48 138 30 148 8'/%3E%3C/g%3E%3C/svg%3E") repeat-x left bottom;
+}
+
+/* ---------- Banda de palabras: serif en cursiva entre líneas finas ---------- */
+.tema-field .cx-banda {
+  background: transparent;
+  color: var(--verde);
+  border-radius: 0;
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  padding: 18px 8px;
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tema-field .cx-banda .sep {
+  color: var(--acento);
+  font-size: 14px;
+  font-style: normal;
+}
+
+/* ---------- Cuaderno de campo: láminas de herbario ---------- */
+.herbario {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.lamina {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  padding: 28px 22px 22px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.lamina:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: 0 14px 30px rgba(42, 46, 34, 0.1);
+}
+
+/* Trocito de cinta que "pega" la lámina */
+.lamina::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 70px;
+  height: 18px;
+  background: rgba(217, 182, 93, 0.35);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.lamina-dibujo {
+  height: 210px;
+  display: flex;
+  justify-content: center;
+  color: var(--verde);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed rgba(61, 74, 47, 0.28);
+}
+
+.lamina-dibujo svg {
+  height: 100%;
+  width: 110px;
+}
+
+.lamina-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--acento);
+}
+
+.lamina h3 {
+  margin-top: 4px;
+  font-family: var(--fuente-titulo);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--verde);
+}
+
+.lamina-latin {
+  font-family: var(--fuente-titulo);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--gris);
+  margin-bottom: 10px;
+}
+
+.lamina p {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.lamina-color {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--verde);
+}
+
+.lamina-color .color {
+  width: 16px;
+  height: 16px;
+}
+
+/* Color de cada flor (los dibujos lo heredan) */
+.flor-amapola   { --petalo: var(--acento); }
+.flor-aciano    { --petalo: var(--aciano); }
+.flor-manzanilla{ --centro: var(--amarillo); }
+
+/* ---------- Productos ---------- */
+.tema-field .producto {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: none;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tema-field .producto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(34, 42, 30, 0.1);
+}
+
+.tema-field .producto-imagen {
+  margin: 10px 10px 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tema-field .producto-nombre {
+  font-family: var(--fuente-titulo);
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.tema-field .cx-latin {
+  font-family: var(--fuente-titulo);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--acento);
+  margin-top: -8px;
+}
+
+.tema-field .producto-precio {
+  color: var(--verde);
+  font-weight: 600;
+}
+
+.tema-field .etiqueta {
+  border-radius: 2px;
+  background: var(--papel);
+  color: var(--verde);
+  border: 1px solid var(--linea);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tema-field .boton {
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+.tema-field .cx-chip {
+  border-radius: 2px;
+}
+
+/* ---------- Separador: hierba alta con flores ---------- */
+.field-separador {
+  height: 90px;
+  margin-top: 64px;
+  border-bottom: 1px solid var(--linea);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='90' viewBox='0 0 260 90'%3E%3Cg fill='none' stroke-linecap='round' stroke-width='1.1'%3E%3Cg stroke='%233D4A2F' stroke-opacity='.45'%3E%3Cpath d='M6 90 C8 66 4 46 10 26'/%3E%3Cpath d='M22 90 C20 70 28 52 24 34'/%3E%3Cpath d='M40 90 C42 64 36 40 44 12'/%3E%3Cpath d='M64 90 C62 70 70 54 66 40'/%3E%3Cpath d='M84 90 C86 60 80 40 88 22'/%3E%3Cpath d='M112 90 C110 66 118 48 114 30'/%3E%3Cpath d='M134 90 C136 70 130 52 138 36'/%3E%3Cpath d='M160 90 C158 62 166 42 162 18'/%3E%3Cpath d='M184 90 C186 68 180 50 188 32'/%3E%3Cpath d='M206 90 C204 70 212 54 208 40'/%3E%3Cpath d='M230 90 C232 62 226 42 234 24'/%3E%3Cpath d='M250 90 C248 72 256 56 252 44'/%3E%3C/g%3E%3Ccircle cx='44' cy='10' r='5' stroke='%23B4574A' stroke-opacity='.7'/%3E%3Ccircle cx='162' cy='15' r='4' stroke='%235E7393' stroke-opacity='.7'/%3E%3Ccircle cx='114' cy='27' r='3' stroke='%23C9A24B' stroke-opacity='.8'/%3E%3Ccircle cx='234' cy='21' r='4' stroke='%23B4574A' stroke-opacity='.6'/%3E%3C/g%3E%3C/svg%3E") repeat-x left bottom;
+}
+
+/* ---------- Lookbook: pie de foto editorial debajo ---------- */
+.tema-field .cx-foto {
+  border-radius: 0;
+}
+
+.tema-field .cx-foto-img {
+  border-radius: 2px;
+}
+
+.tema-field .cx-foto figcaption {
+  position: static;
+  padding: 10px 2px 0;
+  background: none;
+  border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--fuente-titulo);
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--verde);
+}
+
+.tema-field .cx-foto figcaption span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--gris);
+}
+
+/* ---------- Paleta: muestras de tela ---------- */
+.tema-field .cx-muestra .bola {
+  height: 140px;
+  border-radius: 2px;
+  border: 1px solid var(--linea);
+  box-shadow: none;
+}
+
+.tema-field .cx-muestra strong {
+  margin-top: 12px;
+  font-family: var(--fuente-titulo);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.tema-field .cx-muestra small {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---------- Formulario ---------- */
+.tema-field .contacto-contenedor {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-top: 3px solid var(--acento);
+  border-radius: var(--radio);
+  box-shadow: none;
+}
+
+.tema-field .campo input,
+.tema-field .campo select,
+.tema-field .campo textarea {
+  border-radius: 2px;
+}
+
+/* ---------- Responsive de Field Theory ---------- */
+@media (max-width: 1100px) {
+  .herbario {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .field-hero .cx-hero-grid {
+    padding: 48px 24px 90px;
+  }
+
+  .field-hero .cx-titulo {
+    font-size: 76px;
+  }
+
+  .field-ficha {
+    left: 12px;
+  }
+
+  .fd-3 {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .herbario {
+    grid-template-columns: 1fr;
+  }
+
+  .field-hero .cx-titulo {
+    font-size: 58px;
+  }
+
+  .field-marco {
+    transform: none;
+  }
+
+  .field-marco .cx-hero-imagen {
+    height: 320px;
+  }
+
+  .tema-field .seccion-titulo {
+    font-size: 30px;
+  }
+
+  .tema-field .cx-banda {
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   17.11 RESPONSIVE DE LAS COLECCIONES
+   ========================================================= */
+@media (max-width: 1100px) {
+  .cx-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cx-tarjetas.cuatro {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .cx-hero-grid {
+    grid-template-columns: 1fr;
+    padding: 36px 24px;
+    gap: 28px;
+  }
+
+  .cx-titulo,
+  .tema-static .cx-titulo {
+    font-size: 60px;
+  }
+
+  .cx-hero-imagen {
+    height: 340px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cx-seccion {
+    margin-top: 44px;
+  }
+
+  .cx-tarjetas,
+  .cx-tarjetas.cuatro,
+  .cx-otras {
+    grid-template-columns: 1fr;
+  }
+
+  .cx-lookbook {
+    grid-template-columns: 1fr;
+  }
+
+  .f-3, .f-4, .f-5, .f-6, .f-7 {
+    grid-column: auto;
+  }
+
+  .alta  { height: 340px; }
+  .media { height: 260px; }
+  .baja  { height: 220px; }
+
+  .arco.a1 { height: 220px; }
+  .arco.a2 { height: 290px; }
+  .arco.a3 { height: 190px; }
+
+  .cx-banda {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .cx-herramientas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tema-static .seccion-titulo {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cx-productos {
+    grid-template-columns: 1fr;
+  }
+
+  .cx-titulo,
+  .tema-static .cx-titulo {
+    font-size: 48px;
+  }
+}
+
+/* Separación del footer en las páginas de colección */
+.tema-moss .footer,
+.tema-static .footer,
+.tema-field .footer {
+  margin-top: 64px;
+}
+
+/* =========================================
+   18. BLOQUE "MÁS INFORMACIÓN" (index)
+   ========================================= */
+.mas-info {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 24px;
+}
+
+.mas-info-contenedor {
+  background: var(--verde);
+  color: var(--blanco);
+  border-radius: var(--radio);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mas-info-texto h2 {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.mas-info-texto p {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* =========================================
+   19. PÁGINA DE CONTACTO (contacto.html)
+   ========================================= */
+.contacto-pagina {
+  padding-top: 24px;
+}
+
+.info-hero {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 24px;
+}
+
+.info-hero-contenido {
+  padding: 48px 40px;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.info-titulo {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--verde);
+}
+
+.info-texto {
+  font-size: 18px;
+  max-width: 560px;
+}
+
+@media (max-width: 700px) {
+  .mas-info-contenedor {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-hero-contenido {
+    padding: 32px 24px;
+  }
+
+  .info-titulo {
+    font-size: 44px;
+  }
+}
+
+/* =========================================
+   20. POP-UP DE COOKIES
+   ========================================= */
+.cookies {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(30, 42, 34, 0.55);
+  animation: cookies-fondo 0.3s ease;
+}
+
+.cookies[hidden] {
+  display: none;
+}
+
+.cookies-caja {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: var(--blanco);
+  border-top: 6px solid var(--amarillo);
+  border-radius: var(--radio);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  padding: 32px 28px 28px;
+  text-align: center;
+  animation: cookies-entrada 0.4s ease;
+}
+
+.cookies-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--verde-claro);
+  font-size: 30px;
+  color: var(--verde);
+  margin-bottom: 12px;
+}
+
+.cookies-titulo {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+.cookies-texto {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+/* Panel de configuración */
+.cookies-config {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.cookies-config[hidden] {
+  display: none;
+}
+
+.cookies-opcion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: var(--crema);
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.cookies-opcion strong {
+  display: block;
+  font-size: 14px;
+  color: var(--verde);
+}
+
+.cookies-opcion small {
+  display: block;
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.cookies-opcion input {
+  accent-color: var(--verde);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.cookies-opcion input:disabled {
+  cursor: not-allowed;
+}
+
+.cookies-botones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.cookies-botones .boton {
+  flex: 1;
+  min-width: 120px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.cookies-boton-borde {
+  background: transparent;
+  color: var(--verde);
+  border: 2px solid var(--verde);
+}
+
+.cookies-boton-borde:hover {
+  background: var(--amarillo);
+  border-color: var(--amarillo);
+}
+
+@keyframes cookies-fondo {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cookies-entrada {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookies,
+  .cookies-caja {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cookies-caja {
+    padding: 28px 20px 20px;
+  }
+
+  .cookies-botones {
+    flex-direction: column;
+  }
+}
+/* =========================================
+   21. ACCESIBILIDAD Y ARREGLOS GENERALES
+   ========================================= */
+
+/* Foco visible al navegar con teclado */
+:focus-visible {
+  outline: 3px solid var(--amarillo);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--verde);
+}
+
+/* Los submenús también se abren con teclado o al pulsar */
+.desplegable:focus-within .submenu,
+.desplegable.abierto .submenu {
+  display: block;
+}
+
+/* Moss Season: los nombres de producto se veían blancos sobre blanco */
+.cx-oscura .producto {
+  color: var(--texto);
+}
+
+/* Las tarjetas filtradas se ocultan aunque tengan display: flex */
+.producto[hidden] {
+  display: none;
+}
+
+/* Derechos de autor */
+.footer-copy small {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.footer-copy sup {
+  font-size: 8px;
+}
+
+/* =========================================
+   22. TARJETAS: FAVORITOS
+   ========================================= */
+.producto-coleccion {
+  font-size: 12px;
+  color: var(--gris);
+  margin-top: -6px;
+}
+
+.favorito.activo {
+  background: var(--amarillo);
+}
+
+.favorito.activo .icono {
+  fill: currentColor;
+}
+
+/* El contador del carrito da un saltito al cambiar */
+.carrito-contador.salta {
+  animation: salta 0.4s ease;
+}
+
+@keyframes salta {
+  50% { transform: scale(1.35); }
+}
+
+/* =========================================
+   23. AVISO FLOTANTE
+   ========================================= */
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 1200;
+  max-width: calc(100% - 32px);
+  background: var(--verde);
+  color: var(--blanco);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 30px;
+  border-left: 5px solid var(--amarillo);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, 30px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.aviso.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* =========================================
+   24. PANEL DEL CARRITO
+   ========================================= */
+.panel-carrito {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+}
+
+.panel-carrito[hidden] {
+  display: none;
+}
+
+.panel-fondo {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 42, 34, 0.5);
+  animation: cookies-fondo 0.3s ease;
+}
+
+.panel-caja {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  background: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+  animation: panel-entrada 0.35s ease;
+}
+
+@keyframes panel-entrada {
+  from { transform: translateX(100%); }
+  to   { transform: none; }
+}
+
+.panel-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #E5E2D6;
+}
+
+.panel-cabecera h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--verde);
+}
+
+.panel-cerrar,
+.panel-quitar,
+.buscador-cerrar {
+  border: none;
+  background: var(--crema);
+  color: var(--verde);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.panel-cerrar:hover,
+.panel-quitar:hover,
+.buscador-cerrar:hover {
+  background: var(--amarillo);
+}
+
+.panel-lineas {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 24px;
+}
+
+.panel-vacio {
+  color: var(--gris);
+  text-align: center;
+  padding: 48px 0;
+}
+
+.panel-linea {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #EFECE2;
+}
+
+.panel-img {
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--hueco);
+}
+
+.panel-nombre {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.panel-linea p {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.panel-linea strong {
+  font-size: 14px;
+  color: var(--verde);
+}
+
+.panel-quitar {
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+}
+
+.panel-pie {
+  padding: 20px 24px;
+  border-top: 1px solid #E5E2D6;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-pie > p:first-child {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.panel-pie strong {
+  color: var(--verde);
+  font-size: 20px;
+}
+
+.panel-nota {
+  font-size: 12px;
+  color: var(--gris);
+  text-align: center;
+}
+
+/* =========================================
+   25. BUSCADOR
+   ========================================= */
+.buscador {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(30, 42, 34, 0.55);
+  padding: 80px 16px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  animation: cookies-fondo 0.25s ease;
+}
+
+.buscador[hidden] {
+  display: none;
+}
+
+.buscador-caja {
+  width: 100%;
+  max-width: 640px;
+  max-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  border-top: 6px solid var(--amarillo);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: cookies-entrada 0.3s ease;
+}
+
+.buscador-barra {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #E5E2D6;
+}
+
+.buscador-barra input {
+  flex: 1;
+  border: none;
+  font-size: 18px;
+  padding: 8px 0;
+  color: var(--texto);
+  background: transparent;
+}
+
+.buscador-barra input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.buscador-resultados {
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.buscador-ayuda {
+  padding: 24px;
+  color: var(--gris);
+  text-align: center;
+  font-size: 14px;
+}
+
+.buscador-item {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.buscador-item:hover,
+.buscador-item:focus-visible {
+  background: var(--crema);
+}
+
+.buscador-item img {
+  height: 56px;
+  border-radius: 6px;
+  background: var(--hueco);
+}
+
+.buscador-item strong {
+  display: block;
+  font-size: 15px;
+}
+
+.buscador-item small {
+  font-size: 12px;
+  color: var(--gris);
+}
+
+.buscador-item em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--verde);
+}
+
+/* =========================================
+   26. VOLVER ARRIBA
+   ========================================= */
+.volver-arriba {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--amarillo);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s, background 0.2s;
+}
+
+.volver-arriba.visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.volver-arriba:hover {
+  background: var(--verde-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .producto-imagen img,
+  .volver-arriba,
+  .aviso {
+    transition: none;
+  }
+}
+
+/* =========================================
+   27. FORMULARIO: ERRORES Y MENSAJE ENVIADO
+   ========================================= */
+.campo-error {
+  font-size: 12px;
+  font-weight: 600;
+  color: #B4412F;
+}
+
+.campo-error:empty {
+  display: none;
+}
+
+.check {
+  flex-wrap: wrap;
+}
+
+.check .campo-error {
+  width: 100%;
+}
+
+.campo [aria-invalid="true"] {
+  border-color: #B4412F;
+  background: #FBF1EE;
+}
+
+.formulario-exito {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 32px;
+  background: var(--verde-claro);
+  border-radius: var(--radio);
+  animation: cookies-entrada 0.4s ease;
+}
+
+.formulario-exito-icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--amarillo);
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulario-exito h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--verde);
+}
+
+/* =========================================
+   29. PÁGINA "SOBRE TISION" (sobre.html)
+   ========================================= */
+.sobre-pagina,
+.categoria-pagina {
+  padding-top: 24px;
+}
+
+.sobre-hero {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.sobre-lema {
+  font-family: 'Caveat', cursive;
+  font-size: 64px;
+  line-height: 0.95;
+  color: var(--verde);
+  border-left: 2px solid var(--verde);
+  padding-left: 28px;
+  transform: rotate(-6deg);
+  flex-shrink: 0;
+}
+
+.linea-tiempo {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.linea-tiempo::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--verde-claro);
+}
+
+.linea-hito {
+  position: relative;
+}
+
+.linea-ano {
+  position: relative;
+  display: inline-block;
+  background: var(--verde);
+  color: var(--amarillo);
+  font-weight: 800;
+  padding: 10px 18px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+}
+
+.linea-hito h3 {
+  font-size: 18px;
+  color: var(--verde);
+  margin-bottom: 6px;
+}
+
+.linea-hito p {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.valores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.valor {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 28px;
+}
+
+.valor-icono {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--verde-claro);
+  color: var(--verde);
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.valor h3 {
+  font-size: 18px;
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+.valor p {
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--amarillo);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.cifras div {
+  padding: 32px 24px;
+  text-align: center;
+  color: var(--verde);
+}
+
+.cifras div:not(:last-child) {
+  border-right: 1px solid rgba(31, 77, 54, 0.2);
+}
+
+.cifras strong {
+  display: block;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.cifras span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.equipo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.equipo-persona {
+  text-align: center;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 32px 20px;
+}
+
+.equipo-avatar {
+  display: inline-flex;
+  width: 96px;
+  height: 96px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--verde);
+  color: var(--amarillo);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  border: 4px solid var(--verde-claro);
+}
+
+.equipo-persona h3 {
+  font-size: 17px;
+  color: var(--verde);
+}
+
+.equipo-persona p {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+/* =========================================
+   30. RESPONSIVE DE LO NUEVO
+   ========================================= */
+@media (max-width: 1100px) {
+  .valores,
+  .equipo,
+  .linea-tiempo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .linea-tiempo::before {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .sobre-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sobre-lema {
+    font-size: 44px;
+  }
+
+  .cifras {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cifras div:nth-child(2) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .valores,
+  .equipo,
+  .linea-tiempo {
+    grid-template-columns: 1fr;
+  }
+
+  .cifras strong {
+    font-size: 30px;
+  }
+
+  .volver-arriba {
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
+.sobre-pagina .mas-info {
+  margin-top: 64px;
+}
+
+/* Último enlace del desplegable de categorías */
+.submenu-todo {
+  border-top: 1px solid #E5E2D6;
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+.submenu-todo a {
+  font-weight: 700;
+  color: var(--verde);
+}
+
+/* =========================================
+   30. PÁGINA DE PRODUCTO (producto.html)
+   ========================================= */
+.producto-pagina {
+  padding-top: 24px;
+}
+
+/* Las tarjetas que llevan a su ficha */
+.producto-enlazado .producto-imagen {
+  cursor: pointer;
+}
+
+.producto-nombre a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.producto-nombre a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Migas de pan */
+.migas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--gris);
+  margin-bottom: 24px;
+}
+
+.migas a {
+  color: var(--gris);
+  text-decoration: none;
+}
+
+.migas a:hover {
+  color: var(--verde);
+  text-decoration: underline;
+}
+
+.migas [aria-current] {
+  color: var(--texto);
+}
+
+/* Foto + información */
+.ficha {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.ficha-imagen {
+  aspect-ratio: 4 / 5;
+  background: var(--hueco);
+  overflow: hidden;
+  position: sticky;
+  top: 96px;
+}
+
+.ficha-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ficha-imagen .etiqueta {
+  top: 16px;
+  bottom: auto;
+  left: 16px;
+}
+
+.ficha-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ficha-coleccion {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.ficha-coleccion a {
+  color: var(--verde);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.ficha-coleccion em {
+  font-family: var(--fuente-serif, Georgia, serif);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 15px;
+}
+
+.ficha-nombre {
+  font-size: 44px;
+  line-height: 1.05;
+  color: var(--verde);
+}
+
+.ficha-precio {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.ficha-texto {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* Color y talla */
+.ficha-opcion {
+  border: none;
+  border-top: 1px solid var(--linea, #E5E2D6);
+  padding: 20px 0 0;
+  margin: 0;
+  min-width: 0;
+}
+
+/* La leyenda flotando se comporta como un texto más dentro del grupo */
+.ficha-opcion legend {
+  float: left;
+  font-size: 14px;
+  padding: 0;
+}
+
+.ficha-guia-enlace {
+  float: right;
+  font-size: 13px;
+  color: var(--verde);
+}
+
+.ficha-colores,
+.ficha-tallas,
+.ficha-ajuste {
+  clear: both;
+  padding-top: 12px;
+}
+
+.ficha-colores,
+.ficha-tallas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ficha-color,
+.ficha-talla {
+  position: relative;
+  cursor: pointer;
+}
+
+.ficha-color input,
+.ficha-talla input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.ficha-color .color {
+  display: block;
+  width: 32px;
+  height: 32px;
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+  transition: outline-color 0.2s;
+}
+
+.ficha-color input:checked + .color {
+  outline-color: var(--verde);
+}
+
+.ficha-color input:focus-visible + .color,
+.ficha-talla input:focus-visible + span {
+  outline: 2px solid var(--amarillo);
+  outline-offset: 3px;
+}
+
+.ficha-talla span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--linea, #E5E2D6);
+  background: var(--blanco);
+  font-size: 14px;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.ficha-talla:hover span {
+  border-color: var(--verde);
+}
+
+.ficha-talla input:checked + span {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: var(--blanco);
+}
+
+.ficha-tallas.falta .ficha-talla span {
+  border-color: #B4574A;
+}
+
+.ficha-ajuste {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+/* Cantidad + comprar + favorito */
+.ficha-compra {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.ficha-cantidad {
+  display: flex;
+  border: 1px solid var(--linea, #E5E2D6);
+  background: var(--blanco);
+}
+
+.ficha-cantidad button {
+  width: 40px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  color: var(--verde);
+  cursor: pointer;
+}
+
+.ficha-cantidad input {
+  width: 40px;
+  border: none;
+  background: none;
+  text-align: center;
+  font: inherit;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.ficha-cantidad input::-webkit-inner-spin-button,
+.ficha-cantidad input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ficha-compra .boton-verde {
+  flex: 1;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  min-height: 48px;
+}
+
+.ficha-compra .ficha-favorito {
+  position: static;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1px solid var(--linea, #E5E2D6);
+}
+
+.ficha-favorito.activo .icono {
+  fill: currentColor;
+}
+
+.ficha-ventajas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  font-size: 13px;
+  color: var(--gris);
+}
+
+.ficha-ventajas li::before {
+  content: '✓ ';
+  color: var(--verde);
+}
+
+/* Desplegables de información */
+.ficha-detalle {
+  border-top: 1px solid var(--linea, #E5E2D6);
+  padding-top: 16px;
+}
+
+.ficha-detalle:last-child {
+  border-bottom: 1px solid var(--linea, #E5E2D6);
+  padding-bottom: 16px;
+}
+
+.ficha-detalle summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ficha-detalle summary::-webkit-details-marker {
+  display: none;
+}
+
+.ficha-detalle summary::after {
+  content: '+';
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--verde);
+}
+
+.ficha-detalle[open] summary::after {
+  content: '−';
+}
+
+.ficha-detalle > *:not(summary) {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ficha-detalle ul {
+  padding-left: 18px;
+}
+
+.ficha-tabla {
+  overflow-x: auto;
+}
+
+.ficha-tabla table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.ficha-tabla th,
+.ficha-tabla td {
+  padding: 8px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--linea, #E5E2D6);
+  white-space: nowrap;
+}
+
+.ficha-tabla thead th {
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.ficha-mas {
+  margin-top: 80px;
+}
+
+.ficha-vacia {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 64px 0;
+}
+
+@media (max-width: 900px) {
+  .ficha {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .ficha-imagen {
+    position: relative;
+    top: 0;
+  }
+
+  .ficha-nombre {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ficha-compra {
+    flex-wrap: wrap;
+  }
+
+  .ficha-compra .boton-verde {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .ficha-cantidad {
+    flex: 1;
+    justify-content: space-between;
+  }
+}
+
+/* Círculos de color de las tarjetas: se pulsan para cambiar la foto */
+.colores button.color {
+  padding: 0;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.2s, transform 0.2s;
+}
+
+.colores button.color:hover {
+  transform: scale(1.15);
+}
+
+.colores button.color.activo {
+  outline-color: var(--verde);
+}
+
+.colores button.color:focus-visible {
+  outline: 2px solid var(--amarillo);
+}

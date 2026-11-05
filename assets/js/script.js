@@ -41,11 +41,30 @@ function buscarProducto(id) {
 }
 
 // El id de un producto es el nombre de su imagen (moss-01, pro-sudadera...)
+// (se guarda en data-id porque al cambiar de color la foto cambia de nombre)
 function idDeTarjeta(tarjeta) {
+  if (tarjeta.dataset.id) return tarjeta.dataset.id;
   const img = tarjeta.querySelector('img');
   if (!img) return null;
   const archivo = img.getAttribute('src').split('/').pop();
   return archivo.replace(/\.[a-z]+$/i, '');
+}
+
+// Color que sale en la foto principal: el primero que no tiene foto propia
+function colorInicial(p) {
+  return p.colores.find(function (c) { return !c.img; }) || p.colores[0];
+}
+
+// Foto de un producto en un color: la suya si la tiene, si no la principal
+function fotoDe(p, nombreColor) {
+  const color = p.colores.find(function (c) { return c.nombre === nombreColor; });
+  return ruta(color && color.img ? color.img : p.img);
+}
+
+// Círculo de color que se puede pulsar para ver la prenda en ese color
+function botonColorHTML(c, activo) {
+  return '<button type="button" class="color ' + c.clase + (activo ? ' activo' : '') + '" data-color="' + c.nombre + '"' +
+         ' title="' + c.nombre + '" aria-label="Ver en ' + c.nombre + '" aria-pressed="' + activo + '"></button>';
 }
 
 function parametro(nombre) {
@@ -113,11 +132,9 @@ function avisar(mensaje) {
 
 // ---------- Tarjeta de producto (para la página de categorías) ----------
 function tarjetaHTML(p) {
-  const colores = p.colores.map(function (c) {
-    return '<span class="color ' + c.clase + '" title="' + c.nombre + '"></span>';
-  }).join('');
+  const colores = p.colores.map(function (c) { return botonColorHTML(c, c === colorInicial(p)); }).join('');
   return (
-    '<article class="producto">' +
+    '<article class="producto" data-id="' + p.id + '">' +
       '<div class="producto-imagen">' +
         '<img src="' + ruta(p.img) + '" alt="' + p.alt + '" loading="lazy">' +
         (p.nuevo ? '<span class="etiqueta">Nuevo</span>' : '') +
@@ -165,12 +182,32 @@ function pintarCategoria() {
 function enlazarTarjetas() {
   document.querySelectorAll('.producto').forEach(function (tarjeta) {
     const id = idDeTarjeta(tarjeta);
-    if (!buscarProducto(id)) return;
+    const p = buscarProducto(id);
+    if (!p) return;
+    tarjeta.dataset.id = id;
     const nombre = tarjeta.querySelector('.producto-nombre');
     if (nombre && !nombre.querySelector('a')) {
       nombre.innerHTML = '<a href="' + enlaceProducto(id) + '">' + nombre.innerHTML + '</a>';
     }
+    // Los círculos de color escritos a mano pasan a ser botones
+    const colores = tarjeta.querySelector('.colores');
+    if (colores && !colores.querySelector('button')) {
+      colores.innerHTML = p.colores.map(function (c) { return botonColorHTML(c, c === colorInicial(p)); }).join('');
+    }
     tarjeta.classList.add('producto-enlazado');
+  });
+}
+
+// Pulsar un color en una tarjeta cambia su foto y el color que se añade al carrito
+function elegirColorTarjeta(boton) {
+  const tarjeta = boton.closest('.producto');
+  const p = buscarProducto(idDeTarjeta(tarjeta));
+  if (!p) return;
+  tarjeta.dataset.color = boton.dataset.color;
+  tarjeta.querySelector('.producto-imagen img').src = fotoDe(p, boton.dataset.color);
+  tarjeta.querySelectorAll('.colores .color').forEach(function (b) {
+    b.classList.toggle('activo', b === boton);
+    b.setAttribute('aria-pressed', b === boton);
   });
 }
 
@@ -208,7 +245,7 @@ function pintarProducto() {
 
   const colores = p.colores.map(function (c, i) {
     return '<label class="ficha-color" title="' + c.nombre + '">' +
-             '<input type="radio" name="color" value="' + c.nombre + '"' + (i === 0 ? ' checked' : '') + '>' +
+             '<input type="radio" name="color" value="' + c.nombre + '"' + (c === colorInicial(p) ? ' checked' : '') + '>' +
              '<span class="color ' + c.clase + '"></span>' +
              '<span class="solo-lector">' + c.nombre + '</span>' +
            '</label>';
@@ -252,7 +289,7 @@ function pintarProducto() {
         (extra.texto ? '<p class="ficha-texto">' + extra.texto + '</p>' : '') +
 
         '<fieldset class="ficha-opcion">' +
-          '<legend>Color: <strong id="ficha-color-nombre">' + p.colores[0].nombre + '</strong></legend>' +
+          '<legend>Color: <strong id="ficha-color-nombre">' + colorInicial(p).nombre + '</strong></legend>' +
           '<div class="ficha-colores">' + colores + '</div>' +
         '</fieldset>' +
 
@@ -302,7 +339,10 @@ function pintarProducto() {
   const cantidad = document.getElementById('ficha-cantidad');
 
   form.addEventListener('change', function (e) {
-    if (e.target.name === 'color') document.getElementById('ficha-color-nombre').textContent = e.target.value;
+    if (e.target.name === 'color') {
+      document.getElementById('ficha-color-nombre').textContent = e.target.value;
+      caja.querySelector('.ficha-imagen img').src = fotoDe(p, e.target.value);
+    }
     if (e.target.name === 'talla') form.querySelector('.ficha-tallas').classList.remove('falta');
   });
 
@@ -349,7 +389,7 @@ const Carrito = {
   anadir: function (id, color, talla, cantidad) {
     const p = buscarProducto(id);
     if (!p) return;
-    color = color || (p.colores[0] ? p.colores[0].nombre : '');
+    color = color || colorInicial(p).nombre;
     const tallas = tallasDe(p);
     talla = talla || (tallas.indexOf('M') !== -1 ? 'M' : tallas[Math.floor((tallas.length - 1) / 2)]);
     const igual = this.lineas.find(function (l) { return l.id === id && l.color === color && l.talla === talla; });
@@ -391,7 +431,7 @@ const Carrito = {
         if (!p) return '';
         suma += p.precio * l.cantidad;
         return '<div class="panel-linea">' +
-                 '<span class="panel-img"><img src="' + ruta(p.img) + '" alt=""></span>' +
+                 '<span class="panel-img"><img src="' + fotoDe(p, l.color) + '" alt=""></span>' +
                  '<div><span class="panel-nombre">' + p.nombre + '</span>' +
                  '<p>' + l.color + ' · ' + l.talla + ' · x' + l.cantidad + '</p>' +
                  '<strong>' + precio(p.precio * l.cantidad) + '</strong></div>' +
@@ -592,7 +632,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Añadir al carrito desde una tarjeta
     const botonCompra = e.target.closest('.producto-info .boton');
     if (botonCompra) {
-      Carrito.anadir(idDeTarjeta(botonCompra.closest('.producto')));
+      const tarjeta = botonCompra.closest('.producto');
+      Carrito.anadir(idDeTarjeta(tarjeta), tarjeta.dataset.color);
+      return;
+    }
+
+    // Colores de una tarjeta
+    const botonColor = e.target.closest('.producto .colores .color');
+    if (botonColor) {
+      elegirColorTarjeta(botonColor);
       return;
     }
 
