@@ -1,6 +1,6 @@
 # Prompts Nano Banana · fotos que faltan de Field Theory
 
-Copia y pega cada prompt en Nano Banana. Guarda la imagen con el nombre del título en `assets/img/img-field/`.
+Copia y pega cada prompt en Nano Banana. Guarda la imagen con el nombre del título en `assets/img/field/`.
 
 Mientras no estén, la portada usa la foto de la sudadera (`field-01.jpg`) y el lookbook usa fotos de producto.
 

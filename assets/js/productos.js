@@ -2,368 +2,368 @@
 // Lo usan el carrito, los filtros, el buscador y las categorías.
 const PRODUCTOS = [
   {
-    id: 'pro-sudadera',
+    id: 'essentials-01',
     nombre: 'Sudadera Oversize',
     precio: 45.00,
-    img: 'assets/img/img-general/pro-sudadera.png',
+    img: 'assets/img/essentials/essentials-01.png',
     alt: 'Hoodie Oversize Tision',
     coleccion: 'Essentials',
     pagina: 'tienda.html',
     tipo: 'sudaderas',
     nuevo: true,
     detalle: '',
-    colores: [{ clase: 'color-verde', nombre: 'Verde' }, { clase: 'color-beige', nombre: 'Beige', img: 'assets/img/img-general/pro-sudadera-beige.jpg' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/img-general/pro-sudadera-negro.jpg' }]
+    colores: [{ clase: 'color-verde', nombre: 'Verde' }, { clase: 'color-beige', nombre: 'Beige', img: 'assets/img/essentials/essentials-01-beige.jpg' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/essentials/essentials-01-negro.jpg' }]
   },
   {
-    id: 'prod-tshirt',
+    id: 'essentials-02',
     nombre: 'Camiseta Logo',
     precio: 25.00,
-    img: 'assets/img/img-general/prod-tshirt.png',
+    img: 'assets/img/essentials/essentials-02.png',
     alt: 'T-Shirt Classic Logo',
     coleccion: 'Essentials',
     pagina: 'tienda.html',
     tipo: 'camisetas',
     nuevo: true,
     detalle: '',
-    colores: [{ clase: 'color-blanco', nombre: 'Blanco', img: 'assets/img/img-general/prod-tshirt-blanco.jpg' }, { clase: 'color-verde', nombre: 'Verde', img: 'assets/img/img-general/prod-tshirt-verde.jpg' }, { clase: 'color-amarillo', nombre: 'Amarillo' }]
+    colores: [{ clase: 'color-blanco', nombre: 'Blanco', img: 'assets/img/essentials/essentials-02-blanco.jpg' }, { clase: 'color-verde', nombre: 'Verde', img: 'assets/img/essentials/essentials-02-verde.jpg' }, { clase: 'color-amarillo', nombre: 'Amarillo' }]
   },
   {
-    id: 'prop-pants',
+    id: 'essentials-03',
     nombre: 'Pantalón Cargo Urban',
     precio: 50.00,
-    img: 'assets/img/img-general/prop-pants.png',
+    img: 'assets/img/essentials/essentials-03.png',
     alt: 'Pantalón Cargo Urban',
     coleccion: 'Essentials',
     pagina: 'tienda.html',
     tipo: 'pantalones',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-caqui', nombre: 'Caqui', img: 'assets/img/img-general/prop-pants-caqui.jpg' }, { clase: 'color-oliva', nombre: 'Oliva' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/img-general/prop-pants-negro.jpg' }]
+    colores: [{ clase: 'color-caqui', nombre: 'Caqui', img: 'assets/img/essentials/essentials-03-caqui.jpg' }, { clase: 'color-oliva', nombre: 'Oliva' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/essentials/essentials-03-negro.jpg' }]
   },
   {
-    id: 'prop-cup',
+    id: 'essentials-04',
     nombre: 'Gorra Clásica',
     precio: 22.00,
-    img: 'assets/img/img-general/prop-cup.png',
+    img: 'assets/img/essentials/essentials-04.png',
     alt: 'Gorra Classic Tision',
     coleccion: 'Essentials',
     pagina: 'tienda.html',
     tipo: 'gorros',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-verde', nombre: 'Verde', img: 'assets/img/img-general/prop-cup-verde.jpg' }, { clase: 'color-beige', nombre: 'Beige' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/img-general/prop-cup-negro.jpg' }]
+    colores: [{ clase: 'color-verde', nombre: 'Verde', img: 'assets/img/essentials/essentials-04-verde.jpg' }, { clase: 'color-beige', nombre: 'Beige' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/essentials/essentials-04-negro.jpg' }]
   },
   {
     id: 'moss-01',
     nombre: 'Hoodie Moss Oversize',
     precio: 59.00,
-    img: 'assets/img/img-moss-/moss-01.png',
+    img: 'assets/img/moss/moss-01.png',
     alt: 'Hoodie Moss Oversize',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'sudaderas',
     nuevo: true,
     detalle: '',
-    colores: [{ clase: 'color-helecho', nombre: 'Helecho' }, { clase: 'color-musgo', nombre: 'Musgo', img: 'assets/img/img-moss-/moss-01-musgo.jpg' }, { clase: 'color-corteza', nombre: 'Corteza', img: 'assets/img/img-moss-/moss-01-corteza.jpg' }]
+    colores: [{ clase: 'color-helecho', nombre: 'Helecho' }, { clase: 'color-musgo', nombre: 'Musgo', img: 'assets/img/moss/moss-01-musgo.jpg' }, { clase: 'color-corteza', nombre: 'Corteza', img: 'assets/img/moss/moss-01-corteza.jpg' }]
   },
   {
     id: 'moss-02',
     nombre: 'Chaqueta Rain Shell',
     precio: 89.00,
-    img: 'assets/img/img-moss-/moss-02.png',
+    img: 'assets/img/moss/moss-02.png',
     alt: 'Chaqueta Rain Shell',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'abrigos',
     nuevo: true,
     detalle: '',
-    colores: [{ clase: 'color-helecho', nombre: 'Helecho' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/img-moss-/moss-02-negro.jpg' }]
+    colores: [{ clase: 'color-helecho', nombre: 'Helecho' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/moss/moss-02-negro.jpg' }]
   },
   {
     id: 'moss-03',
     nombre: 'T-Shirt Fern Print',
     precio: 29.00,
-    img: 'assets/img/img-moss-/moss-03.png',
+    img: 'assets/img/moss/moss-03.png',
     alt: 'T-Shirt Fern Print',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'camisetas',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-niebla', nombre: 'Niebla' }, { clase: 'color-helecho', nombre: 'Helecho', img: 'assets/img/img-moss-/moss-03-helecho.jpg' }]
+    colores: [{ clase: 'color-niebla', nombre: 'Niebla' }, { clase: 'color-helecho', nombre: 'Helecho', img: 'assets/img/moss/moss-03-helecho.jpg' }]
   },
   {
     id: 'moss-04',
     nombre: 'Pantalón Cargo Forest',
     precio: 55.00,
-    img: 'assets/img/img-moss-/moss-04.png',
+    img: 'assets/img/moss/moss-04.png',
     alt: 'Pantalón Cargo Forest',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'pantalones',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-musgo', nombre: 'Musgo' }, { clase: 'color-corteza', nombre: 'Corteza', img: 'assets/img/img-moss-/moss-04-corteza.jpg' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/img-moss-/moss-04-negro.jpg' }]
+    colores: [{ clase: 'color-musgo', nombre: 'Musgo' }, { clase: 'color-corteza', nombre: 'Corteza', img: 'assets/img/moss/moss-04-corteza.jpg' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/moss/moss-04-negro.jpg' }]
   },
   {
     id: 'moss-05',
     nombre: 'Crewneck Dew',
     precio: 48.00,
-    img: 'assets/img/img-moss-/moss-05.png',
+    img: 'assets/img/moss/moss-05.png',
     alt: 'Crewneck Dew',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'sudaderas',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-gota', nombre: 'Gota' }, { clase: 'color-niebla', nombre: 'Niebla', img: 'assets/img/img-moss-/moss-05-niebla.jpg' }]
+    colores: [{ clase: 'color-gota', nombre: 'Gota' }, { clase: 'color-niebla', nombre: 'Niebla', img: 'assets/img/moss/moss-05-niebla.jpg' }]
   },
   {
     id: 'moss-06',
     nombre: 'Gorro Mist Beanie',
     precio: 19.00,
-    img: 'assets/img/img-moss-/moss-06.png',
+    img: 'assets/img/moss/moss-06.png',
     alt: 'Gorro Mist Beanie',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'gorros',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-musgo', nombre: 'Musgo' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/img-moss-/moss-06-negro.jpg' }, { clase: 'color-niebla', nombre: 'Niebla', img: 'assets/img/img-moss-/moss-06-niebla.jpg' }]
+    colores: [{ clase: 'color-musgo', nombre: 'Musgo' }, { clase: 'color-negro', nombre: 'Negro', img: 'assets/img/moss/moss-06-negro.jpg' }, { clase: 'color-niebla', nombre: 'Niebla', img: 'assets/img/moss/moss-06-niebla.jpg' }]
   },
   {
     id: 'moss-07',
     nombre: 'Calcetines Lichen',
     precio: 12.00,
-    img: 'assets/img/img-moss-/moss-07.png',
+    img: 'assets/img/moss/moss-07.png',
     alt: 'Calcetines Lichen',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'accesorios',
     nuevo: false,
     detalle: '',
-    colores: [{ clase: 'color-musgo', nombre: 'Musgo' }, { clase: 'color-niebla', nombre: 'Niebla', img: 'assets/img/img-moss-/moss-07-niebla.jpg' }]
+    colores: [{ clase: 'color-musgo', nombre: 'Musgo' }, { clase: 'color-niebla', nombre: 'Niebla', img: 'assets/img/moss/moss-07-niebla.jpg' }]
   },
   {
     id: 'moss-08',
     nombre: 'Tote Canopy',
     precio: 22.00,
-    img: 'assets/img/img-moss-/moss-08.png',
+    img: 'assets/img/moss/moss-08.png',
     alt: 'Tote Canopy',
     coleccion: 'Moss Season',
     pagina: 'pages/moss-season.html',
     tipo: 'accesorios',
     nuevo: true,
     detalle: '',
-    colores: [{ clase: 'color-helecho', nombre: 'Helecho' }, { clase: 'color-corteza', nombre: 'Corteza', img: 'assets/img/img-moss-/moss-08-corteza.jpg' }]
+    colores: [{ clase: 'color-helecho', nombre: 'Helecho' }, { clase: 'color-corteza', nombre: 'Corteza', img: 'assets/img/moss/moss-08-corteza.jpg' }]
   },
   {
     id: 'garden-01',
     nombre: 'Camisa Monstera Linen',
     precio: 49.00,
-    img: 'assets/img/img-garde/garden-01.png',
+    img: 'assets/img/garden/garden-01.png',
     alt: 'Camisa Monstera Linen',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'camisetas',
     nuevo: true,
     detalle: 'Monstera deliciosa',
-    colores: [{ clase: 'color-salvia', nombre: 'Salvia' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/img-garde/garden-01-crema.jpg' }, { clase: 'color-hoja', nombre: 'Hoja', img: 'assets/img/img-garde/garden-01-hoja.jpg' }]
+    colores: [{ clase: 'color-salvia', nombre: 'Salvia' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/garden/garden-01-crema.jpg' }, { clase: 'color-hoja', nombre: 'Hoja', img: 'assets/img/garden/garden-01-hoja.jpg' }]
   },
   {
     id: 'garden-02',
     nombre: 'Hoodie Terracota Pot',
     precio: 55.00,
-    img: 'assets/img/img-garde/garden-02.png',
+    img: 'assets/img/garden/garden-02.png',
     alt: 'Hoodie Terracota Pot',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'sudaderas',
     nuevo: true,
     detalle: 'Terra cotta',
-    colores: [{ clase: 'color-terracota', nombre: 'Terracota' }, { clase: 'color-arcilla', nombre: 'Arcilla', img: 'assets/img/img-garde/garden-02-arcilla.jpg' }]
+    colores: [{ clase: 'color-terracota', nombre: 'Terracota' }, { clase: 'color-arcilla', nombre: 'Arcilla', img: 'assets/img/garden/garden-02-arcilla.jpg' }]
   },
   {
     id: 'garden-03',
     nombre: 'T-Shirt Botanical Print',
     precio: 29.00,
-    img: 'assets/img/img-garde/garden-03.png',
+    img: 'assets/img/garden/garden-03.png',
     alt: 'T-Shirt Botanical Print',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'camisetas',
     nuevo: false,
     detalle: 'Herbarium print',
-    colores: [{ clase: 'color-crema', nombre: 'Crema' }, { clase: 'color-salvia', nombre: 'Salvia', img: 'assets/img/img-garde/garden-03-salvia.jpg' }]
+    colores: [{ clase: 'color-crema', nombre: 'Crema' }, { clase: 'color-salvia', nombre: 'Salvia', img: 'assets/img/garden/garden-03-salvia.jpg' }]
   },
   {
     id: 'garden-04',
     nombre: 'Pantalón Sage Linen',
     precio: 52.00,
-    img: 'assets/img/img-garde/garden-04.png',
+    img: 'assets/img/garden/garden-04.png',
     alt: 'Pantalón Sage Linen',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'pantalones',
     nuevo: false,
     detalle: 'Salvia officinalis',
-    colores: [{ clase: 'color-salvia', nombre: 'Salvia' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/img-garde/garden-04-crema.jpg' }, { clase: 'color-corteza', nombre: 'Tierra', img: 'assets/img/img-garde/garden-04-tierra.jpg' }]
+    colores: [{ clase: 'color-salvia', nombre: 'Salvia' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/garden/garden-04-crema.jpg' }, { clase: 'color-corteza', nombre: 'Tierra', img: 'assets/img/garden/garden-04-tierra.jpg' }]
   },
   {
     id: 'garden-05',
     nombre: 'Delantal Jardinero',
     precio: 32.00,
-    img: 'assets/img/img-garde/garden-05.png',
+    img: 'assets/img/garden/garden-05.png',
     alt: 'Delantal Jardinero',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'accesorios',
     nuevo: false,
     detalle: 'Hortus domesticus',
-    colores: [{ clase: 'color-hoja', nombre: 'Hoja' }, { clase: 'color-arcilla', nombre: 'Arcilla', img: 'assets/img/img-garde/garden-05-arcilla.jpg' }]
+    colores: [{ clase: 'color-hoja', nombre: 'Hoja' }, { clase: 'color-arcilla', nombre: 'Arcilla', img: 'assets/img/garden/garden-05-arcilla.jpg' }]
   },
   {
     id: 'garden-06',
     nombre: 'Gorra Greenhouse',
     precio: 22.00,
-    img: 'assets/img/img-garde/garden-06.png',
+    img: 'assets/img/garden/garden-06.png',
     alt: 'Gorra Greenhouse',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'gorros',
     nuevo: false,
     detalle: 'Sub vitro',
-    colores: [{ clase: 'color-hoja', nombre: 'Hoja' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/img-garde/garden-06-crema.jpg' }, { clase: 'color-terracota', nombre: 'Terracota', img: 'assets/img/img-garde/garden-06-terracota.jpg' }]
+    colores: [{ clase: 'color-hoja', nombre: 'Hoja' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/garden/garden-06-crema.jpg' }, { clase: 'color-terracota', nombre: 'Terracota', img: 'assets/img/garden/garden-06-terracota.jpg' }]
   },
   {
     id: 'garden-07',
     nombre: 'Tote Herbario',
     precio: 18.00,
-    img: 'assets/img/img-garde/garden-07.png',
+    img: 'assets/img/garden/garden-07.png',
     alt: 'Tote Herbario',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'accesorios',
     nuevo: true,
     detalle: 'Herbarium',
-    colores: [{ clase: 'color-crema', nombre: 'Crema' }, { clase: 'color-hoja', nombre: 'Hoja', img: 'assets/img/img-garde/garden-07-hoja.jpg' }]
+    colores: [{ clase: 'color-crema', nombre: 'Crema' }, { clase: 'color-hoja', nombre: 'Hoja', img: 'assets/img/garden/garden-07-hoja.jpg' }]
   },
   {
     id: 'garden-08',
     nombre: 'Calcetines Fern',
     precio: 12.00,
-    img: 'assets/img/img-garde/garden-08.png',
+    img: 'assets/img/garden/garden-08.png',
     alt: 'Calcetines Fern',
     coleccion: 'Static Garden',
     pagina: 'pages/static-garden.html',
     tipo: 'accesorios',
     nuevo: false,
     detalle: 'Pteridophyta',
-    colores: [{ clase: 'color-salvia', nombre: 'Salvia' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/img-garde/garden-08-crema.jpg' }]
+    colores: [{ clase: 'color-salvia', nombre: 'Salvia' }, { clase: 'color-crema', nombre: 'Crema', img: 'assets/img/garden/garden-08-crema.jpg' }]
   },
   {
     id: 'field-01',
     nombre: 'Hoodie Meadow',
     precio: 52.00,
-    img: 'assets/img/img-field/field-01.jpg',
+    img: 'assets/img/field/field-01.jpg',
     alt: 'Hoodie Meadow Oversize',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'sudaderas',
     nuevo: true,
     detalle: 'hierba alta',
-    colores: [{ clase: 'color-campo', nombre: 'Campo' }, { clase: 'color-avena', nombre: 'Avena', img: 'assets/img/img-field/field-01-avena.jpg' }, { clase: 'color-aciano', nombre: 'Aciano', img: 'assets/img/img-field/field-01-aciano.jpg' }]
+    colores: [{ clase: 'color-campo', nombre: 'Campo' }, { clase: 'color-avena', nombre: 'Avena', img: 'assets/img/field/field-01-avena.jpg' }, { clase: 'color-aciano', nombre: 'Aciano', img: 'assets/img/field/field-01-aciano.jpg' }]
   },
   {
     id: 'field-02',
     nombre: 'Camiseta Chamomile',
     precio: 27.00,
-    img: 'assets/img/img-field/field-02.jpg',
+    img: 'assets/img/field/field-02.jpg',
     alt: 'Camiseta Chamomile',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'camisetas',
     nuevo: true,
     detalle: 'matricaria',
-    colores: [{ clase: 'color-manzanilla', nombre: 'Manzanilla' }, { clase: 'color-heno', nombre: 'Heno', img: 'assets/img/img-field/field-02-heno.jpg' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/img-field/field-02-campo.jpg' }]
+    colores: [{ clase: 'color-manzanilla', nombre: 'Manzanilla' }, { clase: 'color-heno', nombre: 'Heno', img: 'assets/img/field/field-02-heno.jpg' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/field/field-02-campo.jpg' }]
   },
   {
     id: 'field-03',
     nombre: 'Cargo Stubble',
     precio: 54.00,
-    img: 'assets/img/img-field/field-03.jpg',
+    img: 'assets/img/field/field-03.jpg',
     alt: 'Pantalón Cargo Stubble',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'pantalones',
     nuevo: false,
     detalle: 'rastrojo',
-    colores: [{ clase: 'color-rastrojo', nombre: 'Rastrojo' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/img-field/field-03-campo.jpg' }]
+    colores: [{ clase: 'color-rastrojo', nombre: 'Rastrojo' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/field/field-03-campo.jpg' }]
   },
   {
     id: 'field-04',
     nombre: 'Gorra Hay',
     precio: 21.00,
-    img: 'assets/img/img-field/field-04.jpg',
+    img: 'assets/img/field/field-04.jpg',
     alt: 'Gorra Hay',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'gorros',
     nuevo: false,
     detalle: 'avena sativa',
-    colores: [{ clase: 'color-heno', nombre: 'Heno' }, { clase: 'color-avena', nombre: 'Avena', img: 'assets/img/img-field/field-04-avena.jpg' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/img-field/field-04-campo.jpg' }]
+    colores: [{ clase: 'color-heno', nombre: 'Heno' }, { clase: 'color-avena', nombre: 'Avena', img: 'assets/img/field/field-04-avena.jpg' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/field/field-04-campo.jpg' }]
   },
   {
     id: 'field-05',
     nombre: 'Camisa Wildflower',
     precio: 46.00,
-    img: 'assets/img/img-field/field-05.jpg',
+    img: 'assets/img/field/field-05.jpg',
     alt: 'Camisa Wildflower',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'camisetas',
     nuevo: false,
     detalle: 'flora silvestre',
-    colores: [{ clase: 'color-manzanilla', nombre: 'Manzanilla' }, { clase: 'color-brezo', nombre: 'Brezo', img: 'assets/img/img-field/field-05-brezo.jpg' }]
+    colores: [{ clase: 'color-manzanilla', nombre: 'Manzanilla' }, { clase: 'color-brezo', nombre: 'Brezo', img: 'assets/img/field/field-05-brezo.jpg' }]
   },
   {
     id: 'field-06',
     nombre: 'Short Poppy',
     precio: 34.00,
-    img: 'assets/img/img-field/field-06.jpg',
+    img: 'assets/img/field/field-06.jpg',
     alt: 'Short Poppy',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'pantalones',
     nuevo: true,
     detalle: 'papaver rhoeas',
-    colores: [{ clase: 'color-adormidera', nombre: 'Adormidera' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/img-field/field-06-campo.jpg' }, { clase: 'color-avena', nombre: 'Avena', img: 'assets/img/img-field/field-06-avena.jpg' }]
+    colores: [{ clase: 'color-adormidera', nombre: 'Adormidera' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/field/field-06-campo.jpg' }, { clase: 'color-avena', nombre: 'Avena', img: 'assets/img/field/field-06-avena.jpg' }]
   },
   {
     id: 'field-07',
     nombre: 'Crewneck Cornflower',
     precio: 49.00,
-    img: 'assets/img/img-field/field-07.jpg',
+    img: 'assets/img/field/field-07.jpg',
     alt: 'Crewneck Cornflower',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'sudaderas',
     nuevo: false,
     detalle: 'centaurea cyanus',
-    colores: [{ clase: 'color-aciano', nombre: 'Aciano' }, { clase: 'color-brezo', nombre: 'Brezo', img: 'assets/img/img-field/field-07-brezo.jpg' }]
+    colores: [{ clase: 'color-aciano', nombre: 'Aciano' }, { clase: 'color-brezo', nombre: 'Brezo', img: 'assets/img/field/field-07-brezo.jpg' }]
   },
   {
     id: 'field-08',
     nombre: 'Bandana Herbario',
     precio: 14.00,
-    img: 'assets/img/img-field/field-08.jpg',
+    img: 'assets/img/field/field-08.jpg',
     alt: 'Bandana Herbario',
     coleccion: 'Field Theory',
     pagina: 'pages/field-theory.html',
     tipo: 'accesorios',
     nuevo: false,
     detalle: 'lámina 01–04',
-    colores: [{ clase: 'color-adormidera', nombre: 'Adormidera' }, { clase: 'color-heno', nombre: 'Heno', img: 'assets/img/img-field/field-08-heno.jpg' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/img-field/field-08-campo.jpg' }]
+    colores: [{ clase: 'color-adormidera', nombre: 'Adormidera' }, { clase: 'color-heno', nombre: 'Heno', img: 'assets/img/field/field-08-heno.jpg' }, { clase: 'color-campo', nombre: 'Campo', img: 'assets/img/field/field-08-campo.jpg' }]
   }
 ];
 
@@ -434,10 +434,10 @@ const FICHAS = {
 
 // Lo propio de cada prenda: descripción y, si cambian, su tejido, ajuste o tallas
 const DETALLES = {
-  'pro-sudadera': { texto: 'Sudadera de corte amplio con capucha y bolsillo canguro. La pieza base de Essentials: suave por dentro y con cuerpo por fuera.' },
-  'prod-tshirt': { texto: 'Camiseta de punto denso con el logo TISION bordado en el pecho. Un básico que aguanta lavado tras lavado.' },
-  'prop-pants': { texto: 'Cargo de sarga resistente con bolsillos laterales de fuelle y bajos ajustables con cordón. Para todos los días.' },
-  'prop-cup': { texto: 'Gorra de seis paneles en sarga lavada con logo bordado y cierre trasero de hebilla metálica.' },
+  'essentials-01': { texto: 'Sudadera de corte amplio con capucha y bolsillo canguro. La pieza base de Essentials: suave por dentro y con cuerpo por fuera.' },
+  'essentials-02': { texto: 'Camiseta de punto denso con el logo TISION bordado en el pecho. Un básico que aguanta lavado tras lavado.' },
+  'essentials-03': { texto: 'Cargo de sarga resistente con bolsillos laterales de fuelle y bajos ajustables con cordón. Para todos los días.' },
+  'essentials-04': { texto: 'Gorra de seis paneles en sarga lavada con logo bordado y cierre trasero de hebilla metálica.' },
   'moss-01': { texto: 'Hoodie de hombro caído en los tonos de un bosque húmedo, con capucha doble y puños de canalé largos.' },
   'moss-02': { texto: 'Chaqueta ligera repelente al agua para los días de lluvia fina. Capucha ajustable y bolsillos con cremallera.' },
   'moss-03': { texto: 'Camiseta con estampado de helecho a una tinta, impreso con tintas al agua que no endurecen el tejido.' },

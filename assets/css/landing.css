@@ -17,10 +17,6 @@ html {
   padding: 0 24px;
 }
 
-.lp-contenedor-estrecho {
-  max-width: 760px;
-}
-
 .lp-etiqueta {
   font-size: 13px;
   font-weight: 700;
@@ -181,30 +177,10 @@ html {
 /* =========================================
    5. BANDA DE PALABRAS
    ========================================= */
-.lp-banda {
-  background: var(--verde);
-  color: var(--amarillo);
-  overflow: hidden;
-  padding: 16px 0;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
 
 /* El texto está repetido dos veces: al moverse la mitad, empieza de nuevo sin saltos */
-.lp-banda-pista {
-  display: inline-flex;
-  gap: 32px;
-  padding-right: 32px;
-  animation: lp-desplazar 28s linear infinite;
-}
 
 /* Al pasar el ratón se para, para poder leerla */
-.lp-banda:hover .lp-banda-pista {
-  animation-play-state: paused;
-}
 
 /* De derecha a izquierda: va de 0 a -50% (la mitad repetida) */
 @keyframes lp-desplazar {
@@ -322,113 +298,16 @@ html {
 /* =========================================
    8. OPINIONES
    ========================================= */
-.lp-opiniones {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.lp-opinion {
-  background: var(--blanco);
-  border-radius: var(--radio);
-  padding: 28px;
-  box-shadow: var(--sombra);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.lp-estrellas {
-  color: #D4A915;
-  letter-spacing: 2px;
-}
-
-.lp-opinion blockquote {
-  font-size: 16px;
-  flex: 1;
-}
-
-.lp-opinion figcaption {
-  font-size: 14px;
-  color: var(--gris);
-}
-
-.lp-opinion figcaption strong {
-  color: var(--verde);
-}
 
 /* =========================================
    9. PREGUNTAS FRECUENTES
    ========================================= */
-.lp-seccion-clara {
-  background: var(--blanco);
-}
-
-.lp-faq details {
-  border-bottom: 1px solid var(--hueco);
-}
-
-.lp-faq summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 22px 0;
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--verde);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-}
-
-.lp-faq summary::-webkit-details-marker {
-  display: none;
-}
 
 /* Signo + que gira a × al abrir */
-.lp-faq summary::after {
-  content: '+';
-  font-size: 26px;
-  font-weight: 500;
-  transition: transform 0.2s;
-}
-
-.lp-faq details[open] summary::after {
-  transform: rotate(45deg);
-}
-
-.lp-faq details p {
-  padding: 0 0 22px;
-  color: var(--gris);
-}
 
 /* =========================================
    10. LLAMADA FINAL
    ========================================= */
-.lp-final {
-  background: var(--amarillo);
-  padding: 88px 0;
-  text-align: center;
-}
-
-.lp-final-contenedor > p {
-  color: var(--verde);
-  font-size: 18px;
-  margin-bottom: 28px;
-}
-
-.lp-final .lp-form {
-  margin: 0 auto;
-}
-
-.lp-final p.lp-legal {
-  font-size: 13px;
-  margin: 4px 0 0;
-}
-
-.lp-legal a {
-  text-decoration: underline;
-}
 
 /* =========================================
    11. MENOS MOVIMIENTO
@@ -440,9 +319,6 @@ html {
   }
 
   /* La banda sigue moviéndose, pero más despacio */
-  .lp-banda-pista {
-    animation-duration: 45s;
-  }
 }
 
 /* =========================================
@@ -458,8 +334,7 @@ html {
     font-size: 48px;
   }
 
-  .lp-colecciones,
-  .lp-opiniones {
+  .lp-colecciones {
     grid-template-columns: 1fr;
     max-width: 520px;
     margin: 0 auto;
@@ -471,8 +346,7 @@ html {
 }
 
 @media (max-width: 700px) {
-  .lp-seccion,
-  .lp-final {
+  .lp-seccion {
     padding: 64px 0;
   }
 

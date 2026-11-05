@@ -61,21 +61,13 @@ body.tema-field {
 .lp-etiqueta,
 .lp-entradilla,
 .lp-nota,
-.lp-legal,
 .lp-prueba,
 .cx-etiqueta,
 .cx-lema,
-.cx-subtitulo,
 .cx-latin,
 .producto-coleccion,
-.categoria-info p,
-.vendido-info p,
-.linea-hito p,
 .equipo-persona p,
 .equipo-persona small,
-.mas-info-texto p,
-.banner-lema,
-.banner-est,
 .hero-marcas,
 .footer-copy,
 .ficha-ajuste,
@@ -171,8 +163,7 @@ body.tema-field {
 
 .beneficios,
 .valores,
-.lp-ventajas,
-.cx-tarjetas {
+.lp-ventajas {
   display: flex !important;
   flex-wrap: wrap;
   justify-content: center;
@@ -216,8 +207,7 @@ body.tema-field {
 
 .beneficio-icono,
 .valor-icono,
-.lp-ventaja-icono,
-.cx-tarjeta-icono {
+.lp-ventaja-icono {
   display: flex;
   margin: 0 !important;
   background: none !important;

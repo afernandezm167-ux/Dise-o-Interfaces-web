@@ -40,7 +40,7 @@ function buscarProducto(id) {
   return catalogo().find(function (p) { return p.id === id; });
 }
 
-// El id de un producto es el nombre de su imagen (moss-01, pro-sudadera...)
+// El id de un producto es el nombre de su imagen (moss-01, essentials-01...)
 // (se guarda en data-id porque al cambiar de color la foto cambia de nombre)
 function idDeTarjeta(tarjeta) {
   if (tarjeta.dataset.id) return tarjeta.dataset.id;
